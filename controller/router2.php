@@ -23,6 +23,9 @@ class Route {
         case 'service';
             require ROOT . "/controller/service.php";
             break;
+        case 'updatePost';
+            require ROOT . "/controller/updatePost.php";
+            break;    
         default:
             require ROOT . "/controller/page404.php";
             break;

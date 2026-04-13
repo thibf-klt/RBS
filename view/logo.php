@@ -7,7 +7,7 @@
     <title>logo</title>
 </head>
 <body>
-    <p>logo</p>
+    <img src="./public/images/logo-rbs.png">
     <p id="quote"></p>
     <p id="author"></p>
     

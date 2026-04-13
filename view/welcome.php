@@ -8,6 +8,7 @@
 <body>
     
     <h1>Qui suis-je?</h1>
+    <img src="./public/images/rb.jpeg">
     
     
 </body>
