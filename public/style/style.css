@@ -1,3 +1,139 @@
+/******** logo.php ***********/
+.logo {
+  background-color: #B0C687;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+.logo img {
+  width: 150px;
+  height: 150px;
+  margin: 10px 100px;
+}
 
+.fullQuote {
+  margin: 2%;
+}
+
+#quote {
+  font-size: 1.2rem;
+}
+
+/******** menu.php **********/
+.menu {
+  background-color: #F28AEF;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+.menu ul {
+  display: flex;
+  gap: 30px;
+}
+.menu ul li {
+  display: inline;
+  list-style-type: none;
+}
+.menu a {
+  text-decoration: none;
+  color: black;
+}
+
+/********** welcome.php *************/
+.sophro {
+  background-color: #F3D28B;
+  display: flex;
+  align-items: flex-start;
+  margin: 20px;
+}
+
+.rb {
+  width: 200px;
+  height: 250px;
+  margin: 10px 50px;
+}
+
+.sophro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonSophro {
+  background-color: #F28AEF;
+  border: 1px solid;
+  padding: 5px 10px;
+  font-size: medium;
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+/******* service.php ***********/
+.services {
+  background-color: #B0C687;
+  margin: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.services h2 {
+  text-align: center;
+}
+
+.buttonService {
+  background-color: #F3D28B;
+  border: 1px solid;
+  padding: 5px 10px;
+  font-size: medium;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+/*********** post.php ****************/
+.blog {
+  background-color: #F28AEF;
+  margin: 20px;
+}
+.blog h2 {
+  text-align: center;
+}
+
+/************** footer.php ***************/
+.footer {
+  background-color: #F3D28B;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+/***************** contact.php *****************/
+.contact {
+  background-color: #F28AEF;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+/********* prestation.php ***********/
+.prestation {
+  background-color: #F3D28B;
+  margin: 20px;
+}
+
+.offer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cote {
+  width: 250px;
+  height: 200px;
+}
 
 /*# sourceMappingURL=style.css.map */

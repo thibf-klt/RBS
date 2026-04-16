@@ -23,15 +23,13 @@
         U comme utile dans l'accompagnement de votre chemin de vie.<br>
         E comme enthousiaste et éclairante pour vous accompagner au plus près de vos besoins.<br>
         </p>
-        
-        <form action="index.php" method="get">
-            <input type="hidden" name="action" value="presentation">
-            <input class="buttonSophro" type="submit" value="En savoir plus">
-        </form>
+        <p>Je suis diplômée de l’institut de formation à la sophrologie en 2026 (ce centre de formation basé à Paris).
+        Après avoir été travailleuse sociale pendant 27 ans auprès de différents publics (petite enfance, enfants, adolescent.e.s, adultes et personnes âgées, personnes en situation de handicap) j'ai eu envie de me former à un métier qui me permette de continuer à vous accompagner autrement sur le chemin de votre bien être. 
+        Accompagnant, je mets tout en oeuvre pour vous permettre d'atteindre votre objectif en pleine conscience. Vous êtes l'accompagné.e qui allé.e devenir autonome dans l'utilisation des outils de la sophrologie afin d'accéder a votre bien être et votre plein potentiel.
+        </p>
+
         </div>
     </div>
     
 </body>
 </html>
-
-

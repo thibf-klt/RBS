@@ -23,7 +23,6 @@ $action = "";
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
     $route = new Route();
-    die($_GET["action"]);
         $route->redirectTowards($action);
     
 } else {

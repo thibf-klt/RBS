@@ -7,18 +7,19 @@
     <title>Articles</title>
 </head>
 <body>
-    <h2>Blog</h2>
+    <div class="blog">
+    <h2>Mes articles</h2>
 
-    <?php if (!empty($posts)) : ?>
-        <?php foreach ($posts as $post) : ?>
-            <article>
-                <h3><?= htmlspecialchars($post['title']) ?></h3>
-                <p><?= htmlspecialchars($post['content']) ?></p>
-            </article>
-        <?php endforeach; ?>
-    <?php else : ?>
-        <p>Aucun article trouvé.</p>
-    <?php endif; ?>
-
+        <?php if (!empty($posts)) : ?>
+            <?php foreach ($posts as $post) : ?>
+                <article>
+                    <h3><?= htmlspecialchars($post['title']) ?></h3>
+                    <p><?= htmlspecialchars($post['content']) ?></p>
+                </article>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>Aucun article trouvé.</p>
+        <?php endif; ?>
+    </div>
 </body>
 </html>

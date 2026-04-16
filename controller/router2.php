@@ -25,7 +25,16 @@ class Route {
             break;
         case 'updatePost';
             require ROOT . "/controller/updatePost.php";
-            break;    
+            break;
+        case 'presentation';
+            require ROOT . "/controller/presentation.php";
+            break;
+        case 'prestation';
+            require ROOT . "/controller/prestation.php";
+            break;  
+        case 'authentification';
+            require ROOT . "/controller/authentification.php";
+            break;      
         default:
             require ROOT . "/controller/page404.php";
             break;
