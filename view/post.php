@@ -10,11 +10,14 @@
     <div class="blog">
     <h2>Mes articles</h2>
 
-        <?php if (!empty($posts)) : ?>
+        <?php
+        $posts = getPosts();
+         if (!empty($posts)) : ?>
             <?php foreach ($posts as $post) : ?>
                 <article>
                     <h3><?= htmlspecialchars($post['title']) ?></h3>
                     <p><?= htmlspecialchars($post['content']) ?></p>
+                    <p><?= $post['date_'] ?></p>
                 </article>
             <?php endforeach; ?>
         <?php else : ?>

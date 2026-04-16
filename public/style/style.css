@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "OpenDyslexic-Regular";
+  src: url("./public/fonts/OpenDyslexic-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 /******** logo.php ***********/
 .logo {
   background-color: #B0C687;
@@ -37,6 +43,9 @@
 .menu a {
   text-decoration: none;
   color: black;
+}
+.menu a:hover {
+  font-family: OpenDyslexic-Regular;
 }
 
 /********** welcome.php *************/
@@ -134,6 +143,21 @@
 .cote {
   width: 250px;
   height: 200px;
+}
+
+/***************** testimony.php ****************/
+.testimony {
+  background-color: #B0C687;
+  margin: 20px;
+}
+.testimony h2 {
+  text-align: center;
+}
+
+/******************** authentification.php ************************/
+.auth {
+  background-color: #B0C687;
+  margin: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

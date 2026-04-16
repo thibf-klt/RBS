@@ -34,6 +34,9 @@ class Route {
             break;  
         case 'authentification';
             require ROOT . "/controller/authentification.php";
+            break; 
+        case 'contact';
+            require ROOT . "/controller/contact.php";
             break;      
         default:
             require ROOT . "/controller/page404.php";

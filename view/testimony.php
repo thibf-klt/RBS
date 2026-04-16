@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/style/style.css">
     <title>Témoignages</title>
 </head>
 <body>
+    <div class="testimony">
+        <h2>Témoignages</h2>
 
-    <h1>Témoignages</h1>
+        <?php
+        $testimonies = getTestimonies();
+        if (!empty($testimonies)) : ?>
+            <?php foreach ($testimonies as $testimony) : ?>
+    
 
-    <?php if (!empty($testimonies)) : ?>
-        <?php foreach ($testimonies as $testimony) : ?>
-            <article style="margin-bottom: 2em; border-bottom: 1px solid #ccc; padding-bottom: 1em;">
+                    <h2>
+                        <?= htmlspecialchars($testimony['title'] ?? 'Sans titre') ?>
+                    </h2>
 
-                <h2>
-                    <?= htmlspecialchars($testimony['title'] ?? 'Sans titre') ?>
-                </h2>
+                    <p>
+                        <?= htmlspecialchars($testimony['content'] ?? '') ?>
+                    </p>
 
-                <p>
-                    <?= htmlspecialchars($testimony['content'] ?? '') ?>
-                </p>
+                    <p>
+                        <em>
+                            <?php if (!empty($testimony['author'])) : ?>
+                                <?= htmlspecialchars($testimony['author']) ?>
+                            <?php else : ?>
+                                Cette personne ne souhaite plus que son nom soit cité.
+                            <?php endif; ?>
+                        </em>
+                    </p>
 
-                <p>
-                    <em>
-                        <?php if (!empty($testimony['author'])) : ?>
-                            <?= htmlspecialchars($testimony['author']) ?>
-                        <?php else : ?>
-                            Cette personne ne souhaite plus que son nom soit cité.
-                        <?php endif; ?>
-                    </em>
-                </p>
-
-            </article>
-        <?php endforeach; ?>
-    <?php else : ?>
-        <p>Aucun témoignage disponible pour le moment.</p>
-    <?php endif; ?>
-
+                </article>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>Aucun témoignage disponible pour le moment.</p>
+        <?php endif; ?>
+    </div>
 </body>
 </html>

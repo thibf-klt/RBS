@@ -1,5 +1,5 @@
 <?php
-include_once "connect.php";
+require_once "connect.php";
 
 function getTestimonies(): array {
     $result = [];

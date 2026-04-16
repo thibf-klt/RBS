@@ -1,9 +1,6 @@
 <?php
-session_start ();
-
-require_once ROOT . "/model/testimony.php";
 require_once ROOT . "/view/logo.php";
 require_once ROOT . "/view/menu.php";
-require_once ROOT . "/view/testimony.php";
+require_once ROOT . "/view/contact.php";
 require_once ROOT . "/view/footer.php";
 ?>
