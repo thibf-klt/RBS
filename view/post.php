@@ -8,21 +8,25 @@
 </head>
 <body>
     <div class="blog">
-    <h2>Mes articles</h2>
-
+    <a href="index.php?action=post"><h2>Mes articles</h2></a>
+        <div class="displayPost">
         <?php
         $posts = getPosts();
          if (!empty($posts)) : ?>
             <?php foreach ($posts as $post) : ?>
-                <article>
+                <div class="post">
+                <a href="index.php?action=post"><article>
+                
                     <h3><?= htmlspecialchars($post['title']) ?></h3>
                     <p><?= htmlspecialchars($post['content']) ?></p>
                     <p><?= $post['date_'] ?></p>
-                </article>
+                </article></a>
+                </div>
             <?php endforeach; ?>
         <?php else : ?>
             <p>Aucun article trouvé.</p>
         <?php endif; ?>
+        </div>
     </div>
 </body>
 </html>

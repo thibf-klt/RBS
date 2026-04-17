@@ -25,6 +25,13 @@
   font-size: 1.2rem;
 }
 
+.audio {
+  align-self: flex-end;
+  margin-top: auto;
+  bottom: 20px;
+  right: 20px;
+}
+
 /******** menu.php **********/
 .menu {
   background-color: #F28AEF;
@@ -63,7 +70,6 @@
 }
 
 .sophro-content {
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -74,8 +80,13 @@
   padding: 5px 10px;
   font-size: medium;
   display: inline-block;
-  margin: auto;
+  align-self: center;
   margin-bottom: 20px;
+  margin-left: 250px;
+}
+
+.formSophro {
+  width: 100%;
 }
 
 /******* service.php ***********/
@@ -104,9 +115,27 @@
 .blog {
   background-color: #F28AEF;
   margin: 20px;
+  padding: 20px;
 }
 .blog h2 {
   text-align: center;
+}
+.blog a {
+  text-decoration: none;
+  color: black;
+}
+
+.displayPost {
+  display: flex;
+}
+
+.post {
+  border: 1px solid;
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 30%;
+  margin: 15px;
 }
 
 /************** footer.php ***************/
@@ -132,12 +161,27 @@
 .prestation {
   background-color: #F3D28B;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .offer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.individuals {
+  background-color: white;
+  border-radius: 8px solid;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 40%;
+  margin: 20px;
 }
 
 .cote {
@@ -158,6 +202,40 @@
 .auth {
   background-color: #B0C687;
   margin: 20px;
+}
+
+/************* individual.php-entreprise.php ***********/
+.frame {
+  background-color: #F3D28B;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.sea {
+  width: 250px;
+  height: 200px;
+  padding: 20px;
+}
+
+.innerFrame {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.innerFrame2 {
+  margin: 0 20px;
+}
+
+/********************* media queries *********************/
+@media (max-width: 768px) {
+  .sophro-top {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

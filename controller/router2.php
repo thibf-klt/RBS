@@ -37,7 +37,13 @@ class Route {
             break; 
         case 'contact';
             require ROOT . "/controller/contact.php";
-            break;      
+            break;
+        case 'individual';
+            require ROOT . "/controller/individual.php";
+            break;    
+        case 'entreprise';
+            require ROOT . "/controller/entreprise.php";
+            break;    
         default:
             require ROOT . "/controller/page404.php";
             break;

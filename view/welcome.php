@@ -24,7 +24,7 @@
         E comme enthousiaste et éclairante pour vous accompagner au plus près de vos besoins.<br>
         </p>
         
-        <form action="index.php" method="get">
+        <form action="index.php" method="get" class= "formSophro">
             <input type="hidden" name="action" value="presentation">
             <input class="buttonSophro" type="submit" value="En savoir plus">
         </form>

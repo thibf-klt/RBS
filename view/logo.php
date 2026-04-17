@@ -14,6 +14,7 @@
             <p id="quote"></p>
             <p id="author"></p>
         </div>
+        <audio src="./public/sound/soulful.mp3" controls class="audio"></audio>
     </div>
 </body>
 </html>
