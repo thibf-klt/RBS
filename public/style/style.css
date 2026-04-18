@@ -197,6 +197,10 @@
 .testimony h2 {
   text-align: center;
 }
+.testimony a {
+  text-decoration: none;
+  color: black;
+}
 
 /******************** authentification.php ************************/
 .auth {
