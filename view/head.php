@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><head>header</head></title>
+    <link rel="stylesheet" href="./public/style/style.css">
+    <script src="./public/js/citation.js" defer></script>
+    <title>logo</title>
 </head>
-<body>
-    <h1>head</h1>
-</body>
-</html>

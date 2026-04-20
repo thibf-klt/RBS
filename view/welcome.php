@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/style/style.css">
-    <title>Riwanon Breton - Bienvenue</title>
-</head>
-<body>
+<?php
+require ROOT . "/view/head.php";
+require ROOT . "/view/header.php";
+require ROOT . "/view/menu.php";
+?>
     <div class="sophro">
         <img class="rb" src="./public/images/rb.jpeg" alt="R. Breton, la sophrologue, souriante">
         
@@ -30,8 +26,11 @@
         </form>
         </div>
     </div>
-    
+<?php
+require ROOT . "/view/service.php";
+require ROOT . "/view/post.php";
+require ROOT . "/view/testimony.php";
+require ROOT . "/view/footer.php";
+?>
 </body>
 </html>
-
-

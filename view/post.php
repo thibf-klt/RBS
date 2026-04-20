@@ -1,27 +1,18 @@
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Articles</title>
-</head>
-<body>
-    <div class="blog">
-    <a href="index.php?action=post"><h2>Mes articles</h2></a>
+<div class="blog">
+        <a href="index.php?action=post"><h2>Mes articles</h2></a>
         <div class="displayPost">
         <?php
-        $posts = getPosts();
-         if (!empty($posts)) : ?>
+        //$posts = getPosts();
+        if (!empty($posts)) : ?>
             <?php foreach ($posts as $post) : ?>
                 <div class="post">
-                <a href="index.php?action=post"><article>
-                
-                    <h3><?= htmlspecialchars($post['title']) ?></h3>
-                    <p><?= htmlspecialchars($post['content']) ?></p>
-                    <p><?= $post['date_'] ?></p>
-                </article></a>
+                <a href="index.php?action=post">
+                    <article>
+                        <h3><?= htmlspecialchars($post['title']) ?></h3>
+                        <p><?= htmlspecialchars($post['content']) ?></p>
+                        <p><?= $post['date_'] ?></p>
+                    </article>
+                </a>
                 </div>
             <?php endforeach; ?>
         <?php else : ?>
@@ -30,5 +21,3 @@
         </div>
 
     </div>
-</body>
-</html>

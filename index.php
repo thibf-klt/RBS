@@ -1,16 +1,13 @@
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwanon Breton - sophrologue</title>
-</head>
-<body>
-
 <?php
-use Dotenv\Dotenv;
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 require __DIR__.'/vendor/autoload.php';
+use Dotenv\Dotenv;
+
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -30,5 +27,4 @@ if (isset($_GET["action"])) {
 }
 
 ?>
-</body>
-</html>
+
