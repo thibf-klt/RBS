@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/style/style.css">
-    <title>Riwanon Breton - Bienvenue</title>
-</head>
-<body>
+
     <div class="prestation">
         <h2>Mon offre de prestations</h2>
         <div class="offer">

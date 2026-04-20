@@ -4,5 +4,5 @@
         <p id="quote"></p>
         <p id="author"></p>
     </div>
-    <audio src="./public/sound/soulful.mp3" controls class="audio"></audio>
+    <audio src="./public/sound/soulful.mp3" controls class="audio" loop loading ="lazy"></audio>
 </div>

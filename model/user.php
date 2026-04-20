@@ -2,25 +2,27 @@
 
 include_once "connect.php";
 
-function getUsers() {
+/*récupère les informations d'un utilisateur à partir de son identifiant
+* return array
+ */
+function getUsers($idUser) {
 
     try {
         $cnx = connexionPDO();
         $req = $cnx->prepare("select * from USER_ where idUser=:idUser");
         $req->bindValue(':idUser', $idUser, PDO::PARAM_INT);
         $req->execute();
-
-        $user = $req->fetchAll(PDO::FETCH_ASSOC);
-        while ($user) {
-            $result[] = $user;
-            $user = $req->fetch(PDO::FETCH_ASSOC);
-        }
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        
     } catch (PDOException $e) {
         die( "Erreur !: " . $e->getMessage() );
     }
     return $result;
 }
 
+/*récupère les informations d'un utilisateur à partir de son adress mail
+* return array or false
+*/
 function getUserByMail($email) {
 
     try {
@@ -36,6 +38,9 @@ function getUserByMail($email) {
     return $result;
 }
 
+/* add new user in database with email and password
+*retrun boolean
+*/
 function addUser($email, $password) {
     try {
         $cnx = connexionPDO();

@@ -11,8 +11,8 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-require "controller/config.php";
-require ROOT . "/controller/router2.php";
+require "app/config.php";
+require ROOT . "/app/router.php";
 require ROOT . "/model/connect.php";
 
 $action = "";

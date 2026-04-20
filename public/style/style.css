@@ -1,10 +1,24 @@
 @font-face {
   font-family: "OpenDyslexic-Regular";
-  src: url("./public/fonts/OpenDyslexic-Regular.woff") format("woff");
+  src: url("../fonts/OpenDyslexic-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
-/******** logo.php ***********/
+@font-face {
+  font-family: "Arial";
+  src: url("../fonts/Arial.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: Arial;
+}
+
+h2 {
+  font-family: "OpenDyslexic-Regular";
+}
+
+/******** header.php ***********/
 .logo {
   background-color: #B0C687;
   display: flex;
@@ -41,7 +55,7 @@
 }
 .menu ul {
   display: flex;
-  gap: 30px;
+  gap: 50px;
 }
 .menu ul li {
   display: inline;
@@ -52,7 +66,7 @@
   color: black;
 }
 .menu a:hover {
-  font-family: OpenDyslexic-Regular;
+  color: white;
 }
 
 /********** welcome.php *************/

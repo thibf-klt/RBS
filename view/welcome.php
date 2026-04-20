@@ -4,7 +4,7 @@ require ROOT . "/view/header.php";
 require ROOT . "/view/menu.php";
 ?>
     <div class="sophro">
-        <img class="rb" src="./public/images/rb.jpeg" alt="R. Breton, la sophrologue, souriante">
+        <img class="rb" src="./public/images/rb(1).jpeg" alt="R. Breton, la sophrologue, souriante">
         
         <div class="sophro-content">
         <p>S comme sincère et ouverte dans ma présence empathique et ma capacité à vibrer en écho à ce que l'autre vit.<br>

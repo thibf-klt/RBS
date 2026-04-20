@@ -10,6 +10,7 @@ fetch("https://api.quotable.io/random")
     .then(data => displayQuote(data))
     .catch(error => alert("Erreur :" + error));
 
+//extract quote and authom from the data gotten from api (json)    
 function displayQuote(dataArticle) {
     
     //display text

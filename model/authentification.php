@@ -3,17 +3,16 @@
 require_once "user.php";
 // opening the session or restoring a previous one found on the server
 function login($email, $password) {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
 
     $user = getUserByMail($email);
+    if (!$user) return;
     $pwdDB = $user["password"];
 
     if (trim($pwdDB) == trim(crypt($password, $pwdDB))) {
         // le mot de passe est celui de l'utilisateur dans la base de donnees
         $_SESSION["email"] = $email;
-        $_SESSION["password"] = $pwdDB;
+        $_SESSION["idUser"] = $user["idUser"];
+        $_SESSION["admin"] = $user["isAdmin"];
     }
 }
 

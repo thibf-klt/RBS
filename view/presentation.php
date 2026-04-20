@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/style/style.css">
-    <title>Riwanon Breton - Bienvenue</title>
-</head>
-<body>
+
     <div class="sophro">
-        <img class="rb" src="./public/images/rb.jpeg" alt="R. Breton, la sophrologue, souriante">
+        <img class="rb" src="./public/images/rb(1).jpeg" alt="R. Breton, la sophrologue, souriante">
         
         <div class="sophro-content">
         <p>S comme sincère et ouverte dans ma présence empathique et ma capacité à vibrer en écho à ce que l'autre vit.<br>
@@ -32,4 +24,3 @@
     </div>
     
 </body>
-</html>

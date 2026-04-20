@@ -1,32 +1,23 @@
-// Exemple complet d'intégration avec gestion d'erreurs
-const API_BASE_URL = 'https://api.quotable.io';
-
-// Fonction pour récupérer une citation aléatoire
-async function getRandomQuote() {
-    try {
-        const response = await fetch(`${API_BASE_URL}/random`);
-        
-        if (!response.ok) {
-            throw new Error(`Erreur HTTP: ${response.status}`);
+fetch("https://citation.lecog.fr/public/api/random-quote.php")
+    .then(response => {
+        if (response.ok) {
+            console.log("Requête réussie - Statut : " + response.status);
+            return (response.json())
         }
-        
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Erreur lors de la récupération de la citation:', error);
-        throw error;
-    }
-}
-// Exemple d'utilisation avec affichage dans le DOM
-async function displayRandomQuote() {
-    try {
-        const quoteData = await getRandomQuote();
-        document.getElementById('#quote').textContent = quoteData.content;
+        throw new Error("Erreur d'accès à la ressource - Statut : " + response.status);
+    })
+    .then(data => displayQuote(data))
+    .catch(error => alert("Erreur :" + error));
+
+//extract quote and authom from the data gotten from api (json)    
+function displayQuote(dataArticle) {
     
-    } catch (error) {
-        document.getElementById('quote-container').innerHTML = 
-            `
-Impossible de charger la citation. Veuillez réessayer.
-`;
-    }
-}
+    //display text
+    let quote = document.querySelector("#text");
+    quote.innerText = dataArticle.text;
+
+    //display author
+    //let author = document.querySelector("#author.name");  
+    //author.innerText = dataArticle.author;           
+
+}    
