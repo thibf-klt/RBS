@@ -4,8 +4,9 @@ require ROOT . "/view/header.php";
 require ROOT . "/view/menu.php";
 ?>
     <div class="sophro">
-        <img class="rb" src="./public/images/rb(1).jpeg" alt="R. Breton, la sophrologue, souriante">
-        
+        <div class="picSophro">
+            <img class="rb" src="./public/images/rb(1).jpeg" alt="R. Breton, la sophrologue, souriante">
+        </div>
         <div class="sophro-content">
         <p>S comme sincère et ouverte dans ma présence empathique et ma capacité à vibrer en écho à ce que l'autre vit.<br>
         O comme optimiste. J'ai a coeur de voir le côté positif des défis que j'ai à relever.<br>

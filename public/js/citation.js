@@ -1,5 +1,5 @@
 
-fetch("https://api.quotable.io/random")
+fetch("https://quoteslate.vercel.app/api/quotes/random")
     .then(response => {
         if (response.ok) {
             console.log("Requête réussie - Statut : " + response.status);
@@ -15,7 +15,7 @@ function displayQuote(dataArticle) {
     
     //display text
     let quote = document.querySelector("#quote");
-    quote.innerText = dataArticle.content;
+    quote.innerText = dataArticle.quote;
 
     //display author
     let author = document.querySelector("#author");  

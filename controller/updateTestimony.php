@@ -1,10 +1,9 @@
 <?php
 session_start();
 
-// check if admin connected
-if (!isset($_SESSION['idUser']) || !isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] !== true) {
-    header('Location: /authentification.php');
-    exit;
+// check if user connected
+if (!isset($_SESSION['idUser']) == true {
+    header('Location: /authentification.php')
 }
 
 $errors = [];
