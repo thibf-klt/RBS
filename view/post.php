@@ -2,7 +2,7 @@
         <a href="index.php?action=post"><h2>Mes articles</h2></a>
         <div class="displayPost">
         <?php
-        //$posts = getPosts();
+        
         if (!empty($posts)) : ?>
             <?php foreach ($posts as $post) : ?>
                 <div class="post">

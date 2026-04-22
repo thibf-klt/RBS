@@ -5,6 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/style/style.css">
     <script src="./public/js/citation.js" defer></script>
-    <script src="./public/js/burger.js"></script>
+    <script src="./public/js/burger.js" defer></script>
     <title>Riwanon Breton - Sophrologue</title>
 </head>

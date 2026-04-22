@@ -20,11 +20,10 @@ require ROOT . "/view/menu.php";
         U comme utile dans l'accompagnement de votre chemin de vie.<br>
         E comme enthousiaste et éclairante pour vous accompagner au plus près de vos besoins.<br>
         </p>
+        <a href="index.php?action=presentation" class="boutonSophro"> 
+        <button class="buttonSophro">En savoir plus</button>
+        </a>
         
-        <form action="index.php" method="get" class= "formSophro">
-            <input type="hidden" name="action" value="presentation">
-            <input class="buttonSophro" type="submit" value="En savoir plus">
-        </form>
         </div>
     </div>
 <?php

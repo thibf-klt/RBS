@@ -44,6 +44,12 @@ class Route {
         case 'entreprise';
             require ROOT . "/controller/entreprise.php";
             break;    
+        case 'personalSpace';
+            require ROOT . "/controller/personalSpace.php";
+            break;    
+        case 'confidentiality';
+            require ROOT . "/controller/confidentiality.php";
+            break;  
         default:
             require ROOT . "/controller/page404.php";
             break;

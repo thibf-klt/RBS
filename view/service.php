@@ -8,6 +8,5 @@
     <a href="index.php?action=prestation"> 
         <button class="buttonService">Mon offre de prestation</button>
     </a>
-    </form>
     </div>
 </div>
