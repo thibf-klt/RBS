@@ -264,7 +264,7 @@ a {
 }
 
 /********************* media queries *********************/
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .logo {
     flex-direction: column;
   }
