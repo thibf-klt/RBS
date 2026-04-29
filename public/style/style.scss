@@ -24,9 +24,6 @@ a {
         color: black;    
     }
 
-a:hover {
-    color: white;        
-}
 /******** header.php ***********/
 .logo {
     background-color: #B0C687;
@@ -297,6 +294,9 @@ a:hover {
 
 @media screen and (min-width : 768px) {
 
+a:hover {
+    color: white;
+}    
 /***********header.php ************/
     .logo {
         flex-direction: row;

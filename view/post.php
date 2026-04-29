@@ -7,7 +7,7 @@
             <?php foreach ($posts as $post) : ?>
                 <section class="post">
                 <a href="index.php?action=post">
-                    <article>
+                    <article role="article">
                         <h3><?= htmlspecialchars($post['title']) ?></h3>
                         <p><?= htmlspecialchars($post['content']) ?></p>
                         <p><?= $post['date_'] ?></p>

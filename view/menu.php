@@ -1,7 +1,7 @@
 
-<div class="menu">
+<nav class="menu" role="navigation">
   
-    <i class="fa-solid fa-bars" id="burger"></i>
+  <i class="fa-solid fa-bars" id="burger"></i>
   
   <ul id="nav-menu">
     <li><a href="index.php?action=presentation">Qui suis-je ?</a></li>
@@ -11,6 +11,6 @@
     <li><a href="index.php?action=authentification">Espace personnel</a></li>
     <li><a href="index.php?action=contact">Contact</a></li>
   </ul>
-</div>
+</nav>
 </body>
 </html>
