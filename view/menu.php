@@ -1,7 +1,7 @@
 
 <div class="menu">
   
-    <img src="./public/images/bars-solid-full(3).svg" id="burger">   
+    <i class="fa-solid fa-bars" id="burger"></i>
   
   <ul id="nav-menu">
     <li><a href="index.php?action=presentation">Qui suis-je ?</a></li>

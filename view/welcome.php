@@ -3,6 +3,7 @@ require ROOT . "/view/head.php";
 require ROOT . "/view/header.php";
 require ROOT . "/view/menu.php";
 ?>
+<main>
     <div class="sophro">
         <div class="picSophro">
             <img class="rb" src="./public/images/rb(1).jpeg" alt="R. Breton, la sophrologue, souriante">
@@ -20,12 +21,13 @@ require ROOT . "/view/menu.php";
         U comme utile dans l'accompagnement de votre chemin de vie.<br>
         E comme enthousiaste et éclairante pour vous accompagner au plus près de vos besoins.<br>
         </p>
-        <a href="index.php?action=presentation" class="boutonSophro"> 
+        <a href="index.php?action=presentation"> 
         <button class="buttonSophro">En savoir plus</button>
         </a>
         
         </div>
     </div>
+</main>
 <?php
 require ROOT . "/view/service.php";
 require ROOT . "/view/post.php";

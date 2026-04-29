@@ -3,7 +3,7 @@
     <a href="index.php?action=testimony"><h2>Témoignages</h2></a>
 
     <?php
-    //$testimonies = getTestimonies();
+    
     if (!empty($testimonies)) : ?>
         <?php foreach ($testimonies as $testimony) : ?>
 

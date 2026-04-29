@@ -5,7 +5,7 @@
         
         if (!empty($posts)) : ?>
             <?php foreach ($posts as $post) : ?>
-                <div class="post">
+                <section class="post">
                 <a href="index.php?action=post">
                     <article>
                         <h3><?= htmlspecialchars($post['title']) ?></h3>
@@ -13,7 +13,7 @@
                         <p><?= $post['date_'] ?></p>
                     </article>
                 </a>
-                </div>
+            </section>
             <?php endforeach; ?>
         <?php else : ?>
             <p>Aucun article trouvé.</p>

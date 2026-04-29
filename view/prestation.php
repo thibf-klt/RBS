@@ -26,9 +26,8 @@
                 <a href="index.php?action=entreprise"> 
                 <button class="buttonService">Les prestations pour les entreprises</button>
                 </a>
-                </div>
+            </div>
             
-            
-        </div>
+            </div>
     </div>
 </body>
