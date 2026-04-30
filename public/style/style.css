@@ -16,6 +16,7 @@ body {
 
 h2 {
   font-family: "OpenDyslexic-Regular";
+  text-align: center;
 }
 
 a {
@@ -26,10 +27,10 @@ a {
 /******** header.php ***********/
 .logo {
   background-color: #B0C687;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 20px;
 }
 .logo .realLogo {
   text-align: center;
@@ -59,6 +60,9 @@ a {
 .menu {
   background-color: #F28AEF;
   margin: 20px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
 }
 .menu ul {
   display: flex;
@@ -86,10 +90,10 @@ a {
 /********** welcome.php *************/
 .sophro {
   background-color: #F3D28B;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
   overflow: hidden;
 }
 
@@ -130,12 +134,9 @@ a {
 .services {
   background-color: #B0C687;
   margin: 20px;
-  padding: 5px;
   display: flex;
+  padding: 5px;
   flex-direction: column;
-}
-.services h2 {
-  text-align: center;
 }
 
 .presta {
@@ -162,14 +163,9 @@ a {
 .blog {
   background-color: #F28AEF;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
-}
-.blog h2 {
-  text-align: center;
-}
-.blog a {
-  text-decoration: none;
-  color: black;
 }
 
 .displayPost .post:not(:first-child) {
@@ -187,15 +183,20 @@ a {
 
 /************** footer.php ***************/
 .footer {
-  background-color: #F3D28B;
+  background-color: #F28AEF;
+  margin: 20px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 20px;
 }
 
 #pint {
   font-size: 1.5rem;
+  margin: 10px;
+}
+
+.copy {
+  margin: 10px;
 }
 
 /***************** contact.php *****************/
@@ -248,19 +249,16 @@ a {
 .testimony {
   background-color: #B0C687;
   margin: 20px;
-}
-.testimony h2 {
-  text-align: center;
-}
-.testimony a {
-  text-decoration: none;
-  color: black;
+  display: flex;
+  flex-direction: column;
 }
 
 /******************** authentification.php ************************/
 .auth {
   background-color: #B0C687;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /************* individual.php-entreprise.php ***********/
@@ -299,6 +297,7 @@ a {
 #confidentiality {
   background-color: #B0C687;
   margin: 20px;
+  display: flex;
   padding: 8px;
 }
 

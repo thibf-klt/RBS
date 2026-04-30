@@ -6,19 +6,18 @@
     
     if (!empty($testimonies)) : ?>
         <?php foreach ($testimonies as $testimony) : ?>
-
+            <section="post">
                 <h2>
                     <?= htmlspecialchars($testimony['title'] ?? 'Sans titre') ?>
                 </h2>
-
                 <p>
                     <?= htmlspecialchars($testimony['content'] ?? '') ?>
                 </p>
-
                 <p>
                     <em>
                         <?php if (!empty($testimony['author'])) : ?>
                             <?= htmlspecialchars($testimony['author']) ?>
+                            </section>
                         <?php else : ?>
                             Cette personne ne souhaite plus que son nom soit cité.
                         <?php endif; ?>

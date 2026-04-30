@@ -11,26 +11,47 @@
     font-style: normal;
 }
 
+$backGreen: #B0C687;
+$backPink: #F28AEF;
+$backYellow: #F3D28B;
+
+@mixin backGreen {
+    background-color: $backGreen;
+    margin: 20px;
+    display: flex;
+}
+
+@mixin backPink {
+    background-color: $backPink;
+    margin: 20px;
+    display: flex;
+}
+
+@mixin backYellow {
+    background-color: $backYellow;
+    margin: 20px;
+    display: flex;
+}
+
 body {
     font-family: Arial;
 }
 
 h2 {
     font-family: 'OpenDyslexic-Regular';
+    text-align: center;
 }
 
 a {
-        text-decoration: none;
-        color: black;    
-    }
+    text-decoration: none;
+    color: black;    
+}
 
 /******** header.php ***********/
 .logo {
-    background-color: #B0C687;
-    display: flex;
+    @include backGreen;
     flex-direction: column;
     text-align: center;
-    margin: 20px;
 
     .realLogo {
         text-align: center;
@@ -56,8 +77,9 @@ a {
 }
 /******** menu.php **********/
 .menu {
-    background-color: #F28AEF;
-    margin: 20px;
+    @include backPink;
+    text-align: center;
+    flex-direction: column;
     
     ul {
         display: flex;
@@ -84,11 +106,9 @@ a {
 
 /********** welcome.php *************/
 .sophro {
-    background-color: #F3D28B;
-    display: flex;
+    @include backYellow;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
     overflow: hidden;
 }
 
@@ -108,7 +128,7 @@ a {
     word-wrap: break-word;
 }
 .buttonSophro { 
-    background-color: #F28AEF;
+    background-color: $backPink;
     border: 1px solid;
     padding: 5px 10px;
     font-size: medium;
@@ -124,15 +144,9 @@ a {
 }
 /******* service.php ***********/
 .services {
-    background-color: #B0C687;
-    margin: 20px;
+    @include backGreen;
     padding: 5px;
-    display: flex;
     flex-direction: column;
-    
-    h2 {
-        text-align: center;
-    }
 }
 .presta {
     flex-direction: column;
@@ -144,7 +158,7 @@ a {
     word-wrap: break-word;
 }
 .buttonService {
-    background-color: #F3D28B;
+    background-color: $backYellow;
     border: 1px solid;
     padding: 5px 10px;
     font-size: medium;
@@ -155,16 +169,9 @@ a {
 
 /*********** post.php ****************/
 .blog {
-    background-color: #F28AEF;
-    margin: 20px;
+    @include backPink;
+    flex-direction: column;
     padding: 20px;
-    h2 {
-        text-align: center;
-    }
-    a {
-        text-decoration: none;
-        color: black;
-    }    
 }
 .displayPost .post:not(:first-child) {
     display: none;
@@ -180,20 +187,20 @@ a {
 
 /************** footer.php ***************/
 .footer {
-    background-color: #F3D28B;
-    display: flex;
+    @include backPink;
     align-items: center;
     justify-content: space-evenly;
-    margin: 20px;
 }
 #pint {
     font-size: 1.5rem;
+    margin: 10px;
+}
+.copy {
+    margin: 10px;
 }
 /***************** contact.php *****************/
 .contact {
-    background-color: #F28AEF;
-    margin: 20px;
-    display: flex;
+    @include backPink;
     flex-direction: column;
     justify-content: center;
     text-align: center;
@@ -201,9 +208,7 @@ a {
 
 /********* prestation.php ***********/
 .prestation {
-    background-color: #F3D28B;
-    margin: 20px;
-    display: flex;
+    @include backYellow;
     flex-direction: column;
     text-align: center;
 }
@@ -235,29 +240,19 @@ a {
 
 /***************** testimony.php ****************/
 .testimony {
-    background-color: #B0C687;
-    margin: 20px;
-
-    h2 {
-        text-align: center;
-    }
-    a {
-        text-decoration: none;
-        color: black;
-    }    
+    @include backGreen;
+    flex-direction: column;
 }
 
 /******************** authentification.php ************************/
 .auth {
-    background-color: #B0C687;
-    margin: 20px;
+    @include backGreen;
+    flex-direction: column;
 }
 
 /************* individual.php-entreprise.php ***********/
 .frame {
-    background-color: #F3D28B;
-    margin: 20px;
-    display: flex;
+    @include backYellow;
     flex-direction: column;
     align-items: center;
     gap: 15px;
@@ -285,8 +280,7 @@ a {
 
 /********************* confidentiality.php ********************/
 #confidentiality {
-    background-color: #B0C687;
-    margin: 20px;
+    @include backGreen;
     padding: 8px;
 }
 
