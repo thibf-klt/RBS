@@ -183,6 +183,10 @@ a {
     margin-bottom: 20px;
     width: auto;
     margin: 15px;
+
+    a:hover {
+    color: black;
+    }
 }
 
 /************** footer.php ***************/
@@ -282,6 +286,16 @@ a {
 #confidentiality {
     @include backGreen;
     padding: 8px;
+}
+
+/***************** personalSpace.php ************/
+.perso {
+    @include backYellow;
+    flex-direction: column;
+}
+/************** page404.php *****************/
+.oops {
+    @include backYellow;
 }
 
 /********************* media queries *********************/

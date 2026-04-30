@@ -9,6 +9,11 @@ if ( $_SERVER["SCRIPT_FILENAME"] == str_replace(DIRECTORY_SEPARATOR, '/',  __FIL
 ?>
 
     <h2>Connexion</h2>
+
+<?php if (!empty($erreur)) : ?>
+    <p class="error"><?= htmlspecialchars($erreur) ?></p>
+<?php endif; ?>
+
     <form action="./?action=connexion" method="POST">
         <label for="email">Votre email&nbsp;:</label>
         <input type="text" name="email" placeholder="Email de connexion" required aria-label="Entrez votre email de connexion" aria-required="true"/><br />
