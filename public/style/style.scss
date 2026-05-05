@@ -253,7 +253,15 @@ a {
     @include backGreen;
     flex-direction: column;
 }
-
+.form {
+    text-align: center;
+    margin:20px;
+}
+.button {
+    background-color: $backYellow;
+    margin-top: 8px;
+    border: 1px solid;
+}
 /************* individual.php-entreprise.php ***********/
 .frame {
     @include backYellow;

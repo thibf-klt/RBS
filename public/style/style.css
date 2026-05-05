@@ -264,6 +264,17 @@ a {
   flex-direction: column;
 }
 
+.form {
+  text-align: center;
+  margin: 20px;
+}
+
+.button {
+  background-color: #F3D28B;
+  margin-top: 8px;
+  border: 1px solid;
+}
+
 /************* individual.php-entreprise.php ***********/
 .frame {
   background-color: #F3D28B;
