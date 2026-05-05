@@ -9,9 +9,9 @@ function getExercises() {
         $req = $cnx->prepare("SELECT * 
             FROM EXERCISE 
             INNER JOIN USES USING (idEx) 
-            INNER JOIN MEDIA USING (idEx)
-            INNER JOIN INSERT_ USING (idEx)
-            INNER JOIN PDF USING (idEx)");
+            INNER JOIN MEDIA USING (idMed)
+            INNER JOIN INSERTING USING (idEx)
+            INNER JOIN PDF USING (idPdf)");
         $req->execute();
         while ($exercise = $req->fetch(PDO::FETCH_ASSOC)) {
             $result[] = $exercise;

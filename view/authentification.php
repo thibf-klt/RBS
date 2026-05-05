@@ -15,11 +15,11 @@ if ( $_SERVER["SCRIPT_FILENAME"] == str_replace(DIRECTORY_SEPARATOR, '/',  __FIL
 <?php endif; ?>
 
     <form action="./?action=connexion" method="POST" class="form">
-        <label for="email">Votre email&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <label for="email">Votre email&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <input type="text" name="email" placeholder="Email de connexion" required aria-label="Entrez votre email de connexion" aria-required="true"/><br />
         <label for="password">Votre mot de passe&nbsp;:</label>
         <input type="password" name="password" placeholder="Mot de passe"  required aria-label="Entrez votre mot de passe" aria-required="true"/><br />
-        <input type="submit" aria-label="bouton de connexion" class="button"/>
+        <input type="submit" aria-label="bouton de connexion" class="buttonService"/>
 
     </form>
     <br />

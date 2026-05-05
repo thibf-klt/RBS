@@ -164,7 +164,8 @@ a {
     font-size: medium;
     display: block;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top : 10px;
 }
 
 /*********** post.php ****************/
@@ -257,11 +258,6 @@ a {
     text-align: center;
     margin:20px;
 }
-.button {
-    background-color: $backYellow;
-    margin-top: 8px;
-    border: 1px solid;
-}
 /************* individual.php-entreprise.php ***********/
 .frame {
     @include backYellow;
@@ -294,16 +290,41 @@ a {
 #confidentiality {
     @include backGreen;
     padding: 8px;
+    flex-direction: column;
+
+    h1 {
+        text-align: center;
+    }
 }
 
 /***************** personalSpace.php ************/
 .perso {
     @include backYellow;
     flex-direction: column;
+    text-align: center;
+}
+.buttons {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
 }
 /************** page404.php *****************/
 .oops {
     @include backYellow;
+}
+
+/**************** protocol.php ********************/
+.protocol {
+    @include backYellow;
+    flex-direction: column;
+    text-align: center;    
+}
+/******************** logout *******************/
+.logout {
+    @include backGreen;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 /********************* media queries *********************/

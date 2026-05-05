@@ -4,12 +4,22 @@ if (!isset($_SESSION["email"])) {
     exit();
 }
 ?>
+<div class="logout">
+<?php if (isset($_SESSION['email'])): ?>
+    <p>Bonjour, <?= htmlspecialchars($_SESSION['email']) ?></p>
+    <a href="index.php?action=logout"> 
+        <button class="buttonService">Se déconnecter</button>
+    </a>
+<?php endif; ?>
+</div>
 <div class="perso">
-<h3>Bienvenue dans votre espace, <?php echo htmlspecialchars($_SESSION["email"]); ?> !</h3>
-<a href="index.php?action=exercise"> 
-    <button class="buttonEx">Voir mes exercices</button>
-</a>
-<a href="index.php?action=protocol"> 
-    <button class="buttonEx">Voir mon protocole</button>
-</a>
+    <h3>Bienvenue dans votre espace, <?php echo htmlspecialchars($_SESSION["email"]); ?> !</h3>
+        <span class="buttons">
+            <a href="index.php?action=exercise"> 
+            <button class="buttonSophro">Voir mes exercices</button>
+            </a>
+            <a href="index.php?action=protocol"> 
+            <button class="buttonSophro">Voir mon protocole</button>
+            </a>
+        </span>
 </div>
