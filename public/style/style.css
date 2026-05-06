@@ -354,6 +354,18 @@ a {
   justify-content: center;
 }
 
+/*************** backoffice.php ************/
+#form {
+  background-color: #F3D28B;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+#form h1 {
+  text-align: center;
+}
+
 /************** page404.php *****************/
 .oops {
   background-color: #F3D28B;

@@ -14,6 +14,11 @@ function login($email, $password) {
     }
 }
 
+function isAdmin(): bool {
+    if (!isLoggedOn()) return false;
+    return isset($_SESSION["admin"]) && (bool)$_SESSION["admin"] === true;
+}
+
 function logout() {
     if (!isset($_SESSION)) {
         session_start();

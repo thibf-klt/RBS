@@ -36,7 +36,7 @@
 
             <p>
                 <label for="phoneNumber">Numéro de téléphone :</label>
-                <input type="tel" name="phoneNumber" id="phoneNumber"
+                <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="06-01-02-03-04"
                     pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required
                     value="<?= htmlspecialchars($_POST['phoneNumber'] ?? '') ?>">
                 <?php if (isset($errors['phoneNumber'])): ?>
@@ -46,7 +46,7 @@
 
             <p>
                 <label for="email">Email :</label>
-                <input type="email" name="email" id="email"
+                <input type="email" name="email" id="email" placeholder="prenom(.)nom@quelquechose.bzh"
                        pattern=".+@exemple\.com" size="30" required 
                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                 <?php if (isset($errors['email'])): ?>
@@ -57,7 +57,7 @@
             <p>
                 <label for="password">Mot de passe :</label>
                 <input type="password" name="password" minlength="8" maxlength="12" required id="password"
-                     ?>">
+                     ?>
                 <?php if (isset($errors['password'])): ?>
                     <br><span class="error"><?= $errors['password'] ?></span>
                 <?php endif; ?>
@@ -66,14 +66,14 @@
             <p>
                 <label for="isAdmin">Est administrateur :</label>
                 <input type="radio" name="isAdmin" id="isAdmin"
-                       value="isAdmin">
+                       value="isAdmin"><label for="radio">Oui</label>
                 <input type="radio" name="isAdmin" id="isNotAdmin"
-                       value="isNotAdmin" checked>      
+                       value="isNotAdmin" checked><label for="radio">Non</label>      
                 <?php if (isset($errors['isAdmin'])): ?>
                     <br><span class="error"><?= $errors['isAdmin'] ?></span>
                 <?php endif; ?>
             </p>
-            <p><input type="submit" class="button" value="Enregistrer"></p>
+            <p><input type="submit" class="buttonSophro" value="Enregistrer"></p>
 
         </form>
 

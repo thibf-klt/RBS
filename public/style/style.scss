@@ -333,6 +333,17 @@ a {
     gap: 50px;
     justify-content: center;
 }
+
+/*************** backoffice.php ************/
+#form {
+    @include backYellow;
+    flex-direction: column;
+    padding-left: 10px;
+
+    h1 {
+        text-align: center;
+    }
+}
 /************** page404.php *****************/
 .oops {
     @include backYellow;

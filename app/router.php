@@ -72,6 +72,12 @@ class Route {
             case 'confidentiality':
                 require ROOT . "/controller/confidentiality.php";
                 break;
+            case 'backoffice':
+                require ROOT . "/controller/backoffice.php";
+                break;
+            case 'updateUser':
+                require ROOT . "/controller/updateUser.php";
+                break;
             case 'logout':
                 require ROOT . "/controller/welcome.php";
                 break;   

@@ -15,11 +15,11 @@ if (!isset($_SESSION["email"])) {
 <div class="perso">
     <h3>Bienvenue dans l'espace d'administration du site, <?php echo htmlspecialchars($_SESSION["email"]); ?> !</h3>
         <span class="buttons">
-            <a href="index.php?action=exercise"> 
-            <button class="buttonSophro">Voir mes exercices</button>
+            <a href="index.php?action=updateUser"> 
+            <button class="buttonSophro">Gérer les comptes des clients</button>
             </a>
             <a href="index.php?action=protocol"> 
-            <button class="buttonSophro">Voir mon protocole</button>
+            <button class="buttonSophro">Gérer le blog</button>
             </a>
         </span>
 </div>
