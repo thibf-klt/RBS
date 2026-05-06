@@ -7,7 +7,6 @@ class Route {
         'protocol',
         'personalSpace',
         'updatePost',
-        'post'
     ];
 
     private function checkSession(): void {

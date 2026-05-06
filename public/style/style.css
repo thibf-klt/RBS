@@ -120,7 +120,6 @@ a {
   font-size: medium;
   display: block;
   align-self: center;
-  margin-bottom: 20px;
   margin: 20px auto;
   align-items: center;
   justify-content: center;
@@ -427,6 +426,43 @@ a {
   .offer {
     flex-direction: row;
   }
+}
+/**** modal *****/
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 520px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.post article {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

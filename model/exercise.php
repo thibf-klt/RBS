@@ -1,24 +1,32 @@
-
 <?php
-include_once ROOT . "/model/connect.php";
 
-function getExercises() {
-    $result = [];
+require_once "connect.php";
+
+function getPdf(int $idPdf): array {
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("SELECT * 
-            FROM EXERCISE 
-            INNER JOIN USES USING (idEx) 
-            INNER JOIN MEDIA USING (idMed)
-            INNER JOIN INSERTING USING (idEx)
-            INNER JOIN PDF USING (idPdf)");
+        $req = $cnx->prepare("SELECT * FROM PDF WHERE idPdf = :idPdf");
+        $req->bindValue(':idPdf', $idPdf, PDO::PARAM_INT);
         $req->execute();
-        while ($exercise = $req->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $exercise;
-        }
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        die("Erreur : " . $e->getMessage());
+        die("Erreur PDO : " . $e->getMessage());
     }
     return $result;
 }
+
+function getMedias(int $idMed): array {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("SELECT * FROM MEDIA WHERE idMed = :idMed");
+        $req->bindValue(':idMed', $idMed, PDO::PARAM_INT);
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
+    return $result;
+}
+
+require ROOT . "/view/exercise.php";
 ?>

@@ -1,33 +1,35 @@
+<div class="logout">
+<?php if (isset($_SESSION['email'])): ?>
+    <p>Bonjour, <?= htmlspecialchars($_SESSION['email']) ?></p>
+    <a href="index.php?action=logout"> 
+        <button class="buttonService">Se déconnecter</button>
+    </a>
+<?php endif; ?>
+</div>
+<div class="protocol">
+    <h1>Pour obtenir vos exercices, cliquez sur le.s lien.s ci-dessous.</h1>
 
-    <h2>Liste des exercices</h2>
-
-    <?php if (!empty($exercises)) : ?>
-        <?php foreach ($exercises as $exercise) : ?>
-            <article>
-                <h3><?= htmlspecialchars($exercise['title']) ?></h3>
-                <p><?= htmlspecialchars($exercise['description']) ?></p>
-
-                <?php if (!empty($exercise['mediaUrl'])) : ?>
-                    <p>
-                        <a href="<?= htmlspecialchars($exercise['mediaUrl']) ?>" target="_blank">
-                            Voir le média
-                        </a>
-                    </p>
-                <?php endif; ?>
-
-                <?php if (!empty($exercise['pdfUrl'])) : ?>
-                    <p>
-                        <a href="<?= htmlspecialchars($exercise['pdfUrl']) ?>" target="_blank">
-                            Télécharger le PDF
-                        </a>
-                    </p>
-                <?php endif; ?>
-            </article>
-            <hr>
-        <?php endforeach; ?>
+    <?php if (!empty($protocols)) : ?>
+            <thead>
+                <tr>
+                    <?php foreach (array_keys($protocols[0]) as $colonne) : ?>
+                        <th><?= htmlspecialchars($colonne) ?></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($protocols as $row) : ?>
+                    <tr>
+                        <?php foreach ($row as $valeur) : ?>
+                            <td><?= htmlspecialchars($valeur) ?></td>
+                        <?php endforeach; ?>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     <?php else : ?>
-        <p>Aucun exercice trouvé.</p>
+        <p>Pas d'exercice à votre nom.</p>
     <?php endif; ?>
-
+</div>
 </body>
 </html>
