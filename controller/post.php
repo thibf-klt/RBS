@@ -7,7 +7,7 @@ require_once ROOT . "/view/menu.php";
 // prepare all the data needed
     $posts = getPosts();
 
-require_once ROOT . "/view/post.php";
+require_once ROOT . "/view/blog.php";
 require_once ROOT . "/view/footer.php";
 
 ?>

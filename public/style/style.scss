@@ -189,6 +189,32 @@ a {
     }
 }
 
+/**************** blog.php **********************/
+.fullBlog {
+    @include backPink;
+    flex-direction: column;
+    padding: 20px;
+
+    .displayPost {
+        display: block;
+
+        .post {
+            border: 1px solid;
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: auto;
+            margin: 15px;
+
+            a:hover {
+                color: black;
+            }
+        }
+    }
+    .displayPost .post:not(:first-child) {
+    display: block;
+    }
+}
 /************** footer.php ***************/
 .footer {
     @include backPink;
@@ -210,7 +236,7 @@ a {
     text-align: center;
 }
 
-/********* prestation.php ***********/
+/************ prestation.php ***********/
 .prestation {
     @include backYellow;
     flex-direction: column;
@@ -333,6 +359,7 @@ a {
 a:hover {
     color: white;
 }    
+
 /***********header.php ************/
     .logo {
         flex-direction: row;
@@ -395,13 +422,23 @@ a:hover {
         flex-direction: column;
     }
 
-/****************** post.php *****************/
+/****************** post.php *****************/    
     .displayPost{
-    display: flex;
+        display: flex;
     }
     .displayPost .post:not(:first-child) {
     display: block;
     }
+
+/*************** blog.php **************/
+.fullBlog {
+    display: flex;
+    align-items: center;
+
+    .displayPost {
+        width: 60%;
+    }
+}
 /*********** prestation.php *****************/
     .cote {
         display: block;
