@@ -4,11 +4,11 @@
         
         <div class="sophro-content">
         <p>S comme <b>sincère</b> et ouverte dans ma présence empathique et ma capacité à vibrer en écho à ce que l'autre vit.<br>
-        O comme <b>optimiste</b>. J'ai a coeur de voir le côté positif des défis que j'ai à relever.<br>
+        O comme <b>optimiste</b>. J'ai à coeur de voir le côté positif des défis que j'ai à relever.<br>
         P comme <b>patiente</b>, je prends le temps de comprendre une situation dans son ensemble.<br>
         H comme <b>humaine et heureuse</b> du choix de ma nouvelle orientation professionnelle.<br>
         R comme <b>réceptive et rassurante</b> pour accueillir l'humain et l'humaine dans sa richesse et sa différence sans jugement.<br>
-        O comme <b>ouverte</b> à l'accueil et l'accompagnement de l'uatre dans sa diversité.<br>
+        O comme <b>ouverte</b> à l'accueil et l'accompagnement de l'autre dans sa diversité.<br>
         L comme <b>libre</b>. J'aime avoir une liberté d'action avec justesse et lucidité.<br>
         O comme <b>originale</b>, je sais apporter une note unique à ce que je propose.<br>
         G comme <b>garante</b> du cadre de l'accompagnement de que je vous propose de vivre et d'expérimenter.<br>

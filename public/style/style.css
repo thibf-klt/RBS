@@ -103,7 +103,7 @@ a {
   margin: 10px 50px;
 }
 
-.sophro-content {
+.sophroContentMobile {
   flex-direction: column;
   align-items: center;
   margin: 20px 0;
@@ -111,6 +111,18 @@ a {
   width: 100%;
   box-sizing: border-box;
   word-wrap: break-word;
+  display: block;
+}
+
+.sophroContentDesktop {
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  display: none;
 }
 
 .buttonSophro {
@@ -449,6 +461,12 @@ a {
   .sophro {
     display: flex;
     flex-direction: column;
+  }
+  .sophroContentDesktop {
+    display: block;
+  }
+  .sophroContentMobile {
+    display: none;
   }
   /****************** post.php *****************/
   .displayPost {
