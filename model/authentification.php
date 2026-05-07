@@ -4,8 +4,8 @@ require_once ROOT . "/model/user.php";
 function login($email, $password) {
     if (session_status() === PHP_SESSION_NONE) { session_start(); }
     $user = getUserByMail($email);
-    if (!$user) return false; 
-    
+    if (!$user) 
+        header('Location: index.php?action=authentification');        
     if (password_verify($password, $user["password"])) {
         $_SESSION["email"]  = $email;
         $_SESSION["idUser"] = $user["idUser"];

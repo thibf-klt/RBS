@@ -383,6 +383,7 @@ a {
   background-color: #F3D28B;
   margin: 20px;
   display: flex;
+  text-align: center;
 }
 
 /**************** protocol.php ********************/
