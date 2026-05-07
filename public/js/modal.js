@@ -1,6 +1,8 @@
 const backdrop = document.getElementById('modalBackdrop');
 const modalClose = document.getElementById('modalClose');
 
+if (backdrop && modalClose) {
+
 // Open the modal by clicking on a post
 document.querySelectorAll('.post article').forEach(article => {
   article.addEventListener('click', () => {
@@ -17,7 +19,7 @@ document.querySelectorAll('.post article').forEach(article => {
   });
 });
 
-// Close via the button, the background, or Esc
+// Close the modal
 modalClose.addEventListener('click', () => backdrop.classList.remove('open'));
 backdrop.addEventListener('click', e => {
   if (e.target === backdrop) backdrop.classList.remove('open');
@@ -25,3 +27,4 @@ backdrop.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') backdrop.classList.remove('open');
 });
+}
