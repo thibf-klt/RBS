@@ -1,3 +1,11 @@
+<div class="logout">
+<?php if (isset($_SESSION['email'])): ?>
+    <p>Bonjour, <?= htmlspecialchars($_SESSION['email']) ?></p>
+    <a href="index.php?action=logout"> 
+        <button class="buttonService">Se déconnecter</button>
+    </a>
+<?php endif; ?>
+</div>
 <div id="form">
     <h1>Ajout d'un.e client.e</h1>
 
@@ -36,8 +44,8 @@
 
             <p>
                 <label for="phoneNumber">Numéro de téléphone :</label>
-                <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="06-01-02-03-04"
-                    pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required
+                <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="0601020304"
+                    pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" required
                     value="<?= htmlspecialchars($_POST['phoneNumber'] ?? '') ?>">
                 <?php if (isset($errors['phoneNumber'])): ?>
                     <br><span class="error"><?= $errors['phoneNumber'] ?></span>
@@ -47,7 +55,7 @@
             <p>
                 <label for="email">Email :</label>
                 <input type="email" name="email" id="email" placeholder="prenom(.)nom@quelquechose.bzh"
-                       pattern=".+@exemple\.com" size="30" required 
+                       pattern="+@exemple\.com" size="30" required 
                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                 <?php if (isset($errors['email'])): ?>
                     <br><span class="error"><?= $errors['email'] ?></span>

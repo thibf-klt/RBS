@@ -1,7 +1,7 @@
 const backdrop = document.getElementById('modalBackdrop');
 const modalClose = document.getElementById('modalClose');
 
-// Ouvrir la modale au clic sur un article
+// Open the modal by clicking on a post
 document.querySelectorAll('.post article').forEach(article => {
   article.addEventListener('click', () => {
     document.getElementById('modalTitle').textContent   = article.dataset.title;
@@ -11,13 +11,13 @@ document.querySelectorAll('.post article').forEach(article => {
     backdrop.classList.add('open');
   });
 
-  // Accessibilité clavier
+  // Keyboard accessibility
   article.addEventListener('keydown', e => {
     if (e.key === 'Enter') article.click();
   });
 });
 
-// Fermer via le bouton, le fond, ou Échap
+// Close via the button, the background, or Esc
 modalClose.addEventListener('click', () => backdrop.classList.remove('open'));
 backdrop.addEventListener('click', e => {
   if (e.target === backdrop) backdrop.classList.remove('open');

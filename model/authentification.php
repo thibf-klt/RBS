@@ -1,17 +1,19 @@
 <?php
-require_once "user.php";
+require_once ROOT . "/model/user.php";
 
 function login($email, $password) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
     $user = getUserByMail($email);
-    if (!$user) return;
-
-    $pwdDB = $user["password"];
-
-    if (password_verify($password, $pwdDB)) {
+    if (!$user) return false; 
+    
+    if (password_verify($password, $user["password"])) {
         $_SESSION["email"]  = $email;
         $_SESSION["idUser"] = $user["idUser"];
         $_SESSION["admin"]  = $user["isAdmin"];
+        return true; 
     }
+    return false; 
+    
 }
 
 function isAdmin(): bool {
@@ -19,13 +21,18 @@ function isAdmin(): bool {
     return isset($_SESSION["admin"]) && (bool)$_SESSION["admin"] === true;
 }
 
-function logout() {
-    if (!isset($_SESSION)) {
-        session_start();
+function requireAdmin(): void {
+    if (!isAdmin()) {
+        header("Location: /index.php?error=access_denied");
+        exit(); 
     }
-    unset($_SESSION["email"]);
-    unset($_SESSION["idUser"]);
-    unset($_SESSION["admin"]);
+}
+
+function logout(): void {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+    $_SESSION = [];
+    session_destroy();
+    header('Location: index.php?action=authentification');
 }
 
 function getMailUserLoggedOn() {
@@ -35,14 +42,12 @@ function getMailUserLoggedOn() {
     return null;
 }
 
-function isLoggedOn() {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    if (!isset($_SESSION["email"])) return false;
+function isLoggedOn(): bool {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+    if (!isset($_SESSION["email"], $_SESSION["idUser"])) return false;
 
     $user = getUserByMail($_SESSION["email"]);
-    return $user && $user["email"] === $_SESSION["email"];
+    return $user !== false && $user["email"] === $_SESSION["email"];
 }
 
 if ($_SERVER["SCRIPT_FILENAME"] == str_replace(DIRECTORY_SEPARATOR, '/', __FILE__)) {

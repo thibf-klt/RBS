@@ -18,10 +18,10 @@ $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
     ");
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
-    $stmt->bindParam(':phoneNumber', $phoneNumber, PDO::PARAM_STR);
+    $stmt->bindParam(':phoneNumber', $phoneNumber, PDO::PARAM_INT);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR); 
-    $stmt->bindParam(':isAdmin', $isAdmin, PDO::PARAM_STR);
+    $stmt->bindParam(':isAdmin', $isAdmin, PDO::PARAM_BOOL);
     $stmt->execute();
 
     $insertSuccess = true;

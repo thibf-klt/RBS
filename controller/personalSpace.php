@@ -1,4 +1,9 @@
 <?php
+    require_once ROOT . "/model/authentification.php";
+if (!isLoggedOn()) {
+    header("Location: ./?action=connexion");
+    exit();
+}
     require_once ROOT . "/view/head.php";
     require_once ROOT . "/view/header.php";
     require_once ROOT . "/view/menu.php";

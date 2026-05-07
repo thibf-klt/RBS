@@ -7,6 +7,8 @@ class Route {
         'protocol',
         'personalSpace',
         'updatePost',
+        'backOffice',
+        'updateUser'
     ];
 
     private function checkSession(): void {
@@ -79,7 +81,7 @@ class Route {
                 require ROOT . "/controller/updateUser.php";
                 break;
             case 'logout':
-                require ROOT . "/controller/welcome.php";
+                require ROOT . "/controller/deconnexion.php";
                 break;   
             default:
                 require ROOT . "/controller/page404.php";
