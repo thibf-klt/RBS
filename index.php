@@ -14,7 +14,7 @@ $dotenv->load();
 
 require "app/config.php";
 require ROOT . "/app/router.php";
-require ROOT . "/model/connect.php";
+require ROOT . "/app/model/connect.php";
 
 $action = "";
 
@@ -24,7 +24,7 @@ if (isset($_GET["action"])) {
         $route->redirectTowards($action);
     
 } else {
-    require ROOT . "/controller/welcome.php";
+    require ROOT . "/app/controller/welcome.php";
 }
 
 ?>

@@ -27,64 +27,64 @@ class Route {
 
         switch ($action) {
             case 'welcome':
-                require ROOT . "/controller/welcome.php";
+                require ROOT . "/app/controller/welcome.php";
                 break;
             case 'exercise':
-                require ROOT . "/controller/exercise.php";
+                require ROOT . "/app/controller/exercise.php";
                 break;
             case 'testimony':
-                require ROOT . "/controller/testimony.php";
+                require ROOT . "/app/controller/testimony.php";
                 break;
             case 'protocol':
-                require ROOT . "/controller/protocol.php";
+                require ROOT . "/app/controller/protocol.php";
                 break;
             case 'post':
-                require ROOT . "/controller/post.php";
+                require ROOT . "/app/controller/post.php";
                 break;
             case 'connexion':
-                require ROOT . "/controller/connexion.php";
+                require ROOT . "/app/controller/connexion.php";
                 break;
             case 'service':
-                require ROOT . "/controller/service.php";
+                require ROOT . "/app/controller/service.php";
                 break;
             case 'updatePost':
-                require ROOT . "/controller/updatePost.php";
+                require ROOT . "/app/controller/updatePost.php";
                 break;
             case 'presentation':
-                require ROOT . "/controller/presentation.php";
+                require ROOT . "/app/controller/presentation.php";
                 break;
             case 'prestation':
-                require ROOT . "/controller/prestation.php";
+                require ROOT . "/app/controller/prestation.php";
                 break;
             case 'authentification':
-                require ROOT . "/controller/authentification.php";
+                require ROOT . "/app/controller/authentification.php";
                 break;
             case 'contact':
-                require ROOT . "/controller/contact.php";
+                require ROOT . "/app/controller/contact.php";
                 break;
             case 'individual':
-                require ROOT . "/controller/individual.php";
+                require ROOT . "/app/controller/individual.php";
                 break;
             case 'entreprise':
-                require ROOT . "/controller/entreprise.php";
+                require ROOT . "/app/controller/entreprise.php";
                 break;
             case 'personalSpace':
-                require ROOT . "/controller/personalSpace.php";
+                require ROOT . "/app/controller/personalSpace.php";
                 break;
             case 'confidentiality':
-                require ROOT . "/controller/confidentiality.php";
+                require ROOT . "/app/controller/confidentiality.php";
                 break;
             case 'backoffice':
-                require ROOT . "/controller/backoffice.php";
+                require ROOT . "/app/controller/backoffice.php";
                 break;
             case 'updateUser':
-                require ROOT . "/controller/updateUser.php";
+                require ROOT . "/app/controller/updateUser.php";
                 break;
             case 'logout':
-                require ROOT . "/controller/deconnexion.php";
+                require ROOT . "/app/controller/deconnexion.php";
                 break;   
             default:
-                require ROOT . "/controller/page404.php";
+                require ROOT . "/app/controller/page404.php";
                 break;
         }
     }
