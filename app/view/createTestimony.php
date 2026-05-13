@@ -1,3 +1,11 @@
+<div class="logout">
+<?php if (isset($_SESSION['email'])): ?>
+    <p>Bonjour, <?= htmlspecialchars($_SESSION['email']) ?></p>
+    <a href="index.php?action=logout"> 
+        <button class="buttonService">Se déconnecter</button>
+    </a>
+<?php endif; ?>
+</div>
 <div id="form">
     <h1>Ajout d'un avis</h1>
 
@@ -14,7 +22,7 @@
         <form action="updateTestimony.php" method="post">
 
             <p>
-                <label for="title">Titre :</label>
+                <label for="title">Titre :</label><br>
                 <input type="text" maxlength="30" name="title" id="title"
                        placeholder="Titre"
                        value="<?= htmlspecialchars($_POST['title'] ?? '') ?>">
@@ -24,16 +32,16 @@
             </p>
 
             <p>
-                <label for="content">Texte :</label>
+                <label for="content">Texte :</label><br>
                 <textarea maxlength="300" name="content" id="content"
-                          placeholder="Texte de l'article"><?= htmlspecialchars($_POST['content'] ?? '') ?></textarea>
+                    placeholder="Votre texte ici"><?= htmlspecialchars($_POST['content'] ?? '') ?></textarea>
                 <?php if (isset($errors['content'])): ?>
                     <br><span class="error"><?= $errors['content'] ?></span>
                 <?php endif; ?>
             </p>
 
             <p>
-                <label for="date">Date :</label>
+                <label for="date">Date :</label><br>
                 <input type="date" name="date" id="date"
                        value="<?= htmlspecialchars($_POST['date'] ?? '') ?>">
                 <?php if (isset($errors['date'])): ?>
@@ -41,7 +49,7 @@
                 <?php endif; ?>
             </p>
 
-            <p><input type="submit" class="button" value="Enregistrer"></p>
+            <p><input type="submit" class="buttonSophro" value="Enregistrer"></p>
 
         </form>
 

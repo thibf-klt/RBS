@@ -80,6 +80,15 @@ class Route {
             case 'updateUser':
                 require ROOT . "/app/controller/updateUser.php";
                 break;
+            case 'createTestimony':
+                require ROOT . "/app/controller/createTestimony.php";
+                break;
+            case 'viewTestimony':
+                require ROOT . "/app/controller/viewTestimony.php";
+                break;
+            case 'deleteTestimony':
+                require ROOT . "/app/controller/deleteTestimony.php";
+                break;
             case 'logout':
                 require ROOT . "/app/controller/deconnexion.php";
                 break;   
