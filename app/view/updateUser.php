@@ -87,3 +87,8 @@
 
     <?php endif; ?>
 </div>
+<div id="deleteCustomer">
+    <h1>Suppression d'un.e client.e</h1>
+    <p><input type="submit" class="buttonService" value="recherche d'un.e client.e"></p>
+    <p><input type="submit" class="buttonService" value="suppression du/de la client.e"></p>
+</div>

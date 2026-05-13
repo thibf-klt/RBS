@@ -355,6 +355,15 @@ a {
         text-align: center;
     }
 }
+#deleteCustomer {
+    @include backGreen;
+    flex-direction: column;
+    padding-left: 10px;
+
+    h1 {
+        text-align: center;
+    }
+}
 /************** page404.php *****************/
 .oops {
     @include backYellow;
