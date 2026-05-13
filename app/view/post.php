@@ -4,7 +4,6 @@
     <?php if (!empty($posts)) : ?>
       <?php foreach ($posts as $post) : ?>
         <section class="post">
-          <!-- data-* pour transmettre les données à la modale -->
           <article role="article"
                    tabindex="0"
                    data-id="<?= $post['idPost'] ?>"
