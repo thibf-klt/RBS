@@ -11,10 +11,12 @@
                    data-id="<?= $testimony['idTest'] ?>"
                    data-title="<?= htmlspecialchars($testimony['title']) ?>"
                    data-content="<?= htmlspecialchars($testimony['content']) ?>"
-                   data-date="<?= $testimony['date_'] ?>">
+                   data-date="<?= $testimony['date_'] ?>">  
+                   
             <h3><?= htmlspecialchars($testimony['title']) ?></h3>
             <p><?= htmlspecialchars(substr($testimony['content'], 0, 100)) ?>…</p>
             <p><?= $testimony['date_'] ?></p>
+            <p><?= htmlspecialchars($testimony['firstName'] . ' ' . $testimony['name']) ?></p>
           </article>
         </section>
       <?php endforeach; ?>
@@ -31,6 +33,7 @@
     <h3 id="modalTitle"></h3>
     <p id="modalContent"></p>
     <p id="modalDate"></p>
+    <p class="modalAuthor"></p>
     <a href="#" id="modalLink"></a>
   </div>
 </div>

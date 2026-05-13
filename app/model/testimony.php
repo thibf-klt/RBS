@@ -5,7 +5,7 @@ function getTestimonies(): array {
     $result = [];
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("SELECT * FROM TESTIMONY"); // turn idUser into name and firstName
+        $req = $cnx->prepare("SELECT * FROM TESTIMONY JOIN USER_ ON (TESTIMONY.idUser = USER_.idUser)"); 
         $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {

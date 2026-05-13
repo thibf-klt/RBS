@@ -8,7 +8,7 @@ document.querySelectorAll('.post article').forEach(article => {
   article.addEventListener('click', () => {
     document.getElementById('modalTitle').textContent   = article.dataset.title;
     document.getElementById('modalContent').textContent = article.dataset.content;
-    document.getElementById('modalDate').textContent    = article.dataset.date;
+    document.getElementById('modalDate').textContent    = article.dataset.date; 
     document.getElementById('modalLink').href = `index.php?action=post&id=${article.dataset.id}`;
     backdrop.classList.add('open');
   });
