@@ -78,7 +78,7 @@ class Route {
                 require ROOT . "/app/controller/backoffice.php";
                 break;
             case 'updateUser':
-                require ROOT . "/app/controller/updateUser.php";
+                require ROOT . "/app/controller/createUser.php";
                 break;
             case 'createTestimony':
                 require ROOT . "/app/controller/createTestimony.php";
@@ -88,6 +88,12 @@ class Route {
                 break;
             case 'deleteTestimony':
                 require ROOT . "/app/controller/deleteTestimony.php";
+                break;
+            case 'createProtocol':
+                require ROOT . "/app/controller/createProtocol.php";
+                break;
+            case 'createExercise':
+                require ROOT . "/app/controller/createExercuse.php";
                 break;
             case 'logout':
                 require ROOT . "/app/controller/deconnexion.php";

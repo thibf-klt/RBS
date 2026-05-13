@@ -18,6 +18,12 @@ if (!isset($_SESSION["email"])) {
             <a href="index.php?action=updateUser"> 
             <button class="buttonSophro">Gérer les comptes des clients</button>
             </a>
+            <a href="index.php?action=createProtocol"> 
+            <button class="buttonSophro">Ajouter un protocole</button>
+            </a>
+            <a href="index.php?action=createExercise"> 
+            <button class="buttonSophro">Ajouter des exercices</button>
+            </a>
             <a href="index.php?action=protocol"> 
             <button class="buttonSophro">Gérer le blog</button>
             </a>

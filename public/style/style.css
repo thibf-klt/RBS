@@ -406,6 +406,17 @@ a {
   text-align: center;
 }
 
+/********** createProtocol.php ****************/
+#createProtocol {
+  background-color: #F3D28B;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#createProtocol h2 {
+  text-align: center;
+}
+
 /******************** logout *******************/
 .logout {
   background-color: #B0C687;

@@ -376,6 +376,16 @@ a {
     flex-direction: column;
     text-align: center;    
 }
+
+/********** createProtocol.php ****************/
+#createProtocol {
+    @include backYellow;
+    flex-direction: column;
+    
+    h2 {
+        text-align: center;   
+    }
+}
 /******************** logout *******************/
 .logout {
     @include backGreen;
