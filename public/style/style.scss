@@ -269,6 +269,7 @@ a {
     align-items: center;
     gap: 15px;
     width: 80%;
+    height: 450px;
     margin: 20px;
     flex: 1;
 }
@@ -385,7 +386,9 @@ a {
     h2 {
         text-align: center;   
     }
+
 }
+
 /******************** logout *******************/
 .logout {
     @include backGreen;

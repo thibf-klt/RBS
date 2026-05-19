@@ -92,6 +92,9 @@ class Route {
             case 'createProtocol':
                 require ROOT . "/app/controller/createProtocol.php";
                 break;
+            case 'createPost':
+                require ROOT . "/app/controller/createPost.php";
+                break;
             case 'createExercise':
                 require ROOT . "/app/controller/createExercuse.php";
                 break;

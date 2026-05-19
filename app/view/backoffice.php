@@ -24,7 +24,7 @@ if (!isset($_SESSION["email"])) {
             <a href="index.php?action=createExercise"> 
             <button class="buttonSophro">Ajouter des exercices</button>
             </a>
-            <a href="index.php?action=protocol"> 
+            <a href="index.php?action=createPost"> 
             <button class="buttonSophro">Gérer le blog</button>
             </a>
         </span>

@@ -14,10 +14,23 @@ if (!isset($_SESSION["email"])) {
 </div>
 <div id="createProtocol">
     <h2>Ajout d'un protocole à un.e client.e</h2>
-    <p>recherche du client/ajout de protocole, parcourir l'ordi</p>
-    <a href="index.php?action=addProtocol"> 
+    
+    <form action="./?action=#" method="POST" class="form">
+        <label for="firstName">Prénom&nbsp;client.e&nbsp;:</label>
+        <input type="text" name="firstName" placeholder="Prénom client.e" required aria-label="Entrez le prénom client.e" aria-required="true"/><br />
+        <label for="name">Nom&nbsp;client.e&nbsp;:</label>
+        <input type="text" name="name" placeholder="Nom client.e" required aria-label="Entrez le nom client.e" aria-required="true"/><br />
+        <label for="protocol">Parcourir l'ordinateur pour ajouter le protocole:</label><br>
+        <input type="file"
+        id="protocol" name="protocol"
+        accept="file/pdf, file/dotx">
+        <a href="index.php?action=addProtocol"> 
         <button class="buttonSophro">Ajouter le protocole</button>
-    </a>
+    </a>    
+</form>
+    
+    
+    
 </div>
 </body>
 </html>
