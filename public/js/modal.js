@@ -12,11 +12,7 @@ document.querySelectorAll('.post article').forEach(article => {
     document.getElementById('modalLink').href = `index.php?action=post&id=${article.dataset.id}`;
     backdrop.classList.add('open');
   });
-
-  // Keyboard accessibility
-  article.addEventListener('keydown', e => {
-    if (e.key === 'Enter') article.click();
-  });
+  
 });
 
 // Close the modal
