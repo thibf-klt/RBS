@@ -423,6 +423,20 @@ a {
   text-align: center;
 }
 
+.deletePost {
+  background-color: #B0C687;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.deletePost form {
+  width: 100%;
+  max-width: 400px;
+}
+
 /******************** logout *******************/
 .logout {
   background-color: #B0C687;
