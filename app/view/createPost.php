@@ -25,7 +25,7 @@ if (!isset($_SESSION["email"])) {
     <?php endif; ?>
 
     <?php if ($insertSuccess): ?>
-        <p style="color:green;">Article ajouté avec succès !</p>
+        <p class="success">Article ajouté avec succès !</p>
     <?php endif; ?>
 
     <form action="./?action=createPost" method="POST" class="form">

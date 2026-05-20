@@ -186,13 +186,13 @@ a {
 }
 .displayPost .post:not(:first-child) {
     display: none;
-    }
+}
 .post {
     border: 1px solid;
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
-    width: auto;
+    width: 70%;
     margin: 15px;
 
     a:hover {
@@ -342,7 +342,7 @@ a {
 }
 .buttons {
     display: flex;
-    gap: 50px;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -386,7 +386,6 @@ a {
     h2 {
         text-align: center;   
     }
-
 }
 
 /******************createPost.php ****************/
@@ -403,6 +402,15 @@ a {
     form {
         width: 100%;
         max-width: 400px; 
+    }
+}
+
+/*********************** createTestimony ***************/
+#form {
+    textarea {
+        width: 90%;
+        height: 200px;
+        margin: 0;
     }
 }
 /******************** logout *******************/
@@ -489,6 +497,10 @@ a:hover {
 /****************** post.php *****************/    
     .displayPost{
         display: flex;
+
+        .post {
+            width: 20%;
+        }
     }
     .displayPost .post:not(:first-child) {
     display: block;
@@ -511,6 +523,8 @@ a:hover {
         flex-direction: row;
     }
 }
+
+
 
 /**** modal *****/
 

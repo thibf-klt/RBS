@@ -1,28 +1,30 @@
 <?php
-try {
-    $idUser = $_SESSION['idUser'];
+function getUserById($pdo, $idUser) {
+    try {
+        $stmt = $pdo->prepare("SELECT firstName, name FROM USER_ WHERE idUser = :idUser");
+        $stmt->execute([':idUser' => $idUser]);
+        return $stmt->fetch();
+    } catch (PDOException $e) {
+        error_log("Erreur BDD : " . $e->getMessage());
+        return false;
+    }
+}
 
-    $dsn  = "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] . ";charset=utf8mb4";
-    $conn = new PDO($dsn, $_ENV['DB_LOGIN'], $_ENV['DB_PWD'], [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ]);
-
-    $stmt = $conn->prepare("
-        INSERT INTO TESTIMONY (title, content, date_, idUser)
-        VALUES (:title, :content, :date, :idUser)
-    ");
-    $stmt->bindParam(':title',   $title,   PDO::PARAM_STR);
-    $stmt->bindParam(':content', $content, PDO::PARAM_STR);
-    $stmt->bindParam(':date',    $date,    PDO::PARAM_STR);
-    $stmt->bindParam(':idUser',  $idUser,  PDO::PARAM_INT); // ✅ PARAM_INT pour un ID
-
-    $stmt->execute();
-    $insertSuccess = true;
-
-} catch (PDOException $e) {
-    error_log("Erreur BDD : " . $e->getMessage());
-    $errors['db'] = "Une erreur est survenue, veuillez réessayer.";
+function createTestimony($pdo, $title, $content, $date, $idUser) {
+    try {
+        $stmt = $pdo->prepare("
+            INSERT INTO TESTIMONY (title, content, date_, idUser)
+            VALUES (:title, :content, :date, :idUser)
+        ");
+        $stmt->bindParam(':title',   $title,   PDO::PARAM_STR);
+        $stmt->bindParam(':content', $content, PDO::PARAM_STR);
+        $stmt->bindParam(':date',    $date,    PDO::PARAM_STR);
+        $stmt->bindParam(':idUser',  $idUser,  PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        error_log("Erreur BDD : " . $e->getMessage());
+        return false;
+    }
 }
 ?>

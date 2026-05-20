@@ -22,10 +22,8 @@ if (!isset($_SESSION["email"])) {
             <button class="buttonSophro">Voir mon protocole</button>
             </a>
             <a href="index.php?action=createTestimony"> 
-            <button class="buttonSophro">Ajouter un témoignage</button>
+            <button class="buttonSophro">Ajouter/Supprimer un témoignage</button>
             </a>
-            <a href="index.php?action=viewTestimony"> 
-            <button class="buttonSophro">Voir le témoignage publié</button>
-            </a>
+            
         </span>
 </div>

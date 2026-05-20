@@ -1,15 +1,16 @@
 <?php
 class Route {
-
-    // Pages where a connection is needed
     private array $protected = [
-        'exercise',
-        'protocol',
-        'personalSpace',
-        'updatePost',
-        'backOffice',
-        'updateUser'
+        'exercise', 'protocol', 'personalSpace',
+        'updatePost', 'backOffice', 'updateUser'
     ];
+    
+    private $pdo; 
+
+    public function __construct($pdo) 
+    {
+        $this->pdo = $pdo;
+    }
 
     private function checkSession(): void {
         if (!isset($_SESSION['email'])) {
@@ -19,12 +20,10 @@ class Route {
     }
 
     public function redirectTowards(string $action = "welcome"): void {
-
-        // Check the session if the page is protected
+        $pdo = $this->pdo; 
         if (in_array($action, $this->protected)) {
             $this->checkSession();
         }
-
         switch ($action) {
             case 'welcome':
                 require ROOT . "/app/controller/welcome.php";
@@ -83,9 +82,6 @@ class Route {
             case 'createTestimony':
                 require ROOT . "/app/controller/createTestimony.php";
                 break;
-            case 'viewTestimony':
-                require ROOT . "/app/controller/viewTestimony.php";
-                break;
             case 'deleteTestimony':
                 require ROOT . "/app/controller/deleteTestimony.php";
                 break;
@@ -100,7 +96,7 @@ class Route {
                 break;
             case 'logout':
                 require ROOT . "/app/controller/deconnexion.php";
-                break;   
+                break;
             default:
                 require ROOT . "/app/controller/page404.php";
                 break;

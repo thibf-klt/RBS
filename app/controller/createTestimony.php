@@ -1,10 +1,16 @@
 <?php
-
-// check if user connected
+// Vérification de la connexion
 if (!isset($_SESSION['idUser'])) {
     header('Location: /authentification.php');
     exit;
 }
+
+// Récupération de l'auteur via le modèle
+$userId = $_SESSION['idUser'];
+require_once ROOT . "/app/model/createTestimony.php";
+$author    = getUserById($pdo, $userId);
+$firstName = $author['firstName'] ?? '';
+$name  = $author['name']  ?? '';
 
 $errors = [];
 if (!empty($_POST)) {
@@ -17,13 +23,18 @@ if (!empty($_POST)) {
     if (empty($content)) $errors['content'] = "Requis";
     if (empty($date))    $errors['date']    = "Requis";
 
-    // Model called only if no errors
-    if (empty($errors)) {
-        require_once ROOT . "/app/model/createTestimony.php";
-    }
+    // Modèle appelé uniquement s'il n'y a pas d'erreurs
+    
 }
+   if (empty($errors)) {
+        $insertSuccess = createTestimony($pdo, $title, $content, $date, $userId);
+        if (!$insertSuccess) {
+            $errors['db'] = "Une erreur est survenue, veuillez réessayer.";
+        }
+    }
 
-// calling the view
+
+// Appel de la vue
 require_once ROOT . "/app/view/head.php";
 require_once ROOT . "/app/view/header.php";
 require_once ROOT . "/app/view/menu.php";
