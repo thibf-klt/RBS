@@ -79,11 +79,8 @@ class Route {
             case 'updateUser':
                 require ROOT . "/app/controller/createUser.php";
                 break;
-            case 'createTestimony':
-                require ROOT . "/app/controller/createTestimony.php";
-                break;
-            case 'deleteTestimony':
-                require ROOT . "/app/controller/deleteTestimony.php";
+            case 'manageTestimony':
+                require ROOT . "/app/controller/manageTestimony.php";
                 break;
             case 'createProtocol':
                 require ROOT . "/app/controller/createProtocol.php";

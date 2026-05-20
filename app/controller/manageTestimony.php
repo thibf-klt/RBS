@@ -5,39 +5,46 @@ if (!isset($_SESSION['idUser'])) {
     exit;
 }
 
-// Récupération de l'auteur via le modèle
 $userId = $_SESSION['idUser'];
-require_once ROOT . "/app/model/createTestimony.php";
+require_once ROOT . "/app/model/manageTestimony.php";
 $author    = getUserById($pdo, $userId);
 $firstName = $author['firstName'] ?? '';
-$name  = $author['name']  ?? '';
+$name      = $author['name']      ?? '';
 
+// Suppression d'un témoignage
+$deleteSuccess = false;
+if (!empty($_POST) && isset($_POST['action_type']) && $_POST['action_type'] === 'delete') {
+    if (isset($_POST['delete_ids'])) {
+        $deleteSuccess = deleteTestimoniesByUser($pdo, $_POST['delete_ids'], $userId);
+    }
+}
+
+// Ajout d'un témoignage
 $errors = [];
-if (!empty($_POST)) {
+if (!empty($_POST) && isset($_POST['title'])) {
     $title   = trim($_POST['title']   ?? '');
     $content = trim($_POST['content'] ?? '');
     $date    = $_POST['date']         ?? '';
 
-    // Validation
     if (empty($title))   $errors['title']   = "Requis";
     if (empty($content)) $errors['content'] = "Requis";
     if (empty($date))    $errors['date']    = "Requis";
 
-    // Modèle appelé uniquement s'il n'y a pas d'erreurs
-    
-}
-   if (empty($errors)) {
+    if (empty($errors)) {
         $insertSuccess = createTestimony($pdo, $title, $content, $date, $userId);
         if (!$insertSuccess) {
             $errors['db'] = "Une erreur est survenue, veuillez réessayer.";
         }
     }
+}
 
+// Récupération des témoignages
+$posts = getTestimoniesByUser($pdo, $userId);
 
 // Appel de la vue
 require_once ROOT . "/app/view/head.php";
 require_once ROOT . "/app/view/header.php";
 require_once ROOT . "/app/view/menu.php";
-require_once ROOT . "/app/view/createTestimony.php";
+require_once ROOT . "/app/view/manageTestimony.php";
 require_once ROOT . "/app/view/footer.php";
 ?>

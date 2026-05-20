@@ -18,7 +18,7 @@
         <?php if (isset($errors['db'])): ?>
             <p class="error"><?= htmlspecialchars($errors['db']) ?></p>
         <?php endif; ?>
-        <form action="index.php?action=createTestimony" method="post">
+        <form action="index.php?action=manageTestimony" method="post">
 
             <p>
                 <label>Auteur :</label><br>
@@ -65,7 +65,7 @@
     <?php if ($deleteSuccess ?? false): ?>
         <p style="color:green;">Témoignage(s) supprimé(s) avec succès !</p>
     <?php endif; ?>
-    <form action="index.php?action=createTestimony" method="POST">
+    <form action="index.php?action=manageTestimony" method="POST">
         <input type="hidden" name="action_type" value="delete" />
         <?php if (!empty($posts)): ?>
             <ul style="list-style:none; padding:0;">
