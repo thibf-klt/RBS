@@ -379,14 +379,14 @@ a {
   text-align: center;
 }
 
-#deleteCustomer {
+#deleteUser {
   background-color: #B0C687;
   margin: 20px;
   display: flex;
   flex-direction: column;
   padding-left: 10px;
 }
-#deleteCustomer h1 {
+#deleteUser h1 {
   text-align: center;
 }
 

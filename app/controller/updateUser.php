@@ -1,5 +1,6 @@
 <?php
 require_once ROOT . "/app/model/authentification.php";
+require_once ROOT . "/app/model/updateUser.php";
 
 if (!isAdmin()) {
     header('Location: ./?action=connexion');
@@ -19,10 +20,7 @@ if (!empty($_POST)) {
     $phoneNumber = trim($_POST['phoneNumber'] ?? '');
     $email       = trim($_POST['email']       ?? '');
     $password    =       $_POST['password']   ?? '';
-    // isAdmin peut valoir "0" (non-admin) : on vérifie isset + !== ''
-    $isAdmin     = isset($_POST['isAdmin']) && $_POST['isAdmin'] !== ''
-                   ? (int)(bool)$_POST['isAdmin']
-                   : null;
+    $isAdmin     = 0;
 
     // --- Validation contrôleur ---
     if (empty($name))                               $errors['name']        = "Nom requis.";
@@ -30,16 +28,13 @@ if (!empty($_POST)) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors['email']       = "Email invalide.";
     if (strlen($password) < 8)                      $errors['password']    = "Mot de passe trop court (8 car. min).";
     if (!ctype_digit($phoneNumber))                 $errors['phoneNumber'] = "Numéro invalide (chiffres uniquement).";
-    if ($isAdmin === null)                          $errors['isAdmin']     = "Requis.";
 
     // --- Appel du modèle uniquement si aucune erreur ---
     if (empty($errors)) {
         $result = createUser($name, $firstName, $phoneNumber, $email, $password, $isAdmin);
-
         if ($result === true) {
             $insertSuccess = true;
         } else {
-            // $result contient le tableau d'erreurs remonté par le modèle
             $errors = $result;
         }
     }

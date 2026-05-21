@@ -10,17 +10,16 @@
     <h1>Ajout d'un.e client.e</h1>
 
     <?php if (!empty($insertSuccess)): ?>
-        <div class="success">
-            <p>Le/la client.e a bien été ajouté !</p>
-            <a href="index.php" class="button">Ajouter un.e autre client.e</a>
-        </div>
-    <?php else: ?>
+    <div class="success">
+        <p>Le/la client.e a bien été ajouté !</p>
+    </div>
+<?php endif; ?>
 
         <?php if (isset($errors['db'])): ?>
             <p class="error"><?= htmlspecialchars($errors['db']) ?></p>
         <?php endif; ?>
 
-        <form action="updateUser.php" method="post">
+        <form action="index.php?action=updateUser" method="post">
 
             <p>
                 <label for="name">Nom :</label>
@@ -71,23 +70,13 @@
                 <?php endif; ?>
             </p>
 
-            <p>
-                <label for="isAdmin">Est administrateur :</label>
-                <input type="radio" name="isAdmin" id="isAdmin"
-                       value="isAdmin"><label for="radio">Oui</label>
-                <input type="radio" name="isAdmin" id="isNotAdmin"
-                       value="isNotAdmin" checked><label for="radio">Non</label>      
-                <?php if (isset($errors['isAdmin'])): ?>
-                    <br><span class="error"><?= $errors['isAdmin'] ?></span>
-                <?php endif; ?>
-            </p>
             <p><input type="submit" class="buttonSophro" value="Enregistrer"></p>
 
         </form>
 
-    <?php endif; ?>
+    ?>
 </div>
-<div id="deleteCustomer">
+<div id="deleteUser">
     <h1>Suppression d'un.e client.e</h1>
     <p><input type="submit" class="buttonService" value="Recherche d'un.e client.e"></p>
     <p><input type="submit" class="buttonService" value="Suppression du/de la client.e"></p>
