@@ -63,14 +63,14 @@
 <div class="deletePost">
     <h2>Suppression d'un témoignage</h2>
     <?php if ($deleteSuccess ?? false): ?>
-        <p style="color:green;">Témoignage(s) supprimé(s) avec succès !</p>
+        <p>Témoignage(s) supprimé(s) avec succès !</p>
     <?php endif; ?>
     <form action="index.php?action=manageTestimony" method="POST">
         <input type="hidden" name="action_type" value="delete" />
         <?php if (!empty($posts)): ?>
-            <ul style="list-style:none; padding:0;">
+            <ul>
                 <?php foreach ($posts as $post): ?>
-                    <li style="display:flex; justify-content:space-between; align-items:center;">
+                    <li>
                         <span><?= htmlspecialchars($post['title']) ?></span>
                         <input type="checkbox" name="delete_ids[]" value="<?= (int)$post['idTest'] ?>" />
                     </li>

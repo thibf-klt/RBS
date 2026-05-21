@@ -1,7 +1,9 @@
 <?php
+
+require_once ROOT . "/app/model/connect.php";
+
 /**
- *
- * @return true|array  
+ * @return true|array
  */
 function createUser(
     string $name,
@@ -12,17 +14,8 @@ function createUser(
     int    $isAdmin
 ): true|array {
     $errors = [];
-
     try {
-        $dsn  = "mysql:host=" . $_ENV['DB_HOST']
-              . ";dbname="    . $_ENV['DB_NAME']
-              . ";charset=utf8mb4";
-
-        $conn = new PDO($dsn, $_ENV['DB_LOGIN'], $_ENV['DB_PWD'], [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-        ]);
+        $conn = connexionPDO();
 
         // Vérification doublon email
         $check = $conn->prepare("SELECT COUNT(*) FROM USER_ WHERE email = :email");
@@ -33,12 +26,10 @@ function createUser(
         }
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
         $stmt = $conn->prepare("
             INSERT INTO USER_ (name, firstName, phoneNumber, email, password, isAdmin)
             VALUES (:name, :firstName, :phoneNumber, :email, :password, :isAdmin)
         ");
-
         $stmt->bindParam(':name',        $name,           PDO::PARAM_STR);
         $stmt->bindParam(':firstName',   $firstName,      PDO::PARAM_STR);
         $stmt->bindParam(':phoneNumber', $phoneNumber,    PDO::PARAM_STR);
@@ -46,13 +37,40 @@ function createUser(
         $stmt->bindParam(':password',    $hashedPassword, PDO::PARAM_STR);
         $stmt->bindParam(':isAdmin',     $isAdmin,        PDO::PARAM_INT);
         $stmt->execute();
-
         return true;
 
     } catch (PDOException $e) {
         error_log("Erreur BDD createUser : " . $e->getMessage());
         $errors['db'] = "Une erreur est survenue, veuillez réessayer.";
         return $errors;
+    }
+}
+
+/**
+ * Supprime les clients sélectionnés (non admins uniquement)
+ * @param array $ids
+ * @return true|array
+ */
+function deleteUsers(array $ids): true|array {
+    if (empty($ids)) {
+        return ['selection' => "Aucun client sélectionné."];
+    }
+    try {
+        $conn         = connexionPDO();
+        $ids          = array_map('intval', $ids);
+        $placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+        $stmt = $conn->prepare("
+            DELETE FROM USER_ 
+            WHERE idUser IN ($placeholders) 
+            AND isAdmin = 0
+        ");
+        $stmt->execute($ids);
+        return true;
+
+    } catch (PDOException $e) {
+        error_log("Erreur BDD deleteUsers : " . $e->getMessage());
+        return ['db' => "Une erreur est survenue, veuillez réessayer."];
     }
 }
 ?>

@@ -367,7 +367,7 @@ a {
   justify-content: center;
 }
 
-/*************** backoffice.php ************/
+/*************** updateUser.php ************/
 #form {
   background-color: #F3D28B;
   margin: 20px;
@@ -379,6 +379,27 @@ a {
   text-align: center;
 }
 
+#updateDataUser {
+  background-color: #F28AEF;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#updateDataUser h1 {
+  text-align: center;
+}
+
+.buttonUpdate {
+  background-color: #B0C687;
+  border: 1px solid;
+  padding: 5px 10px;
+  font-size: medium;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 #deleteUser {
   background-color: #B0C687;
   margin: 20px;
@@ -387,6 +408,11 @@ a {
   padding-left: 10px;
 }
 #deleteUser h1 {
+  text-align: center;
+}
+#deleteUser li {
+  justify-content: space-between;
+  list-style: none;
   text-align: center;
 }
 
@@ -445,6 +471,15 @@ a {
 }
 #form p {
   text-align: center;
+}
+#form ul {
+  list-style: none;
+  padding: 0;
+}
+#form ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /******************** logout *******************/

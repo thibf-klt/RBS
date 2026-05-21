@@ -74,10 +74,40 @@
 
         </form>
 
-    ?>
+</div>
+<div id="updateDataUser">
+    <h1>Modification des données d'un.e client.e</h1>
+    <p><input type="submit" class="buttonUpdate" value="Modifier les données"></p>
 </div>
 <div id="deleteUser">
     <h1>Suppression d'un.e client.e</h1>
-    <p><input type="submit" class="buttonService" value="Recherche d'un.e client.e"></p>
-    <p><input type="submit" class="buttonService" value="Suppression du/de la client.e"></p>
+
+    <?php if (!empty($deleteSuccess)): ?>
+        <div class="success"><p>Le/la client.e a bien été supprimé !</p></div>
+    <?php endif; ?>
+
+    <?php if (isset($errors['selection'])): ?>
+        <p class="error"><?= htmlspecialchars($errors['selection']) ?></p>
+    <?php endif; ?>
+
+    <form action="index.php?action=updateUser" method="post">
+        <ul>
+            <?php
+            $users = getAllUsers();
+            if (empty($users)): ?>
+                <li>Aucun client trouvé.</li>
+            <?php else:
+                foreach ($users as $user): ?>
+                    <li>
+                        <label>
+                            <input type="checkbox" name="delete_ids[]" value="<?= (int)$user['idUser'] ?>">
+                            <?= htmlspecialchars($user['firstName']) ?>
+                            <?= htmlspecialchars($user['name']) ?>
+                        </label>
+                    </li>
+            <?php endforeach;
+            endif; ?>
+        </ul>
+        <p><input type="submit" name="deleteSelected" class="buttonService" value="Suppression du/de la client.e"></p>
+    </form>
 </div>
