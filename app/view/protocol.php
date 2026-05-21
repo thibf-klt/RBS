@@ -9,27 +9,7 @@
 <div class="protocol">
     <h1>Pour obtenir votre protocole, cliquez sur le lien ci-dessous.</h1>
 
-    <?php if (!empty($protocols)) : ?>
-            <thead>
-                <tr>
-                    <?php foreach (array_keys($protocols[0]) as $colonne) : ?>
-                        <th><?= htmlspecialchars($colonne) ?></th>
-                    <?php endforeach; ?>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($protocols as $row) : ?>
-                    <tr>
-                        <?php foreach ($row as $valeur) : ?>
-                            <td><?= htmlspecialchars($valeur) ?></td>
-                        <?php endforeach; ?>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else : ?>
-        <p>Pas de protocole à votre nom.</p>
-    <?php endif; ?>
+    <a href="index.php?action=download&file=document.pdf" class="buttonSophro">Télécharger</a>
 </div>
 </body>
 </html>

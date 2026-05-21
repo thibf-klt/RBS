@@ -28,9 +28,7 @@ if (!isset($_SESSION["email"])) {
         <button class="buttonSophro">Ajouter le protocole</button>
     </a>    
 </form>
-    
-    
-    
+       
 </div>
 </body>
 </html>

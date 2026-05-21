@@ -418,6 +418,7 @@ a {
   margin: 20px;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 
 /************** page404.php *****************/
