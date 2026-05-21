@@ -37,6 +37,7 @@ body {
     font-family: Arial;
 }
 
+h1,
 h2 {
     font-family: 'OpenDyslexic-Regular';
     text-align: center;
@@ -99,10 +100,10 @@ a {
     width: 100%;
     padding: 10px 0;
 
-        &.open {
-        display: flex; 
-        }
+    &.open {
+    display: flex; 
     }
+}
 
 /********** welcome.php *************/
 .sophro {
@@ -115,8 +116,7 @@ a {
 .rb {
     width: 200px;
     height: 250px;
-    margin: 10px 50px;
-    
+    margin: 10px 50px;    
 }
 .sophroContentMobile {
     flex-direction: column;
@@ -316,8 +316,7 @@ a {
     align-items: center;
     margin: 20px 0;
     padding: 20px;
-    width: 100%;
-    
+    width: 100%;    
 }
 .innerFrame2 {
     margin: 0 20px;
@@ -328,10 +327,6 @@ a {
     @include backGreen;
     padding: 8px;
     flex-direction: column;
-
-    h1 {
-        text-align: center;
-    }
 }
 
 /***************** personalSpace.php ************/
@@ -351,18 +346,20 @@ a {
     @include backYellow;
     flex-direction: column;
     padding-left: 10px;
-
-    h1 {
-        text-align: center;
-    }
 }
 #updateDataUser {
     @include backPink;
     flex-direction: column;
 
-    h1 {
+    ul {
+        list-style: none;
+
+        li {
+        justify-content: space-between;
         text-align: center;
+        }
     }
+    
 }
 .buttonUpdate {
     background-color: $backGreen;
@@ -380,10 +377,6 @@ a {
     flex-direction: column;
     padding-left: 10px;
 
-    h1 {
-        text-align: center;
-    }
-
     li {
         justify-content: space-between;
         list-style: none;
@@ -391,6 +384,14 @@ a {
 
     }
 }
+
+/***************** updateDataUser.php **************/
+#updateData {
+    @include backYellow;
+    flex-direction: column;
+
+}
+
 /************** page404.php *****************/
 .oops {
     @include backYellow;
@@ -409,9 +410,6 @@ a {
     @include backYellow;
     flex-direction: column;
     
-    h2 {
-        text-align: center;   
-    }
 }
 
 /******************createPost.php ****************/

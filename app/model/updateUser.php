@@ -17,7 +17,7 @@ function createUser(
     try {
         $conn = connexionPDO();
 
-        // Vérification doublon email
+        // check is email not already used
         $check = $conn->prepare("SELECT COUNT(*) FROM USER_ WHERE email = :email");
         $check->execute([':email' => $email]);
         if ((int)$check->fetchColumn() > 0) {
@@ -47,7 +47,7 @@ function createUser(
 }
 
 /**
- * Supprime les clients sélectionnés (non admins uniquement)
+ * Suppress selected customers (non admin only)
  * @param array $ids
  * @return true|array
  */

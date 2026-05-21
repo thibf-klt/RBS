@@ -28,7 +28,7 @@ if (!empty($_POST)) {
             $errors = $result;
         }
 
-    // --- Ajout ---
+    // --- Add ---
     } else {
         $name        = trim($_POST['name']        ?? '');
         $firstName   = trim($_POST['firstName']   ?? '');
@@ -37,15 +37,14 @@ if (!empty($_POST)) {
         $password    =       $_POST['password']   ?? '';
         $isAdmin     = 0;
 
-        // --- Validation contrôleur ---
+        // --- Controller Validation ---
         if (empty($name))                               $errors['name']        = "Nom requis.";
         if (empty($firstName))                          $errors['firstName']   = "Prénom requis.";
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors['email']       = "Email invalide.";
         if (strlen($password) < 8)                      $errors['password']    = "Mot de passe trop court (8 car. min).";
         if (!ctype_digit($phoneNumber))                 $errors['phoneNumber'] = "Numéro invalide (chiffres uniquement).";
 
-        // --- Appel du modèle uniquement si aucune erreur ---
-        if (empty($errors)) {
+        
             $result = createUser($name, $firstName, $phoneNumber, $email, $password, $isAdmin);
             if ($result === true) {
                 $insertSuccess = true;
@@ -54,7 +53,6 @@ if (!empty($_POST)) {
             }
         }
     }
-}
 
 require_once ROOT . "/app/view/updateUser.php";
 require_once ROOT . "/app/view/footer.php";

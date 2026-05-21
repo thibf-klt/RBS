@@ -75,10 +75,7 @@
         </form>
 
 </div>
-<div id="updateDataUser">
-    <h1>Modification des données d'un.e client.e</h1>
-    <p><input type="submit" class="buttonUpdate" value="Modifier les données"></p>
-</div>
+
 <div id="deleteUser">
     <h1>Suppression d'un.e client.e</h1>
 

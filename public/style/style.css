@@ -14,6 +14,7 @@ body {
   font-family: Arial;
 }
 
+h1,
 h2 {
   font-family: "OpenDyslexic-Regular";
   text-align: center;
@@ -348,9 +349,6 @@ a {
   padding: 8px;
   flex-direction: column;
 }
-#confidentiality h1 {
-  text-align: center;
-}
 
 /***************** personalSpace.php ************/
 .perso {
@@ -375,9 +373,6 @@ a {
   flex-direction: column;
   padding-left: 10px;
 }
-#form h1 {
-  text-align: center;
-}
 
 #updateDataUser {
   background-color: #F28AEF;
@@ -385,7 +380,11 @@ a {
   display: flex;
   flex-direction: column;
 }
-#updateDataUser h1 {
+#updateDataUser ul {
+  list-style: none;
+}
+#updateDataUser ul li {
+  justify-content: space-between;
   text-align: center;
 }
 
@@ -407,13 +406,18 @@ a {
   flex-direction: column;
   padding-left: 10px;
 }
-#deleteUser h1 {
-  text-align: center;
-}
 #deleteUser li {
   justify-content: space-between;
   list-style: none;
   text-align: center;
+}
+
+/***************** updateDataUser.php **************/
+#updateData {
+  background-color: #F3D28B;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /************** page404.php *****************/
@@ -439,9 +443,6 @@ a {
   margin: 20px;
   display: flex;
   flex-direction: column;
-}
-#createProtocol h2 {
-  text-align: center;
 }
 
 /******************createPost.php ****************/

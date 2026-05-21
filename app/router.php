@@ -2,7 +2,7 @@
 class Route {
     private array $protected = [
         'exercise', 'protocol', 'personalSpace',
-        'updatePost', 'backOffice', 'updateUser'
+        'updatePost', 'backOffice', 'updateUser', 'updateDataUser'
     ];
     
     private $pdo; 
@@ -93,6 +93,9 @@ class Route {
                 break;
             case 'logout':
                 require ROOT . "/app/controller/deconnexion.php";
+                break;
+            case 'updateDataUser':
+                require ROOT . "/app/controller/updateDataUser.php";
                 break;
             default:
                 require ROOT . "/app/controller/page404.php";
