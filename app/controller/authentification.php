@@ -1,5 +1,7 @@
 <?php
 require_once ROOT . "/app/model/authentification.php"; 
+
+
 $erreur = "";    
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -9,9 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($email) || empty($password)) {
         $erreur = "Veuillez remplir tous les champs.";
     } elseif (!login($email, $password)) {
-        $erreur = "Email ou mot de passe incorrect.";
+        $_SESSION["erreur"] = "Email ou mot de passe incorrect.";
+        header("Location: ./?action=authentification");
+        exit();
     } else {
-        
         if (isAdmin()) {
             header("Location: ./?action=backoffice");
         } else {
@@ -19,6 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         exit();
     }
+}
+
+
+if (isset($_SESSION["erreur"])) {
+    $erreur = $_SESSION["erreur"];
+    unset($_SESSION["erreur"]); 
 }
 
 require_once ROOT . "/app/view/head.php";
