@@ -409,8 +409,27 @@ a {
 #createProtocol {
     @include backYellow;
     flex-direction: column;
-    
+    text-align: center;
 }
+.formGrid {
+    display: grid;
+    grid-template-columns: auto 1fr;  /* colonne labels | colonne inputs */
+    align-items: center;
+    gap: 12px 16px;  
+    margin:20px;
+
+    input[type="submit"] {
+        grid-column: 1 / -1;
+        justify-self: center;
+     margin-top: 8px;
+    }
+
+    label {
+        text-align: left;      
+        justify-self: start; 
+    }
+}
+
 
 /******************createPost.php ****************/
 .success {

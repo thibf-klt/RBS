@@ -1,6 +1,6 @@
 <?php
 require_once ROOT . "/app/model/authentification.php";
-require_once ROOT . "/app/model/protocole.php";
+require_once ROOT . "/app/model/protocol.php";
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
 if (!isLoggedOn()) {
@@ -8,10 +8,10 @@ if (!isLoggedOn()) {
     exit();
 }
 
-$idProt = intval($_GET["id"] ?? 0);
+$idPr = intval($_GET["id"] ?? 0);
 
-// Vérifie que le protocole appartient bien à l'utilisateur connecté
-$protocole = getProtocoleByIdAndUser($idProt, $_SESSION["idUser"]);
+
+$protocole = getProtocoleByIdAndUser($idPr, $_SESSION["idUser"]);
 
 if (!$protocole) {
     http_response_code(403);

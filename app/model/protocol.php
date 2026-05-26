@@ -1,7 +1,8 @@
 <?php
 include_once "connect.php";
+include_once ROOT . "/app/model/user.php"; 
 
-// Récupérer tous les protocoles d'un utilisateur
+// Get all protocols for a given user
 function getProtocols(int $idUser): array {
     try {
         $cnx = connexionPDO();
@@ -14,16 +15,16 @@ function getProtocols(int $idUser): array {
     }
 }
 
-// Récupérer un protocole par son id ET vérifier qu'il appartient à l'utilisateur
-function getProtocoleByIdAndUser(int $idProt, int $idUser): array|false {
+// Get a protocol by its id AND check that it belongs to the user
+function getProtocoleByIdAndUser(int $idPr, int $idUser): array|false {
     try {
         $cnx = connexionPDO();
         $req = $cnx->prepare("
             SELECT * FROM PROTOCOL 
-            WHERE idProt = :idProt AND idUser = :idUser
+            WHERE idPr = :idPr AND idUser = :idUser
         ");
-        $req->bindValue(':idProt',  $idProt,  PDO::PARAM_INT);
-        $req->bindValue(':idUser',  $idUser,  PDO::PARAM_INT);
+        $req->bindValue(':idPr',   $idPr,   PDO::PARAM_INT);  
+        $req->bindValue(':idUser', $idUser, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
@@ -31,17 +32,27 @@ function getProtocoleByIdAndUser(int $idProt, int $idUser): array|false {
     }
 }
 
-// Sauvegarder un nouveau protocole (nom du fichier PDF stocké dans content)
-function saveProtocole(int $idUser, string $title, string $nomFichier): bool {
+function getAllClients(): array {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("SELECT idUser, name, firstName FROM USER_ WHERE isAdmin = 0 ORDER BY name ASC");
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
+}
+// Save a new protocol (name of PDF file stocked in content)
+function saveProtocol(int $idUser, string $title, string $nomFichier): bool {
     try {
         $cnx = connexionPDO();
         $req = $cnx->prepare("
             INSERT INTO PROTOCOL (idUser, title, content, date_)
             VALUES (:idUser, :title, :content, NOW())
         ");
-        $req->bindValue(':idUser',  $idUser,      PDO::PARAM_INT);
-        $req->bindValue(':title',   $title,       PDO::PARAM_STR);
-        $req->bindValue(':content', $nomFichier,  PDO::PARAM_STR);
+        $req->bindValue(':idUser',  $idUser,     PDO::PARAM_INT);
+        $req->bindValue(':title',   $title,      PDO::PARAM_STR);
+        $req->bindValue(':content', $nomFichier, PDO::PARAM_STR);
         return $req->execute();
     } catch (PDOException $e) {
         die("Erreur PDO : " . $e->getMessage());

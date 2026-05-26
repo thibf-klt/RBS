@@ -10,8 +10,10 @@ if (!isLoggedOn()) {
 
 $erreur = "";
 $succes = "";
+$users = getAllClients();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $idClient  = intval($_POST["idClient"] ?? 0);
     $title = trim($_POST["title"] ?? "");
 
     if (empty($title)) {
@@ -37,12 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 mkdir($dossierCible, 0755, true);
             }
 
-            // Nom du fichier : titre_timestamp.pdf
+            // File name : title_timestamp.pdf
             $nomFichier = preg_replace('/[^a-zA-Z0-9]/', '_', $title)
                           . "_" . time() . ".pdf";
 
             if (move_uploaded_file($fichier["tmp_name"], $dossierCible . $nomFichier)) {
-                if (saveProtocole($_SESSION["idUser"], $title, $nomFichier)) {
+                if (saveProtocol($idClient, $title, $nomFichier)) {
                     $succes = "Protocole \"" . htmlspecialchars($title) . "\" ajouté avec succès.";
                 } else {
                     $erreur = "Fichier sauvegardé mais erreur en base de données.";
