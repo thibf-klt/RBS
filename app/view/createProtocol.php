@@ -17,7 +17,7 @@ if (!isset($_SESSION["email"])) {
     <h1>Enregistrement d'un protocole client.e</h1>
     <form action="./?action=createProtocol" method="POST" enctype="multipart/form-data" class="formGrid">
 
-        <label for="idClient">Client&nbsp;:</label>
+        <label for="idClient">Client&nbsp;:</label><br>
         <select name="idClient" id="idClient" required>
         <option value="">-- Sélectionner un client --</option>
         <?php foreach ($users as $u): ?>
@@ -25,15 +25,15 @@ if (!isset($_SESSION["email"])) {
                 <?= htmlspecialchars($u["firstName"] . " " . $u["name"]) ?>
             </option>
         <?php endforeach; ?>
-        </select>
+        </select><br>
 
         
 
-        <label for="title">Titre du protocole&nbsp;:</label>
+        <label for="title">Titre du protocole&nbsp;:</label><br>
         <input type="text" id="title" name="title"
-            placeholder="Titre du protocole" required/>
+            placeholder="Titre du protocole" required/><br>
 
-        <label for="protocol">Fichier PDF&nbsp;:</label>
+        <label for="protocol">Fichier PDF&nbsp;:</label><br>
         <input type="file" id="protocol" name="protocol" accept=".pdf" required/>
 
         <input type="submit" value="Ajouter le protocole" class="buttonSophro"/>

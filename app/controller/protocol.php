@@ -10,7 +10,7 @@ if (!isLoggedOn()) {
 
 $erreur = "";
 $succes = "";
-$users  = getAllUsers(); // ← pour le menu déroulant
+$users  = getAllUsers(); 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $idClient  = intval($_POST["idClient"]  ?? 0);  // ← idUser du CLIENT

@@ -10,5 +10,6 @@
     <script src="./public/js/citation.js" defer></script>
     <script src="./public/js/burger.js" defer></script>
     <script src="./public/js/modal.js" defer></script>
+    <script src="./public/js/exercise.js" defer></script>
     <title>Riwanon Breton - Sophrologue</title>
 </head>
