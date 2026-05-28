@@ -6,7 +6,7 @@
     </a>
 <?php endif; ?>
 </div>
-<div id="updateData">
+<main id="updateData">
     <h1>Modifier les données personnelles</h1>
 
     <?php if ($updateSuccess): ?>
@@ -85,7 +85,18 @@
         </p>
         <p><input type="submit" name="changePassword" class="buttonSophro" value="Changer le mot de passe"></p>
     </form>
-</div>
+
+    <form action="index.php?action=deleteDataUser" method="post">
+    <h2>Supprimer mon compte</h2>
+    <p>Attention, cette action est irréversible !</p>
+
+    
+    <label for="confirmDeletePassword">Confirmez votre mot de passe :</label>
+    <input type="password" id="confirmDeletePassword" name="confirmDeletePassword" required>
+
+    <input type="submit" name="deleteAccount" class="buttonSophro" value="Supprimer mon compte">
+</form>
+</main>
 
 </body>
 </html>

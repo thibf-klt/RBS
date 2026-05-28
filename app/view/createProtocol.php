@@ -27,8 +27,6 @@ if (!isset($_SESSION["email"])) {
         <?php endforeach; ?>
         </select><br>
 
-        
-
         <label for="title">Titre du protocole&nbsp;:</label><br>
         <input type="text" id="title" name="title"
             placeholder="Titre du protocole" required/><br>
@@ -38,4 +36,7 @@ if (!isset($_SESSION["email"])) {
 
         <input type="submit" value="Ajouter le protocole" class="buttonSophro"/>
     </form>
+</div>
+<div id="deleteProtocol">
+            <h1>Suppression d'un protocole client.e</h1>
 </div>

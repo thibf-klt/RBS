@@ -12,15 +12,16 @@ require_once ROOT . "/app/view/head.php";
 require_once ROOT . "/app/view/header.php";
 require_once ROOT . "/app/view/menu.php";
 
-$errors         = [];
-$updateSuccess  = false;
+$errors          = [];
+$updateSuccess   = false;
 $passwordSuccess = false;
-$idUser         = (int)$_SESSION['idUser'];
+$deleteSuccess   = false;
+$idUser          = (int)$_SESSION['idUser'];
 
 if (!empty($_POST)) {
 
-    // --- Modify password ---
-    if (isset($_POST['changePassword'])) {
+    // --- Modify the password ---
+    } elseif (isset($_POST['changePassword'])) {
         $currentPassword = $_POST['currentPassword'] ?? '';
         $newPassword     = $_POST['newPassword']     ?? '';
         $confirmPassword = $_POST['confirmPassword'] ?? '';
@@ -41,7 +42,7 @@ if (!empty($_POST)) {
             }
         }
 
-    // --- Modify data ---
+    // --- Modify the personal data ---
     } else {
         $name        = trim($_POST['name']        ?? '');
         $firstName   = trim($_POST['firstName']   ?? '');
@@ -63,6 +64,23 @@ if (!empty($_POST)) {
             }
         }
     }
+    // --- delete the account ---
+    if (isset($_POST['deleteAccount'])) {
+        $passwordProvided = $_POST['confirmDeletePassword'] ?? '';
+
+        if (empty($passwordProvided)) {
+            $errors['confirmDeletePassword'] = 'Mot de passe requis.';
+        } else {
+            $result = deleteAccount($idUser, $passwordProvided);
+            if ($result === true) {
+                session_destroy();
+                header('Location: ./?action=connexion&deleted=1');
+                exit;
+            } else {
+                $errors = $result;
+            }
+        }
+
 }
 
 $userData = getUserById($idUser);

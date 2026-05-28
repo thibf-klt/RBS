@@ -104,6 +104,9 @@ class Route {
             case 'updateDataUser':
                 require ROOT . "/app/controller/updateDataUser.php";
                 break;
+            case 'deleteDataUser':
+                require ROOT . "/app/controller/updateDataUser.php";
+                break;
             default:
                 require ROOT . "/app/controller/page404.php";
                 break;

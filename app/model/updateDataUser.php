@@ -74,7 +74,7 @@ function updateUserData(
 }
 
 /**
- * updtae the connected user's password
+ * update the connected user's password
  * @param int    $idUser
  * @param string $currentPassword
  * @param string $newPassword
@@ -110,6 +110,55 @@ function updatePassword(
     } catch (PDOException $e) {
         error_log("Erreur BDD updatePassword : " . $e->getMessage());
         $errors['db'] = "Une erreur est survenue, veuillez réessayer.";
+        return $errors;
+    }
+}
+function deleteAccount(int $userId, string $passwordProvided): true|array {
+    $errors = [];
+    try {
+        $cnx  = connexionPDO();
+        $stmt = $cnx->prepare("SELECT password FROM USER_ WHERE idUser = :idUser");
+        $stmt->bindValue(':idUser', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row || !password_verify($passwordProvided, $row['password'])) {
+            $errors['confirmDeletePassword'] = 'Mot de passe incorrect.';
+            return $errors;
+        }
+
+        // 1. Récupérer les idEx des exercices liés
+        $exStmt = $cnx->prepare("SELECT idEx FROM EXERCISE WHERE idClient = :idUser");
+        $exStmt->bindValue(':idUser', $userId, PDO::PARAM_INT);
+        $exStmt->execute();
+        $exIds = $exStmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // 2. Supprimer les tables liées aux exercices (sans PDF et MEDIA, gérés par SET NULL)
+        if (!empty($exIds)) {
+            $exPlaceholders = implode(',', array_fill(0, count($exIds), '?'));
+            foreach (['INSERTING', 'USES', 'UTILIZE'] as $table) {
+                $stmt = $cnx->prepare("DELETE FROM $table WHERE idEx IN ($exPlaceholders)");
+                $stmt->execute($exIds);
+            }
+        }
+
+        // 3. Supprimer uniquement TESTIMONY et UTILIZE (sans PROTOCOL et EXERCISE, gérés par SET NULL)
+        foreach (['TESTIMONY', 'UTILIZE'] as $table) {
+            $stmt = $cnx->prepare("DELETE FROM $table WHERE idUser = :idUser");
+            $stmt->bindValue(':idUser', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+
+        // 4. Supprimer le compte
+        $deleteUser = $cnx->prepare("DELETE FROM USER_ WHERE idUser = :idUser");
+        $deleteUser->bindValue(':idUser', $userId, PDO::PARAM_INT);
+        $deleteUser->execute();
+
+        return true;
+
+    } catch (PDOException $e) {
+        error_log("Erreur BDD deleteAccount : " . $e->getMessage());
+        $errors['db'] = $e->getMessage();
         return $errors;
     }
 }

@@ -443,7 +443,10 @@ a {
         box-sizing: border-box;
     }
 }
-
+#deleteProtocol {
+    @include backGreen;
+    flex-direction: column;
+}
 /******************createPost.php ****************/
 .success {
     text-align: center;
@@ -518,6 +521,11 @@ a {
 a:hover {
     color: white;
 }    
+.buttonSophro:hover,
+.buttonService:hover,
+.buttonUpdate:hover {
+    color: white;
+}
 
 /***********header.php ************/
     .logo {

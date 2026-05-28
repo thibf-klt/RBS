@@ -60,17 +60,37 @@ function deleteUsers(array $ids): true|array {
         $ids          = array_map('intval', $ids);
         $placeholders = implode(',', array_fill(0, count($ids), '?'));
 
-        $stmt = $conn->prepare("
-            DELETE FROM USER_ 
-            WHERE idUser IN ($placeholders) 
-            AND isAdmin = 0
-        ");
+        // 1. Récupérer les idEx des exercices liés
+        $exStmt = $conn->prepare("SELECT idEx FROM EXERCISE WHERE idClient IN ($placeholders)");
+        $exStmt->execute($ids);
+        $exIds = $exStmt->fetchAll(PDO::FETCH_COLUMN);
+
+        // 2. Supprimer les tables liées aux exercices (sans PDF et MEDIA, gérés par SET NULL)
+        if (!empty($exIds)) {
+            $exPlaceholders = implode(',', array_fill(0, count($exIds), '?'));
+            foreach (['INSERTING', 'USES', 'UTILIZE'] as $table) {
+                $stmt = $conn->prepare("DELETE FROM $table WHERE idEx IN ($exPlaceholders)");
+                $stmt->execute($exIds);
+            }
+        }
+
+        // 3. Supprimer uniquement TESTIMONY et UTILIZE (sans PROTOCOL et EXERCISE, gérés par SET NULL)
+        foreach (['TESTIMONY', 'UTILIZE'] as $table) {
+            $stmt = $conn->prepare("DELETE FROM $table WHERE idUser IN ($placeholders)");
+            $stmt->execute($ids);
+        }
+
+        // 4. Supprimer les comptes
+        $stmt = $conn->prepare("DELETE FROM USER_ WHERE idUser IN ($placeholders) AND isAdmin = 0");
         $stmt->execute($ids);
+
         return true;
 
     } catch (PDOException $e) {
         error_log("Erreur BDD deleteUsers : " . $e->getMessage());
-        return ['db' => "Une erreur est survenue, veuillez réessayer."];
+        return ['db' => $e->getMessage()];
     }
 }
+
+
 ?>
