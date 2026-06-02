@@ -3,7 +3,7 @@ class Route {
     private array $protected = [
         'exercise', 'protocol', 'personalSpace',
         'updatePost', 'backOffice', 'updateUser', 'updateDataUser',
-        'manageExercise', 'createExercise'
+        'manageExercise', 'createExercise', 'deleteExercise', 'getExercisesByClient'
     ];
     
     private $pdo; 
@@ -103,6 +103,12 @@ class Route {
                 break;
             case 'createExercise':
                 require ROOT . "/app/controller/manageExercise.php";
+                break;
+            case 'deleteExercise':
+                require ROOT . "/app/controller/deleteExercise.php";
+                break;
+            case 'getExercisesByClient':
+                require ROOT . "/app/controller/getExercisesByClient.php";
                 break;
             case 'logout':
                 require ROOT . "/app/controller/deconnexion.php";

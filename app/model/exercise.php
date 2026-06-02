@@ -103,4 +103,39 @@ function getClientFiles(int $idClient): array {
         die("Erreur PDO : " . $e->getMessage());
     }
 }
+function deleteExercise(int $idExercise): bool {
+    try {
+        $cnx = connexionPDO();
+
+        // 1. Supprimer les fichiers PDF physiques
+        $req = $cnx->prepare("SELECT content FROM PDF WHERE idExercise = :id");
+        $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
+        $req->execute();
+        foreach ($req->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $f = ROOT . "/private/pdf/" . $row["content"];
+            if (file_exists($f)) unlink($f);
+        }
+
+        // 2. Supprimer les fichiers MEDIA physiques
+        $req = $cnx->prepare("SELECT content FROM MEDIA WHERE idExercise = :id");
+        $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
+        $req->execute();
+        foreach ($req->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $f = ROOT . "/private/media/" . $row["content"];
+            if (file_exists($f)) unlink($f);
+        }
+
+        // 3. Supprimer en BDD
+        $cnx->prepare("DELETE FROM PDF WHERE idExercise = :id")->execute([':id' => $idExercise]);
+        $cnx->prepare("DELETE FROM MEDIA WHERE idExercise = :id")->execute([':id' => $idExercise]);
+
+        $req = $cnx->prepare("DELETE FROM EXERCISE WHERE idEx = :id");
+        $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
+        return $req->execute();
+
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
+}
+
 ?>

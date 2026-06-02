@@ -46,9 +46,48 @@ function saveExercise(
 }
 
 function getAllExercisesByClient(int $idClient): array {
-    global $pdo;
-    $stmt = $pdo->prepare("SELECT * FROM exercise WHERE idClient = :idClient ORDER BY date_ DESC");
-    $stmt->execute([':idClient' => $idClient]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("SELECT idExercise, title FROM EXERCISE WHERE idClient = :idClient ORDER BY date_ DESC");
+        $req->bindValue(':idClient', $idClient, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
+}
+function deleteExercise(int $idExercise): bool {
+    try {
+        $cnx = connexionPDO();
+
+        // 1. Récupérer les fichiers associés
+        $req = $cnx->prepare("SELECT content FROM PDF WHERE idExercise = :id");
+        $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
+        $req->execute();
+        foreach ($req->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $f = ROOT . "/private/pdf/" . $row["content"];
+            if (file_exists($f)) unlink($f);
+        }
+
+        $req = $cnx->prepare("SELECT content FROM MEDIA WHERE idExercise = :id");
+        $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
+        $req->execute();
+        foreach ($req->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $f = ROOT . "/private/media/" . $row["content"];
+            if (file_exists($f)) unlink($f);
+        }
+
+        // 2. Supprimer PDF et MEDIA en BDD (si pas de CASCADE)
+        $cnx->prepare("DELETE FROM PDF WHERE idExercise = :id")->execute([':id' => $idExercise]);
+        $cnx->prepare("DELETE FROM MEDIA WHERE idExercise = :id")->execute([':id' => $idExercise]);
+
+        // 3. Supprimer l'exercice
+        $req = $cnx->prepare("DELETE FROM EXERCISE WHERE idEx = :id");
+        $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
+        return $req->execute();
+
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
 }
 ?>
