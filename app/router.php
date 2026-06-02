@@ -86,6 +86,9 @@ class Route {
             case 'createProtocol':
                 require ROOT . "/app/controller/createProtocol.php";
                 break;
+            case 'deleteProtocol':
+                require ROOT . "/app/controller/createProtocol.php";
+                break;
             case "downloadPdf":
                 require_once ROOT . "/app/controller/downloadPdf.php";
                 break;

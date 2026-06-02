@@ -38,5 +38,29 @@ if (!isset($_SESSION["email"])) {
     </form>
 </div>
 <div id="deleteProtocol">
-            <h1>Suppression d'un protocole client.e</h1>
+
+    <h1>Supprimer un protocole</h1>
+
+        <form action="./?action=deleteProtocol" method="POST" class="formGrid">
+
+            <label for="idClientDelete">Client&nbsp;:</label><br>
+            <select name="idClient" id="idClientDelete" required>
+                <option value="">-- Sélectionner un.e client.e --</option>
+                <?php foreach ($users as $u): ?>
+                    <option value="<?= $u["idUser"] ?>">
+                        <?= htmlspecialchars($u["firstName"] . " " . $u["name"]) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select><br><br>
+
+            <label for="listProtocolsUser">Protocole&nbsp;:</label><br>
+            <select name="idProtocol" id="listProtocolsUser" required>
+                <option value="">-- Sélectionner un protocole --</option>
+            </select><br><br>
+
+            <input type="submit" value="Supprimer le protocole"
+                   class="buttonService"/>
+        </form>
+    </div>
+
 </div>

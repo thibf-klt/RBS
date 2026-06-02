@@ -446,6 +446,7 @@ a {
 #deleteProtocol {
     @include backGreen;
     flex-direction: column;
+    align-items: center;
 }
 /******************createPost.php ****************/
 .success {
@@ -464,7 +465,7 @@ a {
     }
 }
 
-/*********************** createTestimony ***************/
+/*********************** createTestimony.php ***************/
 #form {
     textarea {
         width: 90%;
@@ -504,6 +505,12 @@ a {
     @include backGreen;
     flex-direction: column;
     align-items: center;
+}
+
+/********************* exercise.php *****************/
+#getExercise {
+    @include backYellow;
+    flex-direction: column;   
 }
 
 /******************** logout *******************/

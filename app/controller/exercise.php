@@ -15,6 +15,7 @@ require_once ROOT . "/app/model/exercise.php";
 // get the data
 $pdfs = getPdf($_SESSION['idUser']);
 $medias = getMedias($_SESSION['idUser']);
+$exercises = getClientFiles($_SESSION['idUser']);
 
 require_once ROOT . "/app/view/exercise.php";
 require_once ROOT . "/app/view/footer.php";

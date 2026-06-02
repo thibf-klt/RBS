@@ -53,7 +53,7 @@ if (!isset($_SESSION["email"])) {
         <input type="hidden" name="action_type" value="delete" />
 
         <?php if (!empty($posts)): ?>
-    <ul style="list-style:none; padding:0;">
+    <ul>
         <?php foreach ($posts as $post): ?>
             <li style="display:flex; justify-content:space-between; align-items:center;">
                 <span><?= htmlspecialchars($post['title']) ?></span>

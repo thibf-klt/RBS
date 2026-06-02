@@ -481,6 +481,7 @@ a {
   margin: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 /******************createPost.php ****************/
@@ -502,7 +503,7 @@ a {
   max-width: 400px;
 }
 
-/*********************** createTestimony ***************/
+/*********************** createTestimony.php ***************/
 #form textarea {
   width: 90%;
   height: 200px;
@@ -543,6 +544,14 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/********************* exercise.php *****************/
+#getExercise {
+  background-color: #F3D28B;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /******************** logout *******************/

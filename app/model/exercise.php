@@ -84,4 +84,23 @@ function getAllExercisesByClient(int $idClient): array {
     }
     return $result;
 }
+
+function getClientFiles(int $idClient): array {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("
+            SELECT e.title AS ex_title, p.content AS pdf_path, m.content AS media_path, e.date_
+            FROM EXERCISE e
+            LEFT JOIN PDF p ON e.title = p.title
+            LEFT JOIN MEDIA m ON e.title = m.title
+            WHERE e.idClient = :idClient
+            ORDER BY e.date_ DESC
+        ");
+        $req->bindValue(':idClient', $idClient, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
+}
 ?>
