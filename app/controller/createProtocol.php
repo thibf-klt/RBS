@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+
 require_once ROOT . "/app/view/head.php";
 require_once ROOT . "/app/view/header.php";
 require_once ROOT . "/app/view/menu.php";

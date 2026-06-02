@@ -58,4 +58,40 @@ function saveProtocol(int $idUser, string $title, string $nomFichier): bool {
         die("Erreur PDO : " . $e->getMessage());
     }
 }
-?>
+
+function getProtocolsByClient(int $idClient): array {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("SELECT idPr, title FROM PROTOCOL WHERE idUser = :idClient ORDER BY date_ DESC");
+        $req->bindValue(':idClient', $idClient, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
+}
+
+function deleteProtocol(int $idProtocol): bool {
+    try {
+        $cnx = connexionPDO();
+        // 1. Récupérer le nom du fichier
+        $req = $cnx->prepare("SELECT content FROM PROTOCOL WHERE idPr = :idPr");
+        $req->bindValue(':idPr', $idProtocol, PDO::PARAM_INT);
+        $req->execute();
+        $row = $req->fetch(PDO::FETCH_ASSOC);
+        if (!$row) return false;
+
+        // 2. Supprimer le fichier physique
+        $fichier = ROOT . "/private/pdf/" . $row["content"];
+        if (file_exists($fichier)) {
+            unlink($fichier);
+        }
+
+        // 3. Supprimer en BDD
+        $req = $cnx->prepare("DELETE FROM PROTOCOL WHERE idPr = :idPr");
+        $req->bindValue(':idPr', $idProtocol, PDO::PARAM_INT);
+        return $req->execute();
+    } catch (PDOException $e) {
+        die("Erreur PDO : " . $e->getMessage());
+    }
+}
