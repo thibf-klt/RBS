@@ -7,9 +7,14 @@ if (!isset($_SESSION["email"])) {
 <div class="logout">
     <?php if (isset($_SESSION['email'])): ?>
         <p>Bonjour, <?= htmlspecialchars($_SESSION['email']) ?></p>
-        <a href="index.php?action=logout">
-            <button class="buttonService">Se déconnecter</button>
-        </a>
+        <div class="choice">
+    <a href="index.php?action=logout"> 
+        <button class="buttonService">Se déconnecter</button>
+    </a>
+    <a href="index.php?action=backoffice"> 
+        <button class="buttonService">Retour menu</button>
+    </a>
+    </div> 
     <?php endif; ?>
 </div>
 

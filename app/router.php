@@ -92,6 +92,9 @@ class Route {
             case 'getProtocolsByClient':
                 require ROOT . "/app/controller/getProtocolsByClient.php";
                 break;
+            case 'viewProtocol':
+                require ROOT . "/app/controller/viewProtocol.php";
+                break;
             case "downloadPdf":
                 require_once ROOT . "/app/controller/downloadPdf.php";
                 break;

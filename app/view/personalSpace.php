@@ -27,27 +27,10 @@ if (!isset($_SESSION["email"])) {
         <a href="index.php?action=manageTestimony">
             <button class="buttonSophro">Ajouter/Supprimer un témoignage</button>
         </a>
+        <a href="index.php?action=viewProtocol">
+            <button class="buttonSophro">Voir mon protocole</button>
+        </a>
     </span>
 
-    <!-- Liste des protocoles -->
-    <div class="protocol">
-        <h4>Mes protocoles</h4>
-        <?php if (empty($protocoles)): ?>
-            <p>Aucun protocole disponible pour le moment.</p>
-        <?php else: ?>
-            <ul>
-                <?php foreach ($protocoles as $p): ?>
-                    
-                    <li>
-                        <strong><?= htmlspecialchars($p["title"]) ?></strong>
-                        — <?= htmlspecialchars($p["date_"]) ?>
-                        <a href="index.php?action=downloadPdf&id=<?= $p["idPr"] ?>">
-                            <button class="buttonSophro">Télécharger</button>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    </div>
 
 </div>

@@ -12,8 +12,6 @@ document.querySelector("form").addEventListener("submit", function (e) {
     }
 });
 
-
-// --- Validation : au moins un fichier pour la création ---
 document.querySelector("#exercise form").addEventListener("submit", function (e) {
     const pdf   = document.getElementById("exercisePdf").files.length;
     const media = document.getElementById("exerciseMedia").files.length;
@@ -26,7 +24,7 @@ document.querySelector("#exercise form").addEventListener("submit", function (e)
     }
 });
 
-// --- Chargement dynamique des exercices selon le client sélectionné ---
+// --- Exercises according to selected client ---
 document.getElementById("idClientDelete").addEventListener("change", function () {
     const idClient = this.value;
     const select   = document.getElementById("listExercicesUser");

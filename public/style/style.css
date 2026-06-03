@@ -242,13 +242,13 @@ a {
 }
 
 /***************** contact.php *****************/
-.contact {
-  background-color: #F28AEF;
+#contact {
+  background-color: #F3D28B;
   margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  padding: 20px;
 }
 
 /************ prestation.php ***********/
@@ -305,8 +305,15 @@ a {
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   text-align: center;
   margin: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-sizing: border-box;
+  margin: 20px auto;
 }
 
 /************* individual.php-entreprise.php ***********/
@@ -410,6 +417,12 @@ a {
   justify-content: space-between;
   list-style: none;
   text-align: center;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /***************** updateDataUser.php **************/

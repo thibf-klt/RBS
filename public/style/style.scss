@@ -240,11 +240,11 @@ a {
     margin: 10px;
 }
 /***************** contact.php *****************/
-.contact {
-    @include backPink;
+#contact {
+    @include backYellow;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    padding: 20px;
 }
 
 /************ prestation.php ***********/
@@ -292,9 +292,17 @@ a {
     flex-direction: column;
 }
 .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     text-align: center;
     margin:20px;
+    width: 90%;
+    max-width: 500px; 
+    box-sizing: border-box;
+    margin: 20px auto;
 }
+
 /************* individual.php-entreprise.php ***********/
 .frame {
     @include backYellow;
@@ -384,7 +392,11 @@ a {
 
     }
 }
-
+.choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 /***************** updateDataUser.php **************/
 #updateData {
     @include backYellow;
@@ -628,7 +640,6 @@ a:hover {
         flex-direction: row;
     }
 }
-
 
 
 /**** modal *****/

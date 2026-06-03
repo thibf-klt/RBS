@@ -10,11 +10,10 @@
         <p class="error"><?= htmlspecialchars($erreur) ?></p>
     <?php endif; ?>
 
-    <form action="./?action=authentification" method="POST" class="form"> <!-- ← vérifier l'action -->
+    <form action="./?action=authentification" method="POST" class="form"> 
         <label for="email">Votre email&nbsp;:</label>
         <input type="email" name="email" id="email" placeholder="Email de connexion"
                required aria-label="Entrez votre email de connexion" aria-required="true"/><br/>
-
         <label for="password">Votre mot de passe&nbsp;:</label>
         <input type="password" name="password" id="password" placeholder="Mot de passe"
                required aria-label="Entrez votre mot de passe" aria-required="true"/><br/>

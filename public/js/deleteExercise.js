@@ -1,5 +1,4 @@
 
-document.getElementById('idClientDelete').addEventListener('change', function () {
     const idClient = this.value;
     const exerciseSelect = document.getElementById('listExercicesUser');
     exerciseSelect.innerHTML = '<option value="">-- Sélectionner un exercice --</option>';
