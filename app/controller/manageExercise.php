@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $pdfPath   = null;
             $mediaPath = null;
 
-            // --- Traitement PDF ---
+            // --- PDF ---
             if ($hasPdf) {
                 $fichier   = $_FILES["exercisePdf"];
                 $extension = strtolower(pathinfo($fichier["name"], PATHINFO_EXTENSION));
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             }
 
-            // --- Traitement Média (seulement si pas d'erreur PDF) ---
+            // --- Media ---
             if (empty($erreur) && $hasMedia) {
                 $fichier   = $_FILES["exerciseMedia"];
                 $extension = strtolower(pathinfo($fichier["name"], PATHINFO_EXTENSION));
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             }
 
-            // --- Sauvegarde en base ---
+            // --- Saving in BD ---
             if (empty($erreur)) {
                 if (saveExercise($idClient, $title, $pdfPath, $mediaPath)) {
                     $succes = "Exercice \"" . htmlspecialchars($title) . "\" ajouté avec succès.";

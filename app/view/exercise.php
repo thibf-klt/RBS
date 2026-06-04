@@ -33,7 +33,7 @@
                         
                         <td>
                             <?php if (!empty($row['pdf_path'])): ?>
-                                <a href="<?= htmlspecialchars($row['pdf_path']) ?>" download class="btn-download">
+                                <a href="./?action=downloadExercisePdf&file=<?= urlencode($row['pdf_path']) ?>" class="btn-download">
                                     Télécharger le PDF
                                 </a>
                             <?php else: ?>
@@ -43,7 +43,7 @@
                         
                         <td>
                             <?php if (!empty($row['media_path'])): ?>
-                                <a href="<?= htmlspecialchars($row['media_path']) ?>" download class="btn-download">
+                                <a href="./?action=downloadMedia&file=<?= urlencode($row['media_path']) ?>" class="btn-download">
                                     Télécharger le Média
                                 </a>
                             <?php else: ?>
@@ -58,5 +58,4 @@
         <p>Pas d'exercice à votre nom.</p>
     <?php endif; ?>
 </div>
-</body>
-</html>
+

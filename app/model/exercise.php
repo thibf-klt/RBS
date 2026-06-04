@@ -44,7 +44,7 @@ function saveExercise(
         $req->execute();
         $idExercise = $cnx->lastInsertId();
 
-        // Table PDF si fichier fourni
+        // Table PDF if there is any
         if ($pdfPath !== null) {
             $req = $cnx->prepare("INSERT INTO PDF (idExercise, title, content, date_)
                                    VALUES (:idExercise, :title, :content, CURDATE())");
@@ -54,7 +54,7 @@ function saveExercise(
             $req->execute();
         }
 
-        // Table MEDIA si fichier fourni
+        // Table MEDIA if there is any
         if ($mediaPath !== null) {
             $req = $cnx->prepare("INSERT INTO MEDIA (idExercise, title, content, date_)
                                    VALUES (:idExercise, :title, :content, CURDATE())");
@@ -91,8 +91,8 @@ function getClientFiles(int $idClient): array {
         $req = $cnx->prepare("
             SELECT e.title AS ex_title, p.content AS pdf_path, m.content AS media_path, e.date_
             FROM EXERCISE e
-            LEFT JOIN PDF p ON e.title = p.title
-            LEFT JOIN MEDIA m ON e.title = m.title
+            LEFT JOIN PDF p ON e.idEx = p.idExercise
+            LEFT JOIN MEDIA m ON e.idEx = m.idExercise
             WHERE e.idClient = :idClient
             ORDER BY e.date_ DESC
         ");
@@ -107,7 +107,7 @@ function deleteExercise(int $idExercise): bool {
     try {
         $cnx = connexionPDO();
 
-        // 1. Supprimer les fichiers PDF physiques
+        // 1. Suppress the PDF files
         $req = $cnx->prepare("SELECT content FROM PDF WHERE idExercise = :id");
         $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
         $req->execute();
@@ -116,7 +116,7 @@ function deleteExercise(int $idExercise): bool {
             if (file_exists($f)) unlink($f);
         }
 
-        // 2. Supprimer les fichiers MEDIA physiques
+        // 2. Suppress the MEDIA files
         $req = $cnx->prepare("SELECT content FROM MEDIA WHERE idExercise = :id");
         $req->bindValue(':id', $idExercise, PDO::PARAM_INT);
         $req->execute();
@@ -125,7 +125,7 @@ function deleteExercise(int $idExercise): bool {
             if (file_exists($f)) unlink($f);
         }
 
-        // 3. Supprimer en BDD
+        // 3. Suppress in DB
         $cnx->prepare("DELETE FROM PDF WHERE idExercise = :id")->execute([':id' => $idExercise]);
         $cnx->prepare("DELETE FROM MEDIA WHERE idExercise = :id")->execute([':id' => $idExercise]);
 

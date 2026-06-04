@@ -20,7 +20,7 @@ if (!isset($_SESSION["email"])) {
 
 <main id="manageExercise">
 
-    <!-- ===== Ajout d'un exercice ===== -->
+    <!-- ===== Add an exercise ===== -->
     <div id="exercise">
         <h1>Charger un exercice pour un.e client.e</h1>
 
@@ -65,7 +65,7 @@ if (!isset($_SESSION["email"])) {
         </form>
     </div>
 
-    <!-- ===== Suppression d'un exercice ===== -->
+    <!-- ===== Delete an exercise ===== -->
     <div id="deleteExercise">
         <h1>Supprimer un exercice</h1>
 

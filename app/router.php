@@ -95,8 +95,11 @@ class Route {
             case 'viewProtocol':
                 require ROOT . "/app/controller/viewProtocol.php";
                 break;
-            case "downloadPdf":
-                require_once ROOT . "/app/controller/downloadPdf.php";
+            case "downloadExercisePdf":
+                require_once ROOT . "/app/controller/downloadExercisePdf.php";
+                break;
+            case "downloadMedia":
+                require_once ROOT . "/app/controller/downloadMedia.php";
                 break;
             case 'createPost':
                 require ROOT . "/app/controller/createPost.php";
