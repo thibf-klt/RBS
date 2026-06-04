@@ -6,6 +6,7 @@ if (!isLoggedOn()) { header("Location: ./?action=connexion"); exit(); }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $idExercise = intval($_POST["idExercise"] ?? 0);
+
     if ($idExercise > 0 && deleteExercise($idExercise)) {
         header("Location: ./?action=manageExercise&succes=1");
     } else {

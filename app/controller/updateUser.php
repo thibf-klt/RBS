@@ -8,17 +8,18 @@ if (!isAdmin()) {
     exit;
 }
 
-require_once ROOT . "/app/view/head.php";
-require_once ROOT . "/app/view/header.php";
-require_once ROOT . "/app/view/menu.php";
-
 $errors        = [];
 $insertSuccess = false;
 $deleteSuccess = false;
 
+if (isset($_SESSION['insertSuccess'])) {
+    $insertSuccess = true;
+    unset($_SESSION['insertSuccess']);
+}
+
 if (!empty($_POST)) {
 
-    // --- Suppression ---
+    // --- Suppress ---
     if (isset($_POST['deleteSelected'])) {
         $ids    = $_POST['delete_ids'] ?? [];
         $result = deleteUsers($ids);
@@ -37,23 +38,29 @@ if (!empty($_POST)) {
         $password    =       $_POST['password']   ?? '';
         $isAdmin     = 0;
 
-        // --- Controller Validation ---
+        // --- Validation ---
         if (empty($name))                               $errors['name']        = "Nom requis.";
         if (empty($firstName))                          $errors['firstName']   = "Prénom requis.";
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors['email']       = "Email invalide.";
         if (strlen($password) < 8)                      $errors['password']    = "Mot de passe trop court (8 car. min).";
         if (!ctype_digit($phoneNumber))                 $errors['phoneNumber'] = "Numéro invalide (chiffres uniquement).";
 
-        
+        if (empty($errors)) {
             $result = createUser($name, $firstName, $phoneNumber, $email, $password, $isAdmin);
             if ($result === true) {
-                $insertSuccess = true;
+                $_SESSION['insertSuccess'] = true;
+                header('Location: index.php?action=updateUser');
+                exit;
             } else {
                 $errors = $result;
             }
         }
     }
+}
 
+require_once ROOT . "/app/view/head.php";
+require_once ROOT . "/app/view/header.php";
+require_once ROOT . "/app/view/menu.php";
 require_once ROOT . "/app/view/updateUser.php";
 require_once ROOT . "/app/view/footer.php";
 ?>

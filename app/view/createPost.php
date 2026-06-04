@@ -8,13 +8,13 @@ if (!isset($_SESSION["email"])) {
     <?php if (isset($_SESSION['email'])): ?>
         <p>Bonjour, <?= htmlspecialchars($_SESSION['email']) ?></p>
         <div class="choice">
-    <a href="index.php?action=logout"> 
-        <button class="buttonService">Se déconnecter</button>
-    </a>
-    <a href="index.php?action=backoffice"> 
-        <button class="buttonService">Retour menu</button>
-    </a>
-    </div> 
+            <a href="index.php?action=logout">
+                <button class="buttonService">Se déconnecter</button>
+            </a>
+            <a href="index.php?action=backoffice">
+                <button class="buttonService">Retour menu</button>
+            </a>
+        </div>
     <?php endif; ?>
 </div>
 
@@ -35,13 +35,12 @@ if (!isset($_SESSION["email"])) {
 
     <form action="./?action=createPost" method="POST" class="form">
         <label for="title">Titre&nbsp;:</label>
-        <input type="text" name="title" placeholder="Titre de l'article" required aria-label="Entrez le titre de l'article" aria-required="true"/><br />
+        <input type="text" name="title" id="title" placeholder="Titre de l'article"
+               required aria-label="Entrez le titre de l'article"/><br/>
 
         <label for="content">Contenu&nbsp;:</label>
-        <input type="text" name="content" placeholder="Contenu de l'article" required aria-label="Entrez le contenu de l'article" aria-required="true"/><br />
-
-        <label for="date">Date&nbsp;:</label>
-        <input type="date" name="date" required aria-label="Entrez la date de l'article" aria-required="true"/><br />
+        <textarea name="content" id="content" placeholder="Contenu de l'article"
+                  required aria-label="Entrez le contenu de l'article"></textarea><br/>
 
         <button type="submit" class="buttonSophro">Ajouter l'article</button>
     </form>
@@ -55,23 +54,27 @@ if (!isset($_SESSION["email"])) {
     <?php endif; ?>
 
     <form action="./?action=createPost" method="POST">
-        <input type="hidden" name="action_type" value="delete" />
+        <input type="hidden" name="action_type" value="delete"/>
 
         <?php if (!empty($posts)): ?>
-    <ul>
-        <?php foreach ($posts as $post): ?>
-            <li style="display:flex; justify-content:space-between; align-items:center;">
-                <span><?= htmlspecialchars($post['title']) ?></span>
-                <input type="checkbox" name="delete_ids[]" value="<?= (int)$post['idPost'] ?>" />
-            </li>
-        <?php endforeach; ?>
-    </ul>
-<?php else: ?>
-    <p>Aucun article pour le moment.</p>
-<?php endif; ?>
+            <ul>
+                <?php foreach ($posts as $post): ?>
+                    <li style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>
+                            <?= htmlspecialchars($post['title']) ?>
+            
+                            <small style="color:grey;">
+                                <?= date('d/m/Y', strtotime($post['date_'])) ?>
+                            </small>
+                        </span>
+                        <input type="checkbox" name="delete_ids[]" value="<?= (int)$post['idPost'] ?>"/>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Aucun article pour le moment.</p>
+        <?php endif; ?>
 
         <button type="submit" class="buttonService">Supprimer l'article</button>
     </form>
 </div>
-</body>
-</html>

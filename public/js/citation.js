@@ -3,22 +3,25 @@ fetch("https://quoteslate.vercel.app/api/quotes/random")
     .then(response => {
         if (response.ok) {
             console.log("Requête réussie - Statut : " + response.status);
-            return (response.json())
+            return response.json();
         }
-        throw new Error("Erreur d'accès à la ressource - Statut : " + response.status);
+        // Distinguish the different types of HTML errors
+        if (response.status === 404) throw new Error("Ressource introuvable (404)");
+        if (response.status === 429) throw new Error("Trop de requêtes, réessaie plus tard (429)");
+        if (response.status >= 500) throw new Error("Erreur serveur - Statut : " + response.status);
+        throw new Error("Erreur inattendue - Statut : " + response.status);
     })
-    .then(data => displayQuote(data))
-    .catch(error => alert("Erreur :" + error));
+    .then(data => {
+        // Verify that the data is present
+        if (!data.quote || !data.author) throw new Error("Données incomplètes dans la réponse");
+        displayQuote(data);
+    })
+    .catch(error => {
+        console.error("Détail de l'erreur :", error); 
+        alert("Erreur : " + error.message);           
+    });
 
-//extract quote and authom from the data gotten from api (json)    
 function displayQuote(dataArticle) {
-    
-    //display text
-    let quote = document.querySelector("#quote");
-    quote.innerText = dataArticle.quote;
-
-    //display author
-    let author = document.querySelector("#author");  
-    author.innerText = dataArticle.author;           
-
-}    
+    document.querySelector("#quote").innerText = dataArticle.quote;
+    document.querySelector("#author").innerText = dataArticle.author;
+}

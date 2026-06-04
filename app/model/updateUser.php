@@ -17,7 +17,7 @@ function createUser(
     try {
         $conn = connexionPDO();
 
-        // check is email not already used
+        // check if email not already used
         $check = $conn->prepare("SELECT COUNT(*) FROM USER_ WHERE email = :email");
         $check->execute([':email' => $email]);
         if ((int)$check->fetchColumn() > 0) {
@@ -60,12 +60,10 @@ function deleteUsers(array $ids): true|array {
         $ids          = array_map('intval', $ids);
         $placeholders = implode(',', array_fill(0, count($ids), '?'));
 
-        // 1. Récupérer les idEx des exercices liés
         $exStmt = $conn->prepare("SELECT idEx FROM EXERCISE WHERE idClient IN ($placeholders)");
         $exStmt->execute($ids);
         $exIds = $exStmt->fetchAll(PDO::FETCH_COLUMN);
 
-        // 2. Supprimer les tables liées aux exercices (sans PDF et MEDIA, gérés par SET NULL)
         if (!empty($exIds)) {
             $exPlaceholders = implode(',', array_fill(0, count($exIds), '?'));
             foreach (['INSERTING', 'USES', 'UTILIZE'] as $table) {
@@ -74,13 +72,10 @@ function deleteUsers(array $ids): true|array {
             }
         }
 
-        // 3. Supprimer uniquement TESTIMONY et UTILIZE (sans PROTOCOL et EXERCISE, gérés par SET NULL)
         foreach (['TESTIMONY', 'UTILIZE'] as $table) {
             $stmt = $conn->prepare("DELETE FROM $table WHERE idUser IN ($placeholders)");
             $stmt->execute($ids);
         }
-
-        // 4. Supprimer les comptes
         $stmt = $conn->prepare("DELETE FROM USER_ WHERE idUser IN ($placeholders) AND isAdmin = 0");
         $stmt->execute($ids);
 
