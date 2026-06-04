@@ -24,56 +24,6 @@ function getUserById(int $idUser): array|false {
 }
 
 /**
- * update the the connected user's data
- * @param int    $idUser
- * @param string $name
- * @param string $firstName
- * @param string $phoneNumber
- * @param string $email
- * @return true|array
- */
-function updateUserData(
-    int    $idUser,
-    string $name,
-    string $firstName,
-    string $phoneNumber,
-    string $email
-): true|array {
-    $errors = [];
-    try {
-        $cnx   = connexionPDO();
-        $check = $cnx->prepare("
-            SELECT COUNT(*) FROM USER_ 
-            WHERE email = :email AND idUser != :idUser
-        ");
-        $check->execute([':email' => $email, ':idUser' => $idUser]);
-        if ((int)$check->fetchColumn() > 0) {
-            $errors['email'] = "Cette adresse email est déjà utilisée.";
-            return $errors;
-        }
-
-        $stmt = $cnx->prepare("
-            UPDATE USER_ 
-            SET name = :name, firstName = :firstName, 
-                phoneNumber = :phoneNumber, email = :email
-            WHERE idUser = :idUser
-        ");
-        $stmt->bindValue(':name',        $name,        PDO::PARAM_STR);
-        $stmt->bindValue(':firstName',   $firstName,   PDO::PARAM_STR);
-        $stmt->bindValue(':phoneNumber', $phoneNumber, PDO::PARAM_STR);
-        $stmt->bindValue(':email',       $email,       PDO::PARAM_STR);
-        $stmt->bindValue(':idUser',      $idUser,      PDO::PARAM_INT);
-        $stmt->execute();
-        return true;
-
-    } catch (PDOException $e) {
-        error_log("Erreur BDD updateUserData : " . $e->getMessage());
-        $errors['db'] = "Une erreur est survenue, veuillez réessayer.";
-        return $errors;
-    }
-}
-
-/**
  * update the connected user's password
  * @param int    $idUser
  * @param string $currentPassword
@@ -127,13 +77,12 @@ function deleteAccount(int $userId, string $passwordProvided): true|array {
             return $errors;
         }
 
-        // 1. Récupérer les idEx des exercices liés
         $exStmt = $cnx->prepare("SELECT idEx FROM EXERCISE WHERE idClient = :idUser");
         $exStmt->bindValue(':idUser', $userId, PDO::PARAM_INT);
         $exStmt->execute();
         $exIds = $exStmt->fetchAll(PDO::FETCH_COLUMN);
 
-        // 2. Supprimer les tables liées aux exercices (sans PDF et MEDIA, gérés par SET NULL)
+        
         if (!empty($exIds)) {
             $exPlaceholders = implode(',', array_fill(0, count($exIds), '?'));
             foreach (['INSERTING', 'USES', 'UTILIZE'] as $table) {
@@ -142,14 +91,14 @@ function deleteAccount(int $userId, string $passwordProvided): true|array {
             }
         }
 
-        // 3. Supprimer uniquement TESTIMONY et UTILIZE (sans PROTOCOL et EXERCISE, gérés par SET NULL)
+        // Delete only TESTIMONY and UTILIZE (without PROTOCOL and EXERCISE, done by SET NULL)
         foreach (['TESTIMONY', 'UTILIZE'] as $table) {
             $stmt = $cnx->prepare("DELETE FROM $table WHERE idUser = :idUser");
             $stmt->bindValue(':idUser', $userId, PDO::PARAM_INT);
             $stmt->execute();
         }
 
-        // 4. Supprimer le compte
+        // Delete the account
         $deleteUser = $cnx->prepare("DELETE FROM USER_ WHERE idUser = :idUser");
         $deleteUser->bindValue(':idUser', $userId, PDO::PARAM_INT);
         $deleteUser->execute();
