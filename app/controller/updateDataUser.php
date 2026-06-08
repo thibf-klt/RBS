@@ -51,7 +51,7 @@ if (!empty($_POST)) {
             $result = deleteAccount($idUser, $passwordProvided);
             if ($result === true) {
                 session_destroy();
-                header('Location: ./?action=connexion&deleted=1');
+                header('Location: ./?action=authentification&deleted=1');
                 exit;
             } else {
                 $errors = $result;

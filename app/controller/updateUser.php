@@ -18,18 +18,23 @@ if (isset($_SESSION['insertSuccess'])) {
 }
 
 if (!empty($_POST)) {
-
-    // --- Suppress ---
+    // --- Suppression ---
     if (isset($_POST['deleteSelected'])) {
         $ids    = $_POST['delete_ids'] ?? [];
         $result = deleteUsers($ids);
         if ($result === true) {
+            $currentUserId = $_SESSION['idUser'] ?? null;
+            if ($currentUserId && in_array((int)$currentUserId, array_map('intval', $ids))) {
+                session_unset();
+                session_destroy();
+                header('Location: index.php?action=authentification');
+                exit;
+            }
             $deleteSuccess = true;
         } else {
             $errors = $result;
         }
-
-    // --- Add ---
+    // --- Ajout ---
     } else {
         $name        = trim($_POST['name']        ?? '');
         $firstName   = trim($_POST['firstName']   ?? '');
@@ -38,7 +43,6 @@ if (!empty($_POST)) {
         $password    =       $_POST['password']   ?? '';
         $isAdmin     = 0;
 
-        // --- Validation ---
         if (empty($name))                               $errors['name']        = "Nom requis.";
         if (empty($firstName))                          $errors['firstName']   = "Prénom requis.";
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors['email']       = "Email invalide.";
