@@ -2,8 +2,11 @@
 class Route {
     private array $protected = [
         'exercise', 'protocol', 'personalSpace',
-        'updatePost', 'backOffice', 'updateUser', 'updateDataUser',
-        'manageExercise', 'createExercise', 'deleteExercise', 'getExercisesByClient'
+        'updatePost', 'backoffice', 'updateUser', 'updateDataUser',
+        'manageExercise', 'createExercise', 'deleteExercise', 'getExercisesByClient',
+        'deleteDataUser', 'manageTestimony','createProtocol',
+        'deleteProtocol', 'getProtocolsByClient', 'viewProtocol',
+        'downloadExercisePdf', 'downloadMedia', 'createPost',
     ];
     
     private $pdo; 
