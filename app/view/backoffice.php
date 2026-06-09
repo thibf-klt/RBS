@@ -22,7 +22,7 @@ if (!isset($_SESSION["email"])) {
             <button class="buttonSophro">Gérer les protocoles</button>
             </a>
             <a href="index.php?action=manageExercise"> 
-            <button class="buttonSophro">Gérer les exercices des client.e.s</button>
+            <button class="buttonSophro">Gérer les exercices client.e.s</button>
             </a>
             <a href="index.php?action=createPost"> 
             <button class="buttonSophro">Gérer le blog</button>

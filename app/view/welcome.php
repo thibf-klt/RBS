@@ -1,8 +1,4 @@
-<?php
-require ROOT . "/app/view/head.php";
-require ROOT . "/app/view/header.php";
-require ROOT . "/app/view/menu.php";
-?>
+
 <main>
     <div class="sophro">
         <div class="picSophro">
@@ -39,10 +35,7 @@ require ROOT . "/app/view/menu.php";
     </div>
 </main>
 <?php
-require ROOT . "/app/view/service.php";
-require ROOT . "/app/view/post.php";
-require ROOT . "/app/view/testimony.php";
-require ROOT . "/app/view/footer.php";
+
 ?>
 </body>
 </html>
