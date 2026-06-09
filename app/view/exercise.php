@@ -16,12 +16,12 @@
     <h1>Pour obtenir vos exercices, cliquez sur le(s) lien(s) ci-dessous.</h1>
 
     <?php if (!empty($exercises)) : ?>
-        <table class="table-exercises">
+        <table class="tableExercises">
             <thead>
                 <tr>
                     <th>Date</th>
                     <th>Exercice</th>
-                    <th>Document PDF</th>
+                    <th>Document</th>
                     <th>Média</th>
                 </tr>
             </thead>
@@ -34,7 +34,7 @@
                         <td>
                             <?php if (!empty($row['pdf_path'])): ?>
                                 <a href="./?action=downloadExercisePdf&file=<?= urlencode($row['pdf_path']) ?>" class="btn-download">
-                                    Télécharger le PDF
+                                    PDF
                                 </a>
                             <?php else: ?>
                                 Aucun PDF
@@ -44,7 +44,7 @@
                         <td>
                             <?php if (!empty($row['media_path'])): ?>
                                 <a href="./?action=downloadMedia&file=<?= urlencode($row['media_path']) ?>" class="btn-download">
-                                    Télécharger le Média
+                                    Média
                                 </a>
                             <?php else: ?>
                                 Aucun Média
