@@ -6,6 +6,11 @@ if (!isLoggedOn()) {
     exit();
 }
 
+if (isAdmin()) {
+    header("Location: ./?action=backoffice");
+    exit();
+}
+
     require_once ROOT . "/app/view/head.php";
     require_once ROOT . "/app/view/header.php";
     require_once ROOT . "/app/view/menu.php";
