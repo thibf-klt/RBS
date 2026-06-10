@@ -34,7 +34,7 @@ if (!empty($_POST)) {
         } else {
             $errors = $result;
         }
-    // --- Ajout ---
+    // --- Add ---
     } else {
         $name        = trim($_POST['name']        ?? '');
         $firstName   = trim($_POST['firstName']   ?? '');

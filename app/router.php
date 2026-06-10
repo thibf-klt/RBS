@@ -6,7 +6,7 @@ class Route {
         'manageExercise', 'createExercise', 'deleteExercise', 'getExercisesByClient',
         'deleteDataUser', 'manageTestimony','createProtocol',
         'deleteProtocol', 'getProtocolsByClient', 'viewProtocol',
-        'downloadExercisePdf', 'downloadMedia', 'createPost',
+        'downloadExercisePdf', 'downloadMedia', 'createPost', 'downloadProtocol'
     ];
     
     private $pdo; 
@@ -97,6 +97,9 @@ class Route {
                 break;
             case 'viewProtocol':
                 require ROOT . "/app/controller/viewProtocol.php";
+                break;
+            case 'downloadProtocol':
+                require ROOT . "/app/controller/downloadProtocol.php";
                 break;
             case "downloadExercisePdf":
                 require_once ROOT . "/app/controller/downloadExercisePdf.php";

@@ -1,10 +1,10 @@
 <?php
 require_once ROOT . "/app/model/user.php";
 
-function login($email, $password) {
-    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+function login($email, $password): bool
+{
     $user = getUserByMail($email);
-    if (!$user) return false; // ← corrigé
+    if (!$user) return false;
     if (password_verify($password, $user["password"])) {
         $_SESSION["email"]  = $email;
         $_SESSION["idUser"] = $user["idUser"];
@@ -14,35 +14,34 @@ function login($email, $password) {
     return false;
 }
 
-function isAdmin(): bool {
-    if (!isLoggedOn()) return false;
+function isAdmin(): bool
+{
     return isset($_SESSION["admin"]) && (bool)$_SESSION["admin"] === true;
 }
 
-function requireAdmin(): void {
+function requireAdmin(): void
+{
     if (!isAdmin()) {
-        header("Location: /index.php?error=access_denied");
+        header("Location: index.php?error=access_denied");
         exit();
     }
 }
 
-function logout(): void {
-    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+function logout(): void
+{
     $_SESSION = [];
     session_destroy();
     header('Location: index.php?action=authentification');
     exit();
 }
 
-function getMailUserLoggedOn() {
-    if (isLoggedOn()) return $_SESSION["email"];
-    return null;
+function getMailUserLoggedOn(): ?string
+{
+    return $_SESSION["email"] ?? null;
 }
 
-function isLoggedOn(): bool {
-    if (session_status() === PHP_SESSION_NONE) { session_start(); }
-    if (!isset($_SESSION["email"], $_SESSION["idUser"])) return false;
-    $user = getUserByMail($_SESSION["email"]);
-    return $user !== false && $user["email"] === $_SESSION["email"];
+function isLoggedOn(): bool
+{
+    return isset($_SESSION["email"], $_SESSION["idUser"]);
 }
 ?>

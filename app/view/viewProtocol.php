@@ -20,7 +20,7 @@ if (!isset($_SESSION["email"])) {
 </div>
 
 
-    <!-- Liste des protocoles -->
+    <!-- List of protocols -->
     <div class="protocol">
         <h4>Mes protocoles</h4>
         <?php if (empty($protocoles)): ?>
@@ -32,7 +32,7 @@ if (!isset($_SESSION["email"])) {
                     <li>
                         <strong><?= htmlspecialchars($p["title"]) ?></strong>
                         — <?= htmlspecialchars($p["date_"]) ?>
-                        <a href="index.php?action=downloadPdf&id=<?= $p["idPr"] ?>">
+                        <a href="index.php?action=downloadProtocol&id=<?= $p["idPr"] ?>">
                             <button class="buttonSophro">Télécharger</button>
                         </a>
                     </li>
