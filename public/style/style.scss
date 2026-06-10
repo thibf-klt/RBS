@@ -464,6 +464,9 @@ a {
 .success {
     text-align: center;
 }
+.postContent {
+    height: 200px;
+}
 .deletePost {
     @include backGreen;
     flex-direction: column;

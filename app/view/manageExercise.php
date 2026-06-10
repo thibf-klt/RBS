@@ -52,7 +52,7 @@ if (!isset($_SESSION["email"])) {
             <input type="file" id="exercisePdf" name="exercisePdf"
                    accept=".pdf"/><br><br>
 
-            <label for="exerciseMedia">Média (optionnel)&nbsp;:</label><br>
+            <label for="exerciseMedia">Média (optionnel, mp3 ou mp4)&nbsp;:</label><br>
             <input type="file" id="exerciseMedia" name="exerciseMedia"
                    accept=".mp3,.mp4"/><br><br>
 

@@ -39,7 +39,7 @@ if (!isset($_SESSION["email"])) {
                required aria-label="Entrez le titre de l'article"/><br/>
 
         <label for="content">Contenu&nbsp;:</label>
-        <textarea name="content" id="content" placeholder="Contenu de l'article"
+        <textarea class="postContent" name="content" id="content" placeholder="Contenu de l'article"
                   required aria-label="Entrez le contenu de l'article"></textarea><br/>
 
         <button type="submit" class="buttonSophro">Ajouter l'article</button>

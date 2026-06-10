@@ -24,11 +24,10 @@ $errors = [];
 if (!empty($_POST) && isset($_POST['title'])) {
     $title   = trim($_POST['title']   ?? '');
     $content = trim($_POST['content'] ?? '');
-    $date    = $_POST['date']         ?? '';
+    $date    = date('Y-m-d');
 
     if (empty($title))   $errors['title']   = "Requis";
     if (empty($content)) $errors['content'] = "Requis";
-    if (empty($date))    $errors['date']    = "Requis";
 
     if (empty($errors)) {
         $insertSuccess = createTestimony($pdo, $title, $content, $date, $userId);

@@ -14,7 +14,6 @@
 
 <div id="form">
     <h2>Ajout d'un témoignage</h2>
-    <p>(vous ne pouvez en avoir qu'un sur le site)</p>
     <?php if (!empty($insertSuccess)): ?>
         <div class="success">
             <p>Le témoignage a bien été ajouté !</p>
@@ -48,15 +47,6 @@
                           placeholder="Votre texte ici"><?= htmlspecialchars($_POST['content'] ?? '') ?></textarea>
                 <?php if (isset($errors['content'])): ?>
                     <br><span class="error"><?= htmlspecialchars($errors['content']) ?></span>
-                <?php endif; ?>
-            </p>
-
-            <p>
-                <label for="date">Date :</label><br>
-                <input type="date" name="date" id="date"
-                       value="<?= htmlspecialchars($_POST['date'] ?? '') ?>">
-                <?php if (isset($errors['date'])): ?>
-                    <br><span class="error"><?= htmlspecialchars($errors['date']) ?></span>
                 <?php endif; ?>
             </p>
 

@@ -502,6 +502,10 @@ a {
   text-align: center;
 }
 
+.postContent {
+  height: 200px;
+}
+
 .deletePost {
   background-color: #B0C687;
   margin: 20px;
