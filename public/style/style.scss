@@ -206,8 +206,11 @@ a {
     flex-direction: column;
     padding: 20px;
 
-    .displayPost {
-        display: block;
+    .displayPost2 {
+        display: flex;
+        //grid-template-columns: repeat(1fr);
+        gap: 15px;
+        flex-direction: column;
 
         .post {
             border: 1px solid;
@@ -221,9 +224,6 @@ a {
                 color: black;
             }
         }
-    }
-    .displayPost .post:not(:first-child) {
-    display: block;
     }
 }
 /************** footer.php ***************/
@@ -633,10 +633,12 @@ a:hover {
     }
 /****************** post.php *****************/    
     .displayPost{
-        display: flex;
+        display: grid;
+        flex-direction: row;
+        grid-template-columns: repeat(3, 1fr);
 
         .post {
-            width: 20%;
+            width: 60%;
         }
     }
     .displayPost .post:not(:first-child) {

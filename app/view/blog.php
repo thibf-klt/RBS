@@ -1,6 +1,6 @@
 <div class="fullBlog">
   <h2>Mon blog</h2>
-  <div class="displayPost">
+  <div class="displayPost2">
     <?php if (!empty($posts)) : ?>
       <?php foreach ($posts as $post) : ?>
         <section class="post">        
