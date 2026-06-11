@@ -26,5 +26,5 @@ if (!empty($_POST)) {
 }
 
 // calling the view
-include ROOT . "/app/view/updatePost.php";
+require_once ROOT . "/app/view/updatePost.php";
 ?>

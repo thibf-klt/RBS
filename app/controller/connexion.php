@@ -30,6 +30,6 @@ if (isset($_POST["email"]) && isset($_POST["password"])){
 }
 
 $titre = "authentification";
-include ROOT . "/app/view/head.php";
-include ROOT . "/app/view/authentification.php";
-include ROOT . "/app/view/footer.php";
+require ROOT . "/app/view/head.php";
+require ROOT . "/app/view/authentification.php";
+require ROOT . "/app/view/footer.php";

@@ -9,9 +9,6 @@ if (!isset($_SESSION['idUser']) || !isset($_SESSION['isAdmin']) || $_SESSION['is
 
 require_once ROOT . "/app/model/updateExercise.php";
 
-// get the data for the connected user
-// $post = getPosts($_SESSION['idUser']);
-
 // call the view
 include ROOT . "/app/view/updateExercise.php";
 

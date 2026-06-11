@@ -250,6 +250,11 @@ a {
   padding: 20px;
 }
 
+#message {
+  height: 200px;
+  width: 220px;
+}
+
 /************ prestation.php ***********/
 .prestation {
   background-color: #F3D28B;
@@ -682,12 +687,19 @@ a {
   .displayPost .post:not(:first-child) {
     display: block;
   }
+  .displayPost .post:nth-child(n+4) {
+    display: none;
+  }
+  /********************** contact.php ***************/
+  #message {
+    width: 500px;
+  }
   /*************** blog.php **************/
   .fullBlog {
     display: flex;
     align-items: center;
   }
-  .fullBlog .displayPost {
+  .fullBlog .displayPost2 {
     width: 60%;
   }
   /*********** prestation.php *****************/

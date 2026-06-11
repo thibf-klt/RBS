@@ -1,5 +1,5 @@
 <?php
-// Vérification de la connexion
+// CHeck the connection
 if (!isset($_SESSION['idUser'])) {
     header('Location: /authentification.php');
     exit;
@@ -11,7 +11,7 @@ $author    = getUserById($pdo, $userId);
 $firstName = $author['firstName'] ?? '';
 $name      = $author['name']      ?? '';
 
-// Suppression d'un témoignage
+// Suppress a testimony
 $deleteSuccess = false;
 if (!empty($_POST) && isset($_POST['action_type']) && $_POST['action_type'] === 'delete') {
     if (isset($_POST['delete_ids'])) {
@@ -19,7 +19,7 @@ if (!empty($_POST) && isset($_POST['action_type']) && $_POST['action_type'] === 
     }
 }
 
-// Ajout d'un témoignage
+// Add a testimony
 $errors = [];
 if (!empty($_POST) && isset($_POST['title'])) {
     $title   = trim($_POST['title']   ?? '');
@@ -37,10 +37,10 @@ if (!empty($_POST) && isset($_POST['title'])) {
     }
 }
 
-// Récupération des témoignages
+// Get the testimonies
 $posts = getTestimoniesByUser($pdo, $userId);
 
-// Appel de la vue
+// Call the view
 require_once ROOT . "/app/view/head.php";
 require_once ROOT . "/app/view/header.php";
 require_once ROOT . "/app/view/menu.php";

@@ -10,12 +10,12 @@
                    tabindex="0"
                    data-id="<?= $testimony['idTest'] ?>"
                    data-title="<?= htmlspecialchars($testimony['title']) ?>"
-                   data-content="<?= htmlspecialchars($testimony['content']) ?>"
+                   data-content="<?= htmlspecialchars($testimony['content'], ENT_QUOTES, 'UTF-8') ?>"
                    data-date="<?= $testimony['date_'] ?>">  
                    
             <h3><?= htmlspecialchars($testimony['title']) ?></h3>
             <p><?= htmlspecialchars(substr($testimony['content'], 0, 100)) ?>…</p>
-            <p><?= $testimony['date_'] ?></p>
+            <p><?= htmlspecialchars($testimony['date_'], ENT_QUOTES, 'UTF-8') ?></p>
             <p><?= htmlspecialchars($testimony['firstName'] . ' ' . $testimony['name']) ?></p>
           </article>
         </section>

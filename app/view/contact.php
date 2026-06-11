@@ -16,8 +16,7 @@
                 <textarea name="message" id="message" rows="5" maxlength="200"></textarea>
             </p>
             <p>
-                <input type="submit" value="Envoyer">
-                <input type="reset" value="Annuler">
+                <input type="submit" class="buttonUpdate" value="Envoyer">
             </p>
         </form>
        

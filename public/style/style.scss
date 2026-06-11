@@ -246,7 +246,10 @@ a {
     justify-content: center;
     padding: 20px;
 }
-
+#message {
+    height: 200px;
+    width: 220px;
+}
 /************ prestation.php ***********/
 .prestation {
     @include backYellow;
@@ -644,13 +647,19 @@ a:hover {
     .displayPost .post:not(:first-child) {
     display: block;
     }
-
+    .displayPost .post:nth-child(n+4) {
+    display: none;
+}
+/********************** contact.php ***************/
+#message {
+    width: 500px;
+}
 /*************** blog.php **************/
 .fullBlog {
     display: flex;
     align-items: center;
 
-    .displayPost {
+    .displayPost2 {
         width: 60%;
     }
 }
