@@ -22,7 +22,7 @@ if (!isset($_SESSION["email"])) {
 
     <!-- ===== Add an exercise ===== -->
     <div id="exercise">
-        <h1>Charger un exercice pour un.e client.e</h1>
+        <h1>Charger l'exercice d'un.e client.e</h1>
 
         <?php if (!empty($erreur)): ?>
             <p style="color:red;"><?= htmlspecialchars($erreur) ?></p>

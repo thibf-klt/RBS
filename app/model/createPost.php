@@ -42,6 +42,28 @@ try {
         exit();
     }
 
+    // UPDATE
+if ($_SERVER['REQUEST_METHOD'] === 'POST'
+    && isset($_POST['action_type'])
+    && $_POST['action_type'] === 'edit') {
+    $editId      = (int)($_POST['edit_id']      ?? 0);
+    $editTitle   = trim($_POST['editTitle']   ?? '');
+    $editContent = trim($_POST['editContent'] ?? '');
+    if ($editId && !empty($editTitle) && !empty($editContent)) {
+        $stmtEdit = $conn->prepare("
+            UPDATE POST SET title = :title, content = :content
+            WHERE idPost = :id
+        ");
+        $stmtEdit->execute([
+            ':title'   => $editTitle,
+            ':content' => $editContent,
+            ':id'      => $editId,
+        ]);
+        header("Location: ./?action=createPost&updated=1");
+        exit();
+    }
+}
+
     // INSERT 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'
         && !isset($_POST['action_type'])
@@ -57,7 +79,7 @@ try {
         exit();
     }
 
-    $stmtPosts = $conn->query("SELECT idPost, title, date_ FROM POST ORDER BY date_ DESC");
+    $stmtPosts = $conn->query("SELECT idPost, title, content, date_ FROM POST ORDER BY date_ DESC");
     $posts = $stmtPosts->fetchAll();
 
 } catch (PDOException $e) {

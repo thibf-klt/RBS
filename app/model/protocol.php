@@ -74,20 +74,20 @@ function getProtocolsByClient(int $idClient): array {
 function deleteProtocol(int $idProtocol): bool {
     try {
         $cnx = connexionPDO();
-        // 1. Récupérer le nom du fichier
+        // 1. Get the name of the file
         $req = $cnx->prepare("SELECT content FROM PROTOCOL WHERE idPr = :idPr");
         $req->bindValue(':idPr', $idProtocol, PDO::PARAM_INT);
         $req->execute();
         $row = $req->fetch(PDO::FETCH_ASSOC);
         if (!$row) return false;
 
-        // 2. Supprimer le fichier physique
+        // 2. Delete the file
         $fichier = ROOT . "/private/pdf/" . $row["content"];
         if (file_exists($fichier)) {
             unlink($fichier);
         }
 
-        // 3. Supprimer en BDD
+        // 3. Delete in database
         $req = $cnx->prepare("DELETE FROM PROTOCOL WHERE idPr = :idPr");
         $req->bindValue(':idPr', $idProtocol, PDO::PARAM_INT);
         return $req->execute();

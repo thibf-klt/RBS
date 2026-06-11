@@ -4,8 +4,6 @@ if (!isAdmin()) {
     header("Location: ./?action=connexion");
     exit();
 }
-require_once ROOT . "/app/model/authentification.php";
-
 requireAdmin();
 
 require_once ROOT . "/app/view/head.php";

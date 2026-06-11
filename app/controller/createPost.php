@@ -1,6 +1,7 @@
 <?php
 $errors = [];
 $insertSuccess = isset($_GET['success']);
+$updateSuccess = isset($_GET['updated']);
 $deleteSuccess = isset($_GET['deleted']);
 $posts = [];
 

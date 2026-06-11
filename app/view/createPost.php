@@ -1,9 +1,9 @@
-<?php
-if (!isset($_SESSION["email"])) {
+<?php if (!isset($_SESSION["email"])) {
     header("Location: ./?action=connexion");
     exit();
 }
 ?>
+
 <div class="logout">
     <?php if (isset($_SESSION['email'])): ?>
         <p>Bonjour, <?= htmlspecialchars($_SESSION['email']) ?></p>
@@ -44,6 +44,32 @@ if (!isset($_SESSION["email"])) {
 
         <button type="submit" class="buttonSophro">Ajouter l'article</button>
     </form>
+</div>
+
+<div class="editPost">
+    <h2>Modifier un article</h2>
+    <?php if (isset($_GET['updated'])): ?>
+        <p class="success">Article modifié avec succès !</p>
+    <?php endif; ?>
+    <?php if (!empty($posts)): ?>
+    <form action="./?action=createPost" method="POST" class="formEdit"
+    data-posts="<?= htmlspecialchars(json_encode($posts), ENT_QUOTES) ?>">   
+    <input type="hidden" name="action_type" value="edit"/>
+        <label for="edit_id">Choisir l'article :</label>
+        <select name="edit_id" id="edit_id">
+            <?php foreach ($posts as $post): ?>
+            <option value="<?= (int)$post['idPost'] ?>">
+                <?= htmlspecialchars($post['title']) ?>
+            </option>
+            <?php endforeach; ?>
+        </select>
+        <label for="editTitle">Titre :</label>
+        <input type="text" name="editTitle" id="editTitle" required/>
+        <label for="editContent">Contenu :</label>
+        <textarea name="editContent" id="editContent" required></textarea>
+        <button type="submit" class="buttonUpdate">Modifier l'article</button>
+    </form>
+    <?php endif; ?>
 </div>
 
 <div class="deletePost">

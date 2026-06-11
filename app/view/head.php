@@ -13,5 +13,6 @@
     <script src="./public/js/exercise.js" defer></script>
     <script src="./public/js/protocol.js" defer></script>
     <script src="./public/js/deleteExercise.js" defer></script>
+    <script src="./public/js/post.js" defer></script>
     <title>Riwanon Breton - Sophrologue</title>
 </head>

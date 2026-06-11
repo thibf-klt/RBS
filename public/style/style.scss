@@ -444,8 +444,7 @@ a {
 
     label {
         text-align: left;      
-        justify-self: start; 
-        
+        justify-self: start;    
     }
 
     input,
@@ -466,6 +465,24 @@ a {
 }
 .postContent {
     height: 200px;
+}
+.editPost {
+    @include backPink;
+    flex-direction: column;
+    align-items: center;
+
+    .formEdit {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 12px 16px;  
+    width: 90%;
+    max-width: 500px;     
+    box-sizing: border-box;   
+    }
+}
+#editContent {
+    height: 250px;
 }
 .deletePost {
     @include backGreen;

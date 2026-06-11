@@ -1,13 +1,9 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 require_once ROOT . "/app/model/connect.php";
 
 /**
- * Récupère un utilisateur par son id
+ * Get a user by his id
  * @param int $idUser
  * @return array|false
  */
@@ -24,7 +20,7 @@ function getUsers(int $idUser) {
 }
 
 /**
- * Récupère tous les clients (non admins)
+ * Get all users (not admin)
  * @return array
  */
 function getAllUsers(): array {
@@ -45,7 +41,7 @@ function getAllUsers(): array {
 }
 
 /**
- * Récupère un utilisateur par son email
+ * Get a user by email
  * @param string $email
  * @return array|false
  */
@@ -78,14 +74,3 @@ function addUser(string $email, string $password): bool {
         die("Erreur : " . $e->getMessage());
     }
 }
-
-if ($_SERVER["SCRIPT_FILENAME"] == str_replace(DIRECTORY_SEPARATOR, '/', __FILE__)) {
-    header('Content-Type: text/plain');
-    echo "=== getUsers(1) ===\n";
-    print_r(getUsers(1));
-    echo "\n=== getAllUsers() ===\n";
-    print_r(getAllUsers());
-    echo "\n=== getUserByMail('mathieu@gmail.com') ===\n";
-    print_r(getUserByMail("mathieu@gmail.com"));
-}
-?>

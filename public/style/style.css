@@ -506,6 +506,27 @@ a {
   height: 200px;
 }
 
+.editPost {
+  background-color: #F28AEF;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.editPost .formEdit {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 12px 16px;
+  width: 90%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+#editContent {
+  height: 250px;
+}
+
 .deletePost {
   background-color: #B0C687;
   margin: 20px;
