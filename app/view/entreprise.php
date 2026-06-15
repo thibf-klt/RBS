@@ -10,5 +10,3 @@
         Si vous êtes intéressé.e, contactez-moi.</p>
         </div>
 </div>
-</body>
-</html>

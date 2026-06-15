@@ -23,5 +23,3 @@ require_once ROOT . "/app/model/authentification.php";
     <li><a href="index.php?action=contact">Contact</a></li>
   </ul>
 </nav>
-</body>
-</html>

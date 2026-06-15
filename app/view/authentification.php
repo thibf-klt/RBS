@@ -7,7 +7,7 @@
     <h1>Connexion</h1>
 
     <?php if (!empty($erreur)): ?>
-        <p class="error"><?= htmlspecialchars($erreur) ?></p>
+        <p class="error"><?= htmlspecialchars($erreur, ENT_QUOTES | ENT_HTML5, 'UTF-8')  ?></p>
     <?php endif; ?>
 
     <form action="./?action=authentification" method="POST" class="form"> 

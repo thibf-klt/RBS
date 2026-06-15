@@ -1,4 +1,4 @@
-
+<main>
     <div class="sophro">
         <img class="rb" src="./public/images/rb(1).jpeg" alt="R. Breton, la sophrologue, souriante">
         
@@ -22,5 +22,4 @@
 
         </div>
     </div>
-    
-</body>
+</main>

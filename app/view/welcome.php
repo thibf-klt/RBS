@@ -34,8 +34,3 @@
         
     </div>
 </main>
-<?php
-
-?>
-</body>
-</html>

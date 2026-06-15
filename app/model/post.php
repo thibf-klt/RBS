@@ -7,7 +7,7 @@ function getPosts() {
     $result = [];
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("SELECT * FROM POST");
+        $req = $cnx->prepare("SELECT * FROM POST ORDER BY date_ DESC");
         $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {

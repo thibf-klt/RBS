@@ -28,5 +28,3 @@
         vendredi : 10h-20h</p>
         </div>
     </div>
-</body>
-</html>

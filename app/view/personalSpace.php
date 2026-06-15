@@ -14,23 +14,23 @@ if (!isset($_SESSION["email"])) {
     <?php endif; ?>
 </div>
 
-<div class="perso">
-    <h3>Bienvenue dans votre espace, <?= htmlspecialchars($_SESSION["email"]) ?> !</h3>
+<main>
+    <div class="perso">
+        <h3>Bienvenue dans votre espace, <?= htmlspecialchars($_SESSION["email"]) ?> !</h3>
 
-    <span class="buttons">
-        <a href="index.php?action=updateDataUser">
-            <button class="buttonSophro">Gérer mes détails personnels</button>
-        </a>
-        <a href="index.php?action=exercise">
-            <button class="buttonSophro">Voir mes exercices</button>
-        </a>
-        <a href="index.php?action=manageTestimony">
-            <button class="buttonSophro">Gérer mes témoignages</button>
-        </a>
-        <a href="index.php?action=viewProtocol">
-            <button class="buttonSophro">Voir mon protocole</button>
-        </a>
-    </span>
-
-
-</div>
+        <span class="buttons">
+            <a href="index.php?action=updateDataUser">
+                <button class="buttonSophro">Gérer mes détails personnels</button>
+            </a>
+            <a href="index.php?action=exercise">
+                <button class="buttonSophro">Voir mes exercices</button>
+            </a>
+            <a href="index.php?action=manageTestimony">
+                <button class="buttonSophro">Gérer mes témoignages</button>
+            </a>
+            <a href="index.php?action=viewProtocol">
+                <button class="buttonSophro">Voir mon protocole</button>
+            </a>
+        </span>
+    </div>
+</main>

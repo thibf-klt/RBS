@@ -1,4 +1,4 @@
-
+<main>
     <div class="prestation">
         <h1>Mon offre de prestations</h1>
         <div class="offer">
@@ -6,7 +6,7 @@
                 <h2>Particuliers</h2>
                 <img src="./public/images/crepuscule.jpg" class="cote" alt="crépuscule sur le golfe du Morbihan">
                 <p>
-                Vous êtes stressé.e? Problèmes de sommeil? Mal dans votre peau? 
+                Vous êtes stressé.e? Problèmes de sommeil? 
                 Je vous propose une thérapie brève adaptée à vos besoins.
                 Basée sur le recentrage corporel, elle vous permettra de reprendre pied  et de retrouver le goût des choses.
                 </p>
@@ -27,7 +27,6 @@
                 <button class="buttonService">Les prestations pour les entreprises</button>
                 </a>
             </div>
-            
-            </div>
+        </div>
     </div>
-</body>
+</main>
