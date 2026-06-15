@@ -1,4 +1,6 @@
 <?php
+
+//gets a user by its id in the db
 function getUserById($pdo, $userId) {
     try {
         $stmt = $pdo->prepare("SELECT firstName, name FROM USER_ WHERE idUser = :idUser");
@@ -10,6 +12,7 @@ function getUserById($pdo, $userId) {
     }
 }
 
+//gets all the testimonies attached to a user in the db
 function getTestimoniesByUser($pdo, $userId) {
     try {
         $stmt = $pdo->prepare("SELECT idTest, title FROM TESTIMONY WHERE idUser = :idUser");
@@ -21,6 +24,7 @@ function getTestimoniesByUser($pdo, $userId) {
     }
 }
 
+//Saves a testimony in the db (parameters are bound for seurity reasons)
 function createTestimony($pdo, $title, $content, $date, $userId) {
     try {
         $stmt = $pdo->prepare("
@@ -39,6 +43,7 @@ function createTestimony($pdo, $title, $content, $date, $userId) {
     }
 }
 
+//Deletes a user's testimony from the db
 function deleteTestimoniesByUser($pdo, $ids, $userId) {
     try {
         $placeholders = implode(',', array_fill(0, count($ids), '?'));

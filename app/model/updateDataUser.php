@@ -1,11 +1,7 @@
 <?php
 require_once ROOT . "/app/model/connect.php";
 
-/**
- * get the connected user's data
- * @param int $idUser
- * @return array|false
- */
+// gets the connected user's data
 function getUserById(int $idUser): array|false {
     try {
         $cnx  = connexionPDO();
@@ -23,13 +19,7 @@ function getUserById(int $idUser): array|false {
     }
 }
 
-/**
- * update the connected user's password
- * @param int    $idUser
- * @param string $currentPassword
- * @param string $newPassword
- * @return true|array
- */
+// updates the connected user's password, values are bound for security reasons
 function updatePassword(
     int    $idUser,
     string $currentPassword,
@@ -63,6 +53,8 @@ function updatePassword(
         return $errors;
     }
 }
+
+//Deletes the user's account, without removing protocol and exercise
 function deleteAccount(int $userId, string $passwordProvided): true|array {
     $errors = [];
     try {

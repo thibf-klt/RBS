@@ -1,5 +1,6 @@
 <?php
 
+//Creates and retruns a pdo connection to the db, using ENV which contains the connection parametres
 function connexionPDO() {
     try{
         $conn = new PDO("mysql:host=".$_ENV['DB_HOST'].";dbname=".$_ENV['DB_NAME'], $_ENV['DB_LOGIN'], $_ENV['DB_PWD']);

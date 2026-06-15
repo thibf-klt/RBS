@@ -2,6 +2,7 @@
 <?php
 require_once ROOT . "/app/model/connect.php";
 
+//Gets posts from the db(the posts will then be shown on screen)
 function getPosts() {
     $result = [];
     try {

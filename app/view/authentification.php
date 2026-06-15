@@ -4,7 +4,7 @@
         <?php die('Erreur : ' . basename(__FILE__)); ?>
     <?php endif; ?>
 
-    <h2>Connexion</h2>
+    <h1>Connexion</h1>
 
     <?php if (!empty($erreur)): ?>
         <p class="error"><?= htmlspecialchars($erreur) ?></p>

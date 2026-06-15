@@ -32,6 +32,7 @@ function getProtocoleByIdAndUser(int $idPr, int $idUser): array|false {
     }
 }
 
+//Returns an array with all the users
 function getAllClients(): array {
     try {
         $cnx = connexionPDO();
@@ -42,6 +43,7 @@ function getAllClients(): array {
         die("Erreur PDO : " . $e->getMessage());
     }
 }
+
 // Save a new protocol (name of PDF file stocked in content)
 function saveProtocol(int $idUser, string $title, string $nomFichier): bool {
     try {
@@ -59,6 +61,7 @@ function saveProtocol(int $idUser, string $title, string $nomFichier): bool {
     }
 }
 
+//Gets the protocols for a given user by his id
 function getProtocolsByClient(int $idClient): array {
     try {
         $cnx = connexionPDO();
@@ -71,23 +74,24 @@ function getProtocolsByClient(int $idClient): array {
     }
 }
 
+//Deletes a user's protocol and the pdf attcahed to it, returns a boolean true when done
 function deleteProtocol(int $idProtocol): bool {
     try {
         $cnx = connexionPDO();
-        // 1. Get the name of the file
+        // Get the name of the file
         $req = $cnx->prepare("SELECT content FROM PROTOCOL WHERE idPr = :idPr");
         $req->bindValue(':idPr', $idProtocol, PDO::PARAM_INT);
         $req->execute();
         $row = $req->fetch(PDO::FETCH_ASSOC);
         if (!$row) return false;
 
-        // 2. Delete the file
+        // Delete the file
         $fichier = ROOT . "/private/pdf/" . $row["content"];
         if (file_exists($fichier)) {
             unlink($fichier);
         }
 
-        // 3. Delete in database
+        // Delete in database
         $req = $cnx->prepare("DELETE FROM PROTOCOL WHERE idPr = :idPr");
         $req->bindValue(':idPr', $idProtocol, PDO::PARAM_INT);
         return $req->execute();

@@ -1,6 +1,7 @@
 <?php
 require_once "connect.php";
 
+//Gets the testimonies for a given user, based on his id
 function getTestimonies(): array {
     $result = [];
     try {

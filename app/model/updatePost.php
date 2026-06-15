@@ -11,7 +11,7 @@ try {
         PDO::ATTR_EMULATE_PREPARES   => false,
     ]);
 
-    // Secure insertion
+    // Secure insertion (binding of parameters)
     $stmt = $conn->prepare("
         INSERT INTO POST (title, content, date_)
         VALUES (:title, :content, :date)

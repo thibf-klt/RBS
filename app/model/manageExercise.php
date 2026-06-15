@@ -1,6 +1,7 @@
 <?php
 require_once ROOT . "/app/model/database.php";
 
+//Saves an exercise and its associated files in the db
 function saveExercise(int $idClient, string $title, ?string $pdfPath = null, ?string $mediaPath = null): bool {
     try {
         $cnx = connexionPDO();
@@ -10,12 +11,12 @@ function saveExercise(int $idClient, string $title, ?string $pdfPath = null, ?st
         $req->bindValue(':idClient', $idClient, PDO::PARAM_INT);
         $req->bindValue(':title',    $title,    PDO::PARAM_STR);
         $req->execute();
-        $idEx = $cnx->lastInsertId(); // ✅ était $idExercise
+        $idEx = $cnx->lastInsertId();
 
         if ($pdfPath !== null) {
             $req = $cnx->prepare("INSERT INTO PDF (idEx, title, content, date_)
                                    VALUES (:idEx, :title, :content, CURDATE())");
-            $req->bindValue(':idEx',    $idEx,     PDO::PARAM_INT); // ✅
+            $req->bindValue(':idEx',    $idEx,     PDO::PARAM_INT);
             $req->bindValue(':title',   $title,    PDO::PARAM_STR);
             $req->bindValue(':content', $pdfPath,  PDO::PARAM_STR);
             $req->execute();
@@ -24,7 +25,7 @@ function saveExercise(int $idClient, string $title, ?string $pdfPath = null, ?st
         if ($mediaPath !== null) {
             $req = $cnx->prepare("INSERT INTO MEDIA (idEx, title, content, date_)
                                    VALUES (:idEx, :title, :content, CURDATE())");
-            $req->bindValue(':idEx',    $idEx,      PDO::PARAM_INT); // ✅
+            $req->bindValue(':idEx',    $idEx,      PDO::PARAM_INT);
             $req->bindValue(':title',   $title,     PDO::PARAM_STR);
             $req->bindValue(':content', $mediaPath, PDO::PARAM_STR);
             $req->execute();
@@ -34,10 +35,11 @@ function saveExercise(int $idClient, string $title, ?string $pdfPath = null, ?st
 
     } catch (PDOException $e) {
         error_log("Erreur saveExercise : " . $e->getMessage());
-        return false; // ✅ était die()
+        return false;
     }
 }
 
+//GEts all exercises assigned to a user, from the most recent to the oldest. Returns only idEx and title, sufficient for dropdown menus
 function getAllExercisesByClient(int $idClient): array {
     try {
         $cnx = connexionPDO();
@@ -53,11 +55,12 @@ function getAllExercisesByClient(int $idClient): array {
     }
 }
 
+//Deletes an exercise and its attached files
 function deleteExercise(int $idEx): bool {
     try {
         $cnx = connexionPDO();
 
-        // 1. Récupérer et supprimer les fichiers PDF
+        // Get and delete pdf files
         $req = $cnx->prepare("SELECT content FROM PDF WHERE idEx = :id");
         $req->bindValue(':id', $idEx, PDO::PARAM_INT);
         $req->execute();
@@ -66,7 +69,7 @@ function deleteExercise(int $idEx): bool {
             if (file_exists($f)) unlink($f);
         }
 
-        // 2. Récupérer et supprimer les fichiers média
+        // Get and delete media files
         $req = $cnx->prepare("SELECT content FROM MEDIA WHERE idEx = :id");
         $req->bindValue(':id', $idEx, PDO::PARAM_INT);
         $req->execute();
@@ -75,11 +78,11 @@ function deleteExercise(int $idEx): bool {
             if (file_exists($f)) unlink($f);
         }
 
-        // 3. Supprimer PDF et MEDIA en BDD
+        // Delete PDF and MEDIA in db
         $cnx->prepare("DELETE FROM PDF   WHERE idEx = :id")->execute([':id' => $idEx]);
         $cnx->prepare("DELETE FROM MEDIA WHERE idEx = :id")->execute([':id' => $idEx]);
 
-        // 4. Supprimer l'exercice ✅ était idExercise
+        // Delete the exercise
         $req = $cnx->prepare("DELETE FROM EXERCISE WHERE idEx = :id");
         $req->bindValue(':id', $idEx, PDO::PARAM_INT);
         $req->execute();

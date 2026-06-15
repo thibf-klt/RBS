@@ -2,11 +2,7 @@
 
 require_once ROOT . "/app/model/connect.php";
 
-/**
- * Get a user by his id
- * @param int $idUser
- * @return array|false
- */
+// Gets a user by his id
 function getUsers(int $idUser) {
     try {
         $cnx = connexionPDO();
@@ -19,10 +15,7 @@ function getUsers(int $idUser) {
     }
 }
 
-/**
- * Get all users (not admin)
- * @return array
- */
+//Get all users (not admin)
 function getAllUsers(): array {
     try {
         $cnx  = connexionPDO();
@@ -40,11 +33,7 @@ function getAllUsers(): array {
     }
 }
 
-/**
- * Get a user by email
- * @param string $email
- * @return array|false
- */
+//Gets a user by email
 function getUserByMail(string $email) {
     try {
         $cnx = connexionPDO();
@@ -57,11 +46,7 @@ function getUserByMail(string $email) {
     }
 }
 
-/**
- * @param string $email
- * @param string $password
- * @return bool
- */
+//Adds a new user, returns boolean when done
 function addUser(string $email, string $password): bool {
     try {
         $cnx     = connexionPDO();

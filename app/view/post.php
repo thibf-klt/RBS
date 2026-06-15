@@ -1,5 +1,5 @@
 <div class="blog">
-  <a href="index.php?action=post"><h2>Mes articles</h2></a>
+  <a href="index.php?action=post"><h1>Mes articles</h1></a>
   <div class="displayPost">
     <?php if (!empty($posts)) : ?>
       <?php foreach ($posts as $post) : ?>

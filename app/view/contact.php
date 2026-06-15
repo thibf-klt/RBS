@@ -1,6 +1,6 @@
 
     <div id="contact">
-        <h2>Contact</h2>
+        <h1>Contact</h1>
         <p>N’hésitez pas à me contacter au <strong>0601020304</strong> ou par l'intermédiaire de ce formulaire:</p>
         <form action="envoyermessage.php" method="post">
             <p>Civilité :

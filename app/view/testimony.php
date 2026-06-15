@@ -1,6 +1,6 @@
 
 <div class="testimony">
-    <a href="index.php?action=testimony"><h2>Témoignages</h2></a>
+    <a href="index.php?action=testimony"><h1>Témoignages</h1></a>
 
   <div class="displayPost">
     <?php if (!empty($testimonies)) : ?>

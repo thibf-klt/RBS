@@ -2,9 +2,7 @@
 
 require_once ROOT . "/app/model/connect.php";
 
-/**
- * @return true|array
- */
+//Creates a new user, returns true|array
 function createUser(
     string $name,
     string $firstName,
@@ -46,11 +44,7 @@ function createUser(
     }
 }
 
-/**
- * Suppress selected customers (non admin only)
- * @param array $ids
- * @return true|array
- */
+//Deletes selected customers (non admin only)
 function deleteUsers(array $ids): true|array {
     if (empty($ids)) {
         return ['selection' => "Aucun client sélectionné."];

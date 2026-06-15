@@ -1,9 +1,9 @@
 
     <div class="prestation">
-        <h2>Mon offre de prestations</h2>
+        <h1>Mon offre de prestations</h1>
         <div class="offer">
             <div class="individuals">
-                <h3>Particuliers</h3>
+                <h2>Particuliers</h2>
                 <img src="./public/images/crepuscule.jpg" class="cote" alt="crépuscule sur le golfe du Morbihan">
                 <p>
                 Vous êtes stressé.e? Problèmes de sommeil? Mal dans votre peau? 
@@ -16,7 +16,7 @@
         
             </div>
             <div class="individuals">
-                <h3>Entreprises</h3>
+                <h2>Entreprises</h2>
                 <img src="./public/images/cote.jpg" class="cote" alt="la côte au crépuscule">
                 <p>
                 Les employés qui travaillent le mieux sont les employés détendus.
